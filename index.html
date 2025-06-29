@@ -4,206 +4,252 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <!-- SEO基本タグ -->
-<title>もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ</title>
-<meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れるWebメーカーまとめサイトです。">
-
-<!-- キーワード（最近は効果薄いけど一応） -->
-<meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推し,相性,HTML,もふみつ">
-
-<!-- OGP -->
-<meta property="og:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
-<meta property="og:description" content="オリキャラ・推しキャラのプロフィール作成や相性診断ができる、かわいくて楽しいWebツールが満載！">
-<meta property="og:image" content="https://mofu-mitsu.github.io/ogp.png">
-<meta property="og:url" content="https://mofu-mitsu.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="もふみつ工房">
-
-<!-- Twitterカード -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
-<meta name="twitter:description" content="オリキャラ・推しキャラのプロフィール作成や相性診断ができる、かわいくて楽しいWebツールが満載！">
-<meta name="twitter:image" content="https://mofu-mitsu.github.io/ogp.png">
-<meta name="google-site-verification" content="asXFHz9t9b5MSUrHRfKPT3fYOs-qxfbJCM56p1ONUAM" />
+  <!-- SEO基本タグ -->
+  <title>もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ</title>
+  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れるWebメーカーまとめサイトです.">
+  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推し,相性,HTML,もふみつ">
+  <!-- OGP -->
+  <meta property="og:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
+  <meta property="og:description" content="オリキャラ・推しキャラのプロフィール作成や相性診断ができる、かわいくて楽しいWebツールが満載！">
+  <meta property="og:image" content="https://mofu-mitsu.github.io/ogp.png">
+  <meta property="og:url" content="https://mofu-mitsu.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="もふみつ工房">
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
+  <meta name="twitter:description" content="オリキャラ・推しキャラのプロフィール作成や相性診断ができる、かわいくて楽しいWebツールが満載！">
+  <meta name="twitter:image" content="https://mofu-mitsu.github.io/ogp.png">
+  <meta name="google-site-verification" content="asXFHz9t9b5MSUrHRfKPT3fYOs-qxfbJCM56p1ONUAM" />
   <title>もふみつ工房</title>
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
     body {
       margin: 0;
       font-family: 'Kiwi Maru', serif;
       background: #fff0f5;
       color: #444;
+      box-sizing: border-box;
     }
-
- .animal {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.3;
-  animation-name: floatAnimal, swaySide;
-  animation-timing-function: linear, ease-in-out;
-  animation-iteration-count: infinite, infinite;
-}
-
-@keyframes floatAnimal {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(-200vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.animals {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1; /* ←これも調整してね */
-}
-   @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-3px); }
-  100% { transform: translateY(0px); }
-}
-
-.top-nav {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  display: flex;
-  gap: 0.8em;
-  background: rgba(255, 240, 245, 0.9);
-  padding: 0.4em 1em;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.nav-btn {
-  background: #fbd3e9;
-  padding: 0.5em 1.2em;
-  border-radius: 20px;
-  color: #a14f74;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.85em;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  transition: background 0.3s ease;
-  box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.4);
-  animation: float 3s ease-in-out infinite;
-}
-
-.nav-btn i {
-  margin-right: 0.4em;
-}
-.nav-btn:hover {
-  background: #f9c8d9;
-  color: #8c3c63;
-}
-
-    /* --- リボン背景ふわふわ変化 --- */
-@keyframes fadePink {
-  0%, 100% { background-color: #ffefed; }
-  50% { background-color: #ffe9f2; }
-}
-
-.ribbon-header {
-  background: #ffefed;
-  padding: 0.5em 1em;
-  text-align: center;
-  border-bottom: 3px dotted #f8a9c0;
-  animation: fadePink 8s ease-in-out infinite;
-}
-
+    .animal {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      animation-name: floatAnimal, swaySide;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: infinite, infinite;
+    }
+    @keyframes floatAnimal {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      25% { opacity: 0.4; }
+      100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; }
+    }
+    .animals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+      100% { transform: translateY(0px); }
+    }
+    .top-nav {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      display: flex;
+      gap: 0.8em;
+      background: rgba(255, 240, 245, 0.9);
+      padding: 0.4em 1em;
+      border-radius: 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    .nav-btn {
+      background: #fbd3e9;
+      padding: 0.5em 1.2em;
+      border-radius: 20px;
+      color: #a14f74;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      transition: background 0.3s ease;
+      box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+    .nav-btn i {
+      margin-right: 0.4em;
+    }
+    .nav-btn:hover {
+      background: #f9c8d9;
+      color: #8c3c63;
+    }
+    @keyframes fadePink {
+      0%, 100% { background-color: #ffefed; }
+      50% { background-color: #ffe9f2; }
+    }
+    .ribbon-header {
+      background: #ffefed;
+      padding: 0.5em 1em;
+      text-align: center;
+      border-bottom: 3px dotted #f8a9c0;
+      animation: fadePink 8s ease-in-out infinite;
+    }
     .ribbon-text {
       font-family: "Kiwi Maru", serif;
       color: #d98c89;
       font-weight: bold;
       font-size: 1.1em;
     }
-
     header {
       background: url('https://www.transparenttextures.com/patterns/cream-dust.png');
       text-align: center;
       padding: 2em 1em;
       border-bottom: 5px double #f9c8d9;
     }
-
-   /* --- ロゴ画像ふわふわ --- */
-header img {
-  width: 160px;
-  margin-bottom: 0.5em;
-  animation: float 4s ease-in-out infinite;
-}
-
+    header img {
+      width: 160px;
+      margin-bottom: 0.5em;
+      animation: float 4s ease-in-out infinite;
+    }
     header h1 {
       font-size: 2.4em;
       color: #d98c89;
       text-shadow: 1px 1px 0 #fff;
       margin: 0;
     }
-
     .hero {
       background: linear-gradient(#fff0f5, #ffe4e1);
       text-align: center;
       padding: 3em 1em;
     }
-
     .hero h2 {
       font-size: 1.8em;
       color: #d85f89;
       margin-bottom: 1em;
       text-shadow: 1px 1px #fff;
     }
-
     .hero p {
       font-size: 1.2em;
       color: #7c4567;
       line-height: 1.8em;
     }
-    
+.cards {
+  display: flex;
+  flex-wrap: nowrap; /* 横に並べる */
+  justify-content: center; /* 中央寄せ */
+  gap: 1.5em; /* カード間の間隔 */
+  padding: 2em 0.5em; /* 左右に余白を減らし自然に */
+  overflow-x: auto; /* 横スクロールを維持 */
+  scroll-behavior: smooth; /* スムーズスクロール */
+  -webkit-overflow-scrolling: touch; /* スマホでスムーズ */
+  position: relative;
+  max-width: 1200px; /* 最大幅を設定 */
+  margin: 0 auto; /* 中央揃え */
+}
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5em;
-      padding: 2em 1em;
-    }
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5em;
+  width: 280px; /* 固定幅 */
+  min-width: 280px; /* 最小幅 */
+  text-align: center;
+  transition: transform 0.2s ease;
+  flex-shrink: 0; /* 縮小防止 */
+}
 
-    .card {
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 1.5em;
-      max-width: 300px;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
+.card-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
 
+.carousel-prev, .carousel-next {
+  background: linear-gradient(145deg, #f9c8d9, #ffd6ec); /* ピンクグラデ */
+  border: 2px solid #ffccd4; /* ふわっとボーダー */
+  padding: 0.8em;
+  border-radius: 50%; /* 丸く */
+  color: #a14f74; /* 文字色を濃いピンク */
+  font-size: 1.2em;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(255, 150, 200, 0.4); /* ふわっと影 */
+  transition: transform 0.3s ease, background 0.3s ease; /* ホバーアニメーション */
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+  transform: translateY(-50%) scale(1.1); /* 少し大きく */
+  background: linear-gradient(145deg, #ffd6ec, #f9c8d9); /* グラデ反転 */
+  box-shadow: 0 6px 12px rgba(255, 150, 200, 0.6); /* 影強化 */
+}
+
+.carousel-prev {
+  left: 0.5em;
+}
+
+.carousel-next {
+  right: 0.5em;
+}
+
+/* スマホ調整 */
+@media screen and (max-width: 768px) {
+  .carousel-prev, .carousel-next {
+    padding: 0.6em;
+    font-size: 1em;
+  }
+  .carousel-prev:hover, .carousel-next:hover {
+    transform: translateY(-50%) scale(1.05); /* スマホで控えめに */
+  }
+}
+
+/* 既存のスクロールバー隠しを維持 */
+.cards::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+.cards {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* スマホ調整 */
+@media screen and (max-width: 768px) {
+  .cards {
+    padding: 1.5em 0.3em; /* スマホでさらに余白調整 */
+    justify-content: flex-start; /* 狭い場合は左寄せに */
+  }
+  .card {
+    width: 250px;
+    min-width: 250px;
+  }
+  .carousel-prev, .carousel-next {
+    padding: 0.6em;
+    font-size: 1em;
+  }
+}
     .card:hover {
       transform: scale(1.03);
     }
-
     .card h2 {
       font-size: 1.3em;
       margin-bottom: 0.5em;
       color: #e080a0;
     }
-
     .card a {
       display: inline-block;
       margin-top: 1em;
@@ -215,152 +261,146 @@ header img {
       font-weight: bold;
     }
     @keyframes bounceFooter {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
     footer {
-  text-align: center;
-  padding: 2em 1em;
-  background: #ffe4e1;
-  font-size: 0.9em;
-  color: #888;
-  animation: bounceFooter 6s ease-in-out infinite;
-position: relative; /* ← 追加してみて！ */
-}
- 
-
+      text-align: center;
+      padding: 2em 1em;
+      background: #ffe4e1;
+      font-size: 0.9em;
+      color: #888;
+      animation: bounceFooter 6s ease-in-out infinite;
+      position: relative;
+    }
+    footer a {
+      color: #d98c89;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      color: #e080a0;
+      text-decoration: underline;
+    }
     @media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 1.6em;
-  }
-
-  .hero h2 {
-    font-size: 1.4em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-    max-width: 100%;
-  }
-
-  .top-nav {
-    flex-direction: column;
-    top: auto;
-    bottom: 1em;
-    right: 1em;
-    gap: 0.4em;
-    padding: 0.6em;
-  }
-
-  .nav-btn {
-    font-size: 0.8em;
-    padding: 0.5em 1em;
-  }
-
-  header img {
-    width: 120px;
-  }
-
-  .ribbon-text {
-    font-size: 0.95em;
-  }
-
-  footer {
-    font-size: 0.8em;
-    padding: 1.5em 1em;
-  }
-}
-/* ハンバーガーとメニュー */
-.mobile-nav {
-  position: fixed;
-  top: 1em;
-  right: 1em;
-  z-index: 999;
-}
-
-.hamburger {
-  font-size: 1.6em;
-  background: #fbd3e9;
-  color: #a14f74;
-  padding: 0.6em 0.8em;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.menu {
-  margin-top: 0.5em;
-  background: rgba(255, 240, 245, 0.95);
-  border-radius: 12px;
-  padding: 0.6em 1em;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: max-height 0.3s ease;
-}
-
-.menu li a {
-  text-decoration: none;
-  color: #a14f74;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  font-size: 0.9em;
-}
-
-.hidden {
-  display: none;
-}
-
-/* PCでは非表示にする */
-@media screen and (min-width: 769px) {
-  .mobile-nav {
-    display: none;
-  }
-}
-
-/* スマホだけ */
-@media screen and (max-width: 768px) {
-  .top-nav {
-    display: none !important;
-  }
-}
+      header h1 {
+        font-size: 1.6em;
+      }
+      .hero h2 {
+        font-size: 1.4em;
+      }
+      .hero p {
+        font-size: 1em;
+      }
+      .cards {
+        padding: 1.5em 0.5em;
+      }
+      .card {
+        width: 250px;
+        min-width: 250px;
+      }
+      .top-nav {
+        flex-direction: column;
+        top: auto;
+        bottom: 1em;
+        right: 1em;
+        gap: 0.4em;
+        padding: 0.6em;
+      }
+      .nav-btn {
+        font-size: 0.8em;
+        padding: 0.5em 1em;
+      }
+      header img {
+        width: 120px;
+      }
+      .ribbon-text {
+        font-size: 0.95em;
+      }
+      footer {
+        font-size: 0.8em;
+        padding: 1.5em 1em;
+      }
+    }
+    .mobile-nav {
+      position: fixed;
+      top: 1em;
+      right: 1em;
+      z-index: 999;
+    }
+    .hamburger {
+      font-size: 1.6em;
+      background: #fbd3e9;
+      color: #a14f74;
+      padding: 0.6em 0.8em;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .menu {
+      margin-top: 0.5em;
+      background: rgba(255, 240, 245, 0.95);
+      border-radius: 12px;
+      padding: 0.6em 1em;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: max-height 0.3s ease;
+    }
+    .menu li a {
+      text-decoration: none;
+      color: #a14f74;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 0.9em;
+    }
+    .hidden {
+      display: none;
+    }
+    @media screen and (min-width: 769px) {
+      .mobile-nav {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .top-nav {
+        display: none !important;
+      }
+    }
+    .cards::-webkit-scrollbar {
+      display: none;
+    }
+    .cards {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 <body>
-    <div class="clouds"></div>
+  <div class="clouds"></div>
   <div class="ribbon-header">
     <p class="ribbon-text">ふんわり優しいツール置き場です♪</p>
   <!-- PC用ナビゲーション -->
-<nav class="top-nav">
-  <a class="nav-btn" href="/"><i class="fas fa-house"></i> ホーム</a>
-  <a class="nav-btn" href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a>
-  <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a>
-</nav>
-
-<!-- スマホ用ハンバーガーメニュー -->
-<nav class="mobile-nav">
-  <div class="hamburger" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
-  <ul id="menu-list" class="menu hidden">
-    <li><a href="/"><i class="fas fa-house"></i> ホーム</a></li>
-    <li><a href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a></li>
-    <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a></li>
-  </ul>
-</nav>
+  <nav class="top-nav">
+    <a class="nav-btn" href="/"><i class="fas fa-house"></i> ホーム</a>
+    <a class="nav-btn" href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a>
+    <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a>
+  </nav>
+  <!-- スマホ用ハンバーガーメニュー -->
+  <nav class="mobile-nav">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul id="menu-list" class="menu hidden">
+      <li><a href="/"><i class="fas fa-house"></i> ホーム</a></li>
+      <li><a href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a></li>
+      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a></li>
+    </ul>
+  </nav>
   <header>
     <img src="logo.png" alt="もふみつロゴ">
     <h1>もふみつ工房</h1>
@@ -373,8 +413,7 @@ position: relative; /* ← 追加してみて！ */
     <div class="animal" style="left: 75%; top: 115vh; animation-delay: 2s; animation-duration: 38s; background-image: url('cat-icon.png');"></div>
     <div class="animal" style="left: 90%; top: 108vh; animation-delay: 6s; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
   </div>
-
-  <section class="hero">
+   <section class="hero">
     <h2>ようこそ、もふもふの世界へ！</h2>
     <p>
       推しキャラやオリキャラをもっと可愛く楽しめるプロフィールメーカーや、<br />
@@ -382,35 +421,48 @@ position: relative; /* ← 追加してみて！ */
       これからも“好き”を形にするコンテンツを増やしていきます♪
     </p>
   </section>
-
   <section id="contents" class="cards">
-  <div class="card">
-    <h2>♡ 推しキャラプロフィールメーカー</h2>
-    <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">使ってみる</a>
+    <button class="carousel-prev" onclick="scrollCarousel('prev')">❮</button>
+    <div class="card-wrapper">
+      <div class="card">
+        <h2>♡ 推しキャラプロフィールメーカー</h2>
+        <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">使ってみる</a>
+      </div>
+      <div class="card">
+        <h2>♡ オリキャラプロフィールメーカー</h2>
+        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">使ってみる</a>
+      </div>
+      <div class="card">
+        <h2>♡ ふわふわ相性診断メーカー</h2>
+        <a href="https://mofu-mitsu.github.io/fluffy-love-check/">使ってみる</a>
+      </div>
+    <div class="card">
+      <h2>♡ 夢日記メーカー</h2>
+      <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/">使ってみる</a>
+    </div>
   </div>
-  <div class="card">
-    <h2>♡ オリキャラプロフィールメーカー</h2>
-    <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">使ってみる</a>
-  </div>
-  <div class="card">
-    <h2>♡ ふわふわ相性診断メーカー</h2>
-    <a href="https://mofu-mitsu.github.io/fluffy-love-check/">使ってみる</a>
-  </div>
+  <button class="carousel-next" onclick="scrollCarousel('next')">❯</button>
 </section>
-
   <footer>
-  制作：もふみつ｜
-  <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a>｜
-  GitHub：<a href="https://github.com/mofu-mitsu" target="_blank">@mofu-mitsu</a>｜
-  <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせはこちら♪</a>
-   <p><a href="policy.html">プライバシーポリシー</a></p>
-</footer>
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu-list");
-    menu.classList.toggle("hidden");
-  }
-</script>
-
+    制作：もふみつ｜
+    <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a>｜
+    <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせはこちら♪</a>
+    <p><a href="policy.html">プライバシーポリシー</a></p>
+  </footer>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu-list");
+      menu.classList.toggle("hidden");
+    }
+    function scrollCarousel(direction) {
+      const container = document.querySelector('.card-wrapper');
+      const scrollAmount = 300;
+      if (direction === 'prev') {
+        container.scrollLeft -= scrollAmount;
+      } else {
+        container.scrollLeft += scrollAmount;
+      }
+    }
+  </script>
 </body>
 </html>
