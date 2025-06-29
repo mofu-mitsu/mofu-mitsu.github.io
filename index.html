@@ -159,6 +159,41 @@
   margin: 0 auto; /* 中央揃え */
 }
 
+/* スクロールバーカスタマイズ */
+.cards::-webkit-scrollbar {
+  height: 8px; /* 細めに */
+  background: #ffeef5; /* 背景を薄ピンク */
+}
+
+.cards::-webkit-scrollbar-track {
+  background: #ffeef5; /* トラックも薄ピンク */
+  border-radius: 10px; /* 角丸 */
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #f9c8d9, #ffd6ec); /* ピンクグラデ */
+  border-radius: 10px; /* 角丸 */
+  border: 2px solid #ffeef5; /* 縁取りでふわっと */
+  box-shadow: inset 0 0 6px rgba(255, 150, 200, 0.3); /* 内側に影 */
+}
+
+.cards::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ffd6ec, #f9c8d9); /* ホバーで反転 */
+  box-shadow: inset 0 0 8px rgba(255, 150, 200, 0.5); /* 影強化 */
+}
+
+/* Firefox用 */
+.cards {
+  scrollbar-width: thin; /* 細く */
+  scrollbar-color: #f9c8d9 #ffeef5; /* 親指とトラック */
+}
+
+/* IE/Edge用（非表示維持） */
+.cards {
+  -ms-overflow-style: none; /* 非表示 */
+}
+
+/* 既存の.cardとその他は維持 */
 .card {
   background: #fff;
   border-radius: 15px;
@@ -209,26 +244,6 @@
 
 /* スマホ調整 */
 @media screen and (max-width: 768px) {
-  .carousel-prev, .carousel-next {
-    padding: 0.6em;
-    font-size: 1em;
-  }
-  .carousel-prev:hover, .carousel-next:hover {
-    transform: translateY(-50%) scale(1.05); /* スマホで控えめに */
-  }
-}
-
-/* 既存のスクロールバー隠しを維持 */
-.cards::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-.cards {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* スマホ調整 */
-@media screen and (max-width: 768px) {
   .cards {
     padding: 1.5em 0.3em; /* スマホでさらに余白調整 */
     justify-content: flex-start; /* 狭い場合は左寄せに */
@@ -241,29 +256,36 @@
     padding: 0.6em;
     font-size: 1em;
   }
+  .carousel-prev:hover, .carousel-next:hover {
+    transform: translateY(-50%) scale(1.05); /* スマホで控えめに */
+  }
 }
-    .card:hover {
-      transform: scale(1.03);
-    }
-    .card h2 {
-      font-size: 1.3em;
-      margin-bottom: 0.5em;
-      color: #e080a0;
-    }
-    .card a {
-      display: inline-block;
-      margin-top: 1em;
-      padding: 0.5em 1.2em;
-      background: #f9c8d9;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    @keyframes bounceFooter {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+  color: #e080a0;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1.2em;
+  background: #f9c8d9;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@keyframes bounceFooter {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
     footer {
       text-align: center;
       padding: 2em 1em;
