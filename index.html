@@ -219,10 +219,10 @@
     }
     .tool-link:hover { background: #f9c8d9; color: #fff; }
 
-    /* --- スマホ用ハンバーガー (修正箇所) --- */
+    /* --- スマホ用ハンバーガー --- */
     .mobile-nav {
       position: fixed; top: 1em; right: 1em; z-index: 999;
-      display: none; /* ★PCではデフォルトで非表示にする！ */
+      display: none;
     }
     .hamburger {
       font-size: 1.6em; background: #fbd3e9; color: #a14f74;
@@ -243,10 +243,10 @@
     }
     .menu.open { display: flex; }
 
-    /* スマホ対応 (修正箇所) */
+    /* スマホ対応 */
     @media screen and (max-width: 768px) {
-      .top-nav { display: none; } /* PCナビを消す */
-      .mobile-nav { display: block; } /* ★スマホの時だけハンバーガーを表示！ */
+      .top-nav { display: none; }
+      .mobile-nav { display: block; }
       
       .mirin-section { flex-direction: column; text-align: center; padding: 1.5em; }
       .mirin-info h3 { justify-content: center; }
@@ -348,10 +348,11 @@
     </div>
   </div>
 
-  <!-- みりんてゃ紹介エリア -->
+  <!-- みりんてゃ紹介エリア（修正：画像タグ追加） -->
   <section id="mirin" class="mirin-section">
     <div class="mirin-icon">
-      <i class="fas fa-cat"></i> 
+      <!-- ★ここに mirin-icon.png を入れました！ -->
+      <img src="mirin-icon.png" alt="みりんてゃ">
     </div>
     <div class="mirin-info">
       <h3>みりんてゃ <span style="font-size:0.6em; color:#999; margin-left:10px;">@mirinchuuu</span></h3>
@@ -518,8 +519,7 @@
   </div>
 
   <div style="text-align:center; margin: 4em 0;">
-    <p style="font-size:0.8em; color:#aaa;">広告が表示されるスペース</p>
-    <!-- AdSenseコード -->
+    <!-- ★ここに広告が入ります。文字は消してスッキリさせました！ -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-1330533639940949"
