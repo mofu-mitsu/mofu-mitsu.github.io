@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ</title>
-  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れる可愛いWebメーカーまとめサイトです♪">
-  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推しキャラ,相性診断,夢日記,ふわふわ,もふみつ工房">
+  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れる可愛いWebメーカーまとめサイトです。ノベルゲームや創作支援ツールも公開中！">
+  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推しキャラ,相性診断,夢日記,ふわふわ,もふみつ工房,みりんてゃ,BOOTH">
   <!-- OGP -->
   <meta property="og:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
   <meta property="og:description" content="推しキャラ・オリキャラをもっと可愛く楽しめるふわふわツールがいっぱい！">
@@ -14,22 +14,30 @@
   <meta property="og:type" content="website">
   <!-- Twitterカード -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- AdSense（これ1回だけでOK！！） -->
+  
+  <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330533639940949"
        crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="asXFHz9t9b5MSUrHRfKPT3fYOs-qxfbJCM56p1ONUAM" />
+  
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
+    /* --- 基本設定 --- */
     body {
       margin: 0;
       font-family: 'Kiwi Maru', serif;
       background: #fff0f5;
-      color: #444;
+      color: #5d4037;
       box-sizing: border-box;
+      line-height: 1.8;
+      overflow-x: hidden;
     }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    /* --- 背景アニメーション --- */
     .animal {
       position: absolute;
       width: 60px;
@@ -48,511 +56,492 @@
     }
     .animals {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: -1;
     }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-3px); }
-      100% { transform: translateY(0px); }
-    }
+
+    /* --- ナビゲーション (PC) --- */
     .top-nav {
       position: absolute;
-      top: 1em;
-      right: 1em;
-      display: flex;
-      gap: 0.8em;
-      background: rgba(255, 240, 245, 0.9);
+      top: 1em; right: 1em;
+      display: flex; gap: 0.8em;
+      background: rgba(255, 240, 245, 0.95);
       padding: 0.4em 1em;
       border-radius: 30px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      z-index: 100;
     }
     .nav-btn {
       background: #fbd3e9;
       padding: 0.5em 1.2em;
       border-radius: 20px;
       color: #a14f74;
-      text-decoration: none;
       font-weight: bold;
       font-size: 0.85em;
-      display: flex;
-      align-items: center;
-      gap: 0.4em;
-      transition: background 0.3s ease;
-      box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.4);
-      animation: float 3s ease-in-out infinite;
+      display: flex; align-items: center; gap: 0.4em;
     }
-    .nav-btn i {
-      margin-right: 0.4em;
-    }
-    .nav-btn:hover {
-      background: #f9c8d9;
-      color: #8c3c63;
-    }
-    @keyframes fadePink {
-      0%, 100% { background-color: #ffefed; }
-      50% { background-color: #ffe9f2; }
-    }
+    .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
+
+    /* --- ヘッダー & About --- */
     .ribbon-header {
       background: #ffefed;
       padding: 0.5em 1em;
       text-align: center;
       border-bottom: 3px dotted #f8a9c0;
-      animation: fadePink 8s ease-in-out infinite;
     }
-    .ribbon-text {
-      font-family: "Kiwi Maru", serif;
-      color: #d98c89;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
+    .ribbon-text { color: #d98c89; font-weight: bold; margin: 0; }
+
     header {
       background: url('https://www.transparenttextures.com/patterns/cream-dust.png');
       text-align: center;
-      padding: 2em 1em;
-      border-bottom: 5px double #f9c8d9;
-    }
-    header img {
-      width: 160px;
-      margin-bottom: 0.5em;
-      animation: float 4s ease-in-out infinite;
+      padding: 3em 1em 1em;
     }
     header h1 {
-      font-size: 2.4em;
+      font-size: 2.5em;
       color: #d98c89;
-      text-shadow: 1px 1px 0 #fff;
-      margin: 0;
+      text-shadow: 2px 2px 0 #fff;
+      margin: 0.2em 0 0;
     }
-    .hero {
-      background: linear-gradient(#fff0f5, #ffe4e1);
-      text-align: center;
-      padding: 3em 1em;
-    }
-    .hero h2 {
-      font-size: 1.8em;
-      color: #d85f89;
-      margin-bottom: 1em;
-      text-shadow: 1px 1px #fff;
-    }
-    .hero p {
-      font-size: 1.2em;
-      color: #7c4567;
-      line-height: 1.8em;
-    }
-.cards {
-  display: flex;
-  flex-wrap: nowrap; /* 横に並べる */
-  justify-content: center; /* 中央寄せ */
-  gap: 1.5em; /* カード間の間隔 */
-  padding: 2em 0.5em; /* 左右に余白を減らし自然に */
-  overflow-x: auto; /* 横スクロールを維持 */
-  scroll-behavior: smooth; /* スムーズスクロール */
-  -webkit-overflow-scrolling: touch; /* スマホでスムーズ */
-  position: relative;
-  max-width: 1200px; /* 最大幅を設定 */
-  margin: 0 auto; /* 中央揃え */
-}
 
-/* スクロールバーカスタマイズ */
-.cards::-webkit-scrollbar {
-  height: 8px; /* 細めに */
-  background: #ffeef5; /* 背景を薄ピンク */
-}
-
-.cards::-webkit-scrollbar-track {
-  background: #ffeef5; /* トラックも薄ピンク */
-  border-radius: 10px; /* 角丸 */
-}
-
-.cards::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #f9c8d9, #ffd6ec); /* ピンクグラデ */
-  border-radius: 10px; /* 角丸 */
-  border: 2px solid #ffeef5; /* 縁取りでふわっと */
-  box-shadow: inset 0 0 6px rgba(255, 150, 200, 0.3); /* 内側に影 */
-}
-
-.cards::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #ffd6ec, #f9c8d9); /* ホバーで反転 */
-  box-shadow: inset 0 0 8px rgba(255, 150, 200, 0.5); /* 影強化 */
-}
-
-/* Firefox用 */
-.cards {
-  scrollbar-width: thin; /* 細く */
-  scrollbar-color: #f9c8d9 #ffeef5; /* 親指とトラック */
-}
-
-/* IE/Edge用（非表示維持） */
-.cards {
-  -ms-overflow-style: none; /* 非表示 */
-}
-
-/* 既存の.cardとその他は維持 */
-.card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5em;
-  width: 280px; /* 固定幅 */
-  min-width: 280px; /* 最小幅 */
-  text-align: center;
-  transition: transform 0.2s ease;
-  flex-shrink: 0; /* 縮小防止 */
-}
-
-.card-wrapper {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-
-.carousel-prev, .carousel-next {
-  background: linear-gradient(145deg, #f9c8d9, #ffd6ec); /* ピンクグラデ */
-  border: 2px solid #ffccd4; /* ふわっとボーダー */
-  padding: 0.8em;
-  border-radius: 50%; /* 丸く */
-  color: #a14f74; /* 文字色を濃いピンク */
-  font-size: 1.2em;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(255, 150, 200, 0.4); /* ふわっと影 */
-  transition: transform 0.3s ease, background 0.3s ease; /* ホバーアニメーション */
-}
-
-.carousel-prev:hover, .carousel-next:hover {
-  transform: translateY(-50%) scale(1.1); /* 少し大きく */
-  background: linear-gradient(145deg, #ffd6ec, #f9c8d9); /* グラデ反転 */
-  box-shadow: 0 6px 12px rgba(255, 150, 200, 0.6); /* 影強化 */
-}
-
-.carousel-prev {
-  left: 0.5em;
-}
-
-.carousel-next {
-  right: 0.5em;
-}
-
-/* スマホ調整 */
-@media screen and (max-width: 768px) {
-  .cards {
-    padding: 1.5em 0.3em; /* スマホでさらに余白調整 */
-    justify-content: flex-start; /* 狭い場合は左寄せに */
-  }
-  .card {
-    width: 250px;
-    min-width: 250px;
-  }
-  .carousel-prev, .carousel-next {
-    padding: 0.6em;
-    font-size: 1em;
-  }
-  .carousel-prev:hover, .carousel-next:hover {
-    transform: translateY(-50%) scale(1.05); /* スマホで控えめに */
-  }
-}
-
-.card:hover {
-  transform: scale(1.03);
-}
-
-.card h2 {
-  font-size: 1.3em;
-  margin-bottom: 0.5em;
-  color: #e080a0;
-}
-
-.card a {
-  display: inline-block;
-  margin-top: 1em;
-  padding: 0.5em 1.2em;
-  background: #f9c8d9;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-@keyframes bounceFooter {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-    footer {
+    /* Aboutセクション */
+    .about-section {
+      max-width: 800px;
+      margin: 0 auto 2em;
       text-align: center;
       padding: 2em 1em;
-      background: #ffe4e1;
-      font-size: 0.9em;
-      color: #888;
-      animation: bounceFooter 6s ease-in-out infinite;
-      position: relative;
+      background: rgba(255,255,255,0.6);
+      border-radius: 20px;
     }
-    footer a {
-      color: #d98c89;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer a:hover {
-      color: #e080a0;
-      text-decoration: underline;
-    }
-    @media screen and (max-width: 768px) {
-      header h1 {
-        font-size: 1.6em;
-      }
-      .hero h2 {
-        font-size: 1.4em;
-      }
-      .hero p {
-        font-size: 1em;
-      }
-      .cards {
-        padding: 1.5em 0.5em;
-      }
-      .card {
-        width: 250px;
-        min-width: 250px;
-      }
-      .top-nav {
-        flex-direction: column;
-        top: auto;
-        bottom: 1em;
-        right: 1em;
-        gap: 0.4em;
-        padding: 0.6em;
-      }
-      .nav-btn {
-        font-size: 0.8em;
-        padding: 0.5em 1em;
-      }
-      header img {
-        width: 120px;
-      }
-      .ribbon-text {
-        font-size: 0.95em;
-      }
-      footer {
-        font-size: 0.8em;
-        padding: 1.5em 1em;
-      }
-    }
-    .mobile-nav {
-      position: fixed;
-      top: 1em;
-      right: 1em;
-      z-index: 999;
-    }
-    .hamburger {
-      font-size: 1.6em;
-      background: #fbd3e9;
-      color: #a14f74;
-      padding: 0.6em 0.8em;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .menu {
-      margin-top: 0.5em;
-      background: rgba(255, 240, 245, 0.95);
-      border-radius: 12px;
-      padding: 0.6em 1em;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5em;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: max-height 0.3s ease;
-    }
-    .menu li a {
-      text-decoration: none;
-      color: #a14f74;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 0.4em;
-      font-size: 0.9em;
-    }
-    .hidden {
-      display: none;
-    }
-    @media screen and (min-width: 769px) {
-      .mobile-nav {
-        display: none;
-      }
-    }
-    @media screen and (max-width: 768px) {
-      .top-nav {
-        display: none !important;
-      }
-    }
-    .cards::-webkit-scrollbar {
-      display: none;
+    .about-section h2 { color: #d85f89; font-size: 1.5em; margin-bottom: 0.5em; }
+    .about-section p { color: #7c4567; font-size: 1.05em; margin-bottom: 1em; }
+
+    /* --- 横スクロール --- */
+    .scroll-area-title {
+      text-align: center; color: #8c3c63; margin-bottom: 0.5em; font-weight: bold;
     }
     .cards {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1.5em;
+      padding: 1em 1em 2em;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto 3em;
     }
+    .cards::-webkit-scrollbar { height: 8px; }
+    .cards::-webkit-scrollbar-track { background: #ffeef5; border-radius: 10px; }
+    .cards::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #f9c8d9, #ffd6ec); border-radius: 10px; }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.5em;
+      width: 260px;
+      min-width: 260px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      border: 1px solid #fff0f5;
+    }
+    .card:hover { transform: scale(1.03); border-color:#f9c8d9; }
+    .card h3 { font-size: 1.2em; color: #e080a0; margin-bottom: 0.5em; }
+    .card a {
+      display: inline-block; margin-top: 1em; padding: 0.5em 1.2em;
+      background: #f9c8d9; color: white; border-radius: 10px; font-weight: bold;
+    }
+
+    /* --- みりんてゃプロフィール --- */
+    .mirin-section {
+      max-width: 800px;
+      margin: 2em auto;
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid #f9c8d9;
+      padding: 2em;
+      display: flex;
+      align-items: center;
+      gap: 2em;
+      box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3);
+      position: relative;
+    }
+    .mirin-section::before {
+      content: "PICK UP!";
+      position: absolute; top: 10px; left: -30px;
+      background: #ff6b9d; color: #fff; padding: 5px 30px;
+      transform: rotate(-45deg); font-weight: bold; font-size: 0.8em;
+    }
+    .mirin-icon {
+      width: 150px; height: 150px; border-radius: 50%;
+      background: #ffeef5; border: 4px solid #fbd3e9;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 4em; color: #ffb7d5; overflow: hidden;
+    }
+    .mirin-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .mirin-info h3 { color: #e080a0; margin: 0 0 0.5em; font-size: 1.5em; }
+    .mirin-tags span {
+      background: #ffecf2; color: #d85f89; padding: 0.2em 0.6em;
+      border-radius: 10px; font-size: 0.8em; margin-right: 0.3em;
+    }
+    .mirin-btn {
+      display: inline-block; margin-top: 1em; background: #0085ff;
+      color: white; padding: 0.6em 1.5em; border-radius: 20px;
+      font-weight: bold; box-shadow: 0 3px 0 #0060b9;
+    }
+
+    /* --- コンテンツ一覧 (グリッド) --- */
+    .category-container { max-width: 1100px; margin: 0 auto; padding: 2em 1em; }
+    .category-title {
+      text-align: center; font-size: 1.8em; color: #8c3c63;
+      margin: 3em 0 1.5em; position: relative;
+    }
+    .category-title::before, .category-title::after { content: '♡'; color: #f9c8d9; margin: 0 0.5em; }
+    
+    .grid-wrapper {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em;
+    }
+    .tool-card {
+      background: #fff; border-radius: 15px; padding: 1.5em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #fff0f5;
+      transition: transform 0.2s; display: flex; flex-direction: column;
+    }
+    .tool-card:hover { transform: translateY(-5px); border-color: #f9c8d9; }
+    .tool-icon { font-size: 2em; color: #ffb7d5; margin-bottom: 0.5em; text-align: center; }
+    .tool-card h3 { font-size: 1.2em; color: #7c4567; margin: 0 0 0.5em; text-align: center; }
+    .tool-desc { font-size: 0.9em; color: #666; margin-bottom: 1em; flex-grow: 1; }
+    .tool-link {
+      display: block; text-align: center; background: #ffeff5;
+      color: #d85f89; padding: 0.6em; border-radius: 10px; font-weight: bold;
+    }
+    .tool-link:hover { background: #f9c8d9; color: #fff; }
+
+    /* --- スマホ用ハンバーガー (修正箇所) --- */
+    .mobile-nav {
+      position: fixed; top: 1em; right: 1em; z-index: 999;
+      display: none; /* ★PCではデフォルトで非表示にする！ */
+    }
+    .hamburger {
+      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
+      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .menu {
+      position: absolute; top: 3.5em; right: 0;
+      width: 200px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 12px; padding: 1em; list-style: none;
+      display: none; flex-direction: column; gap: 0.8em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
+    }
+    .menu li a {
+      display: flex; align-items: center; gap: 0.5em;
+      color: #8c3c63; font-weight: bold;
+    }
+    .menu.open { display: flex; }
+
+    /* スマホ対応 (修正箇所) */
+    @media screen and (max-width: 768px) {
+      .top-nav { display: none; } /* PCナビを消す */
+      .mobile-nav { display: block; } /* ★スマホの時だけハンバーガーを表示！ */
+      
+      .mirin-section { flex-direction: column; text-align: center; padding: 1.5em; }
+      .mirin-info h3 { justify-content: center; }
+      header h1 { font-size: 1.8em; }
+    }
+
+    footer {
+      text-align: center; padding: 2em; background: #ffe4e1;
+      margin-top: 3em; color: #888;
+    }
+    footer a { color: #d85f89; }
   </style>
 </head>
 <body>
+
+  <!-- 背景 -->
   <div class="clouds"></div>
-  <div class="ribbon-header">
-    <p class="ribbon-text">ふんわり優しいツール置き場です♪</p>
-  <!-- PC用ナビゲーション -->
-  <nav class="top-nav">
-    <a class="nav-btn" href="/"><i class="fas fa-house"></i> ホーム</a>
-    <a class="nav-btn" href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a>
-    <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a>
-  </nav>
-  <!-- スマホ用ハンバーガーメニュー -->
-  <nav class="mobile-nav">
-    <div class="hamburger" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <ul id="menu-list" class="menu hidden">
-      <li><a href="/"><i class="fas fa-house"></i> ホーム</a></li>
-      <li><a href="#contents"><i class="fas fa-book"></i> コンテンツ一覧</a></li>
-      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援する</a></li>
-    </ul>
-  </nav>
-  <header>
-    <img src="logo.png" alt="もふみつロゴ">
-    <h1>もふみつ工房</h1>
-  </header>
   <div class="animals">
     <div class="animal" style="left: 10%; top: 100vh; animation-delay: 0s; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
-    <div class="animal" style="left: 25%; top: 110vh; animation-delay: 3s; animation-duration: 28s; background-image: url('dog-icon.png');"></div>
-    <div class="animal" style="left: 40%; top: 105vh; animation-delay: 7s; animation-duration: 40s; background-image: url('cat-icon.png');"></div>
-    <div class="animal" style="left: 60%; top: 120vh; animation-delay: 5s; animation-duration: 32s; background-image: url('dog-icon.png');"></div>
-    <div class="animal" style="left: 75%; top: 115vh; animation-delay: 2s; animation-duration: 38s; background-image: url('cat-icon.png');"></div>
-    <div class="animal" style="left: 90%; top: 108vh; animation-delay: 6s; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
+    <div class="animal" style="left: 80%; top: 110vh; animation-delay: 5s; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
   </div>
-   <section class="hero">
+
+  <div class="ribbon-header">
+    <p class="ribbon-text">ふんわり優しいツール置き場です♪</p>
+  </div>
+
+  <!-- PCナビ -->
+  <nav class="top-nav">
+    <a class="nav-btn" href="#"><i class="fas fa-home"></i> ホーム</a>
+    <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物</a>
+    <a class="nav-btn" href="#all-contents"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
+    <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a>
+  </nav>
+
+  <!-- スマホナビ -->
+  <nav class="mobile-nav">
+    <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul id="menu-list" class="menu">
+      <li><a href="#"><i class="fas fa-home"></i> ホーム</a></li>
+      <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物(BOOTH)</a></li>
+      <li><a href="#all-contents"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
+      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
+      <li><a href="#mirin"><i class="fas fa-cat"></i> みりんてゃ紹介</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>もふみつ工房</h1>
+    <p style="color:#a14f74;">かわいい×便利×創作を楽しむためのWebアトリエ</p>
+  </header>
+
+  <!-- Aboutセクション -->
+  <section class="about-section">
     <h2>ようこそ、もふもふの世界へ！</h2>
     <p>
-      推しキャラやオリキャラをもっと可愛く楽しめるプロフィールメーカーや、<br />
-      ふわふわ相性診断など、ちょっときゅんとするツールを公開中。<br />
-      これからも“好き”を形にするコンテンツを増やしていきます♪
+      ここは、あなたの「好き」をもっと楽しくするためのWebアトリエ。<br>
+      推しキャラのプロフィールを作ったり、オリキャラの設定を深めたり、<br>
+      時にはちょっと不思議な世界で遊んでみたり……。
+    </p>
+    <p>
+      創作活動のお供に、推し活の充実に。<br>
+      もふみつ工房が、あなたの毎日に小さな「かわいい」と「ワクワク」をお届けします。<br>
+      ごゆっくり遊んでいってくださいね♪
     </p>
   </section>
-  <section id="contents" class="cards">
-    <button class="carousel-prev" onclick="scrollCarousel('prev')">❮</button>
-    <div class="card-wrapper">
-      <!-- ここから全部正しく閉じてる！！！ -->
-      <div class="card">
-        <h2>♡ 推しキャラプロフィールメーカー</h2>
-        <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">使ってみる</a>
+
+  <!-- 横スクロール (PICK UP) -->
+  <div class="scroll-area-title">＼ PICK UP！ ／</div>
+  <div class="cards">
+    <div class="card">
+      <h3>推しキャラプロフィール</h3>
+      <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">作ってみる</a>
+    </div>
+    <div class="card">
+      <h3>オリキャラプロフィール</h3>
+      <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">作ってみる</a>
+    </div>
+    <div class="card">
+      <h3>汗と油のカオスな世界</h3>
+      <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786">Boothで見る</a>
+    </div>
+    <div class="card">
+      <h3>ふわふわ相性診断</h3>
+      <a href="https://mofu-mitsu.github.io/fluffy-love-check/">作ってみる</a>
+    </div>
+    <div class="card">
+      <h3>夢日記メーカー</h3>
+      <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/">作ってみる</a>
+    </div>
+    <div class="card">
+      <h3>推し愛爆発♡カード</h3>
+      <a href="https://mofu-mitsu.github.io/oshiai-card-maker/">作ってみる</a>
+    </div>
+    <div class="card">
+      <h3>タイピングマスター</h3>
+      <a href="https://mofu-mitsu.github.io/typing-Master/">挑戦する</a>
+    </div>
+  </div>
+
+  <!-- みりんてゃ紹介エリア -->
+  <section id="mirin" class="mirin-section">
+    <div class="mirin-icon">
+      <i class="fas fa-cat"></i> 
+    </div>
+    <div class="mirin-info">
+      <h3>みりんてゃ <span style="font-size:0.6em; color:#999; margin-left:10px;">@mirinchuuu</span></h3>
+      <div class="mirin-tags">
+        <span>地雷系あざと女子</span>
+        <span>承認欲求つよめ</span>
+        <span>黒猫モチーフ</span>
       </div>
-      <div class="card">
-        <h2>♡ オリキャラプロフィールメーカー</h2>
-        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">使ってみる</a>
+      <p>
+        「みんなの推し活や創作を応援するbotだよっ♡」<br>
+        Blueskyでもふみつ工房で作られたツールを紹介したり、リプにお返事したりしてるの。<br>
+        可愛いものが大好き！よかったら仲良くしてね♪
+      </p>
+      <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="mirin-btn">
+        <i class="fab fa-bluesky"></i> ブルスカでフォロー♡
+      </a>
+      <a href="https://note.com/sorake/n/n28c7cc8e3b07" target="_blank" style="margin-left:10px; color:#d85f89; font-size:0.9em;">
+        <i class="fas fa-book"></i> 詳しい説明書
+      </a>
+    </div>
+  </section>
+
+  <!-- コンテンツ一覧 -->
+  <div id="all-contents" class="category-container">
+
+    <!-- 1. Profile & Oshi Tools -->
+    <h2 class="category-title">Profile & Oshi Tools</h2>
+    <div class="grid-wrapper">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-heart"></i></div>
+        <h3>推しキャラプロフィール</h3>
+        <p class="tool-desc">【Ver.1】推しの魅力を詰め込んだプロフィール画像が作れるよ！布教用にぴったり。</p>
+        <a href="https://mofu-mitsu.github.io/oshi-profile-maker/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ ふわふわ相性診断メーカー</h2>
-        <a href="https://mofu-mitsu.github.io/fluffy-love-check/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-heart"></i></div>
+        <h3>推しキャラプロフィール2</h3>
+        <p class="tool-desc">【Ver.2】デザイン一新！さらに可愛く推しを紹介できるメーカー。</p>
+        <a href="https://mofu-mitsu.github.io/oshi-profile-maker2/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ 夢日記メーカー</h2>
-        <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-user-edit"></i></div>
+        <h3>オリキャラプロフィール</h3>
+        <p class="tool-desc">【Ver.1】創作キャラの設定画風シートが作れるメーカー。うちの子紹介に！</p>
+        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ Cocotte-シンプルメモアプリ−</h2>
-        <a href="https://cocotte-simple-memo.vercel.app/">使ってみる</a>
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-user-edit"></i></div>
+        <h3>オリキャラプロフィール2</h3>
+        <p class="tool-desc">【Ver.2】デザインが変わって使いやすくなった新バージョン！</p>
+        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker2/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ 今夜のエモポストメーカー</h2>
-        <a href="https://emopost-maker.pages.dev/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-id-card"></i></div>
+        <h3>キャラ学生証ファクトリー</h3>
+        <p class="tool-desc">キャラクターの学生証が作れちゃう！学園モノ創作にオススメ。</p>
+        <a href="https://mofu-mitsu.github.io/Character-Student-ID-Factory/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ キャラ学生証ファクトリー</h2>
-        <a href="https://mofu-mitsu.github.io/Character-Student-ID-Factory/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-star"></i></div>
+        <h3>推し名刺ジェネレーター</h3>
+        <p class="tool-desc">イベントやオフ会で使える（かもしれない）推しの名刺を作成！</p>
+        <a href="https://mofu-mitsu.github.io/oshi-card-generator/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ みりんてゃソリティア</h2>
-        <a href="https://mirintea-solitaire.vercel.app/">使ってみる</a>
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
+        <h3>ふわふわ相性診断</h3>
+        <p class="tool-desc">2人の名前を入れると相性を占うよ♡ 結果は日替わりかも？</p>
+        <a href="https://mofu-mitsu.github.io/fluffy-love-check/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ 先駆シェフの献立メーカー</h2>
-        <a href="https://mofu-mitsu.github.io/kondate-maker/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-fire"></i></div>
+        <h3>推し愛爆発♡カード</h3>
+        <p class="tool-desc">推しへの溢れる愛を文字にして画像を生成！叫びたい時に。</p>
+        <a href="https://mofu-mitsu.github.io/oshiai-card-maker/" class="tool-link">作ってみる</a>
       </div>
-      <div class="card">
-        <h2>♡ 推し愛爆発♡カードメーカー</h2>
-        <a href="https://mofu-mitsu.github.io/oshiai-card-maker/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ 推しとのお出かけプランメーカー</h2>
-        <a href="https://mofu-mitsu.github.io/oshi-date-maker/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ 推し名刺ジェネレーター</h2>
-        <a href="https://mofu-mitsu.github.io/oshi-card-generator/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ 推しキャラプロフィールメーカー2</h2>
-        <a href="https://mofu-mitsu.github.io/oshi-profile-maker2/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ オリキャラプロフィールメーカー2</h2>
-        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker2/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ うちの子観察チェックシート</h2>
-        <a href="https://mofu-mitsu.github.io/uchinoko-check-sheet/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ 世界観メーカー</h2>
-        <a href="https://mofu-mitsu.github.io/world-maker/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ とりの丘トリ’S大富豪</h2>
-        <a href="https://daifugo-mofu.vercel.app/">使ってみる</a>
-      </div>
-      <div class="card">
-        <h2>♡ タイピングマスター</h2>
-        <a href="https://mofu-mitsu.github.io/typing-Master/">使ってみる</a>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3>推しとお出かけプラン</h3>
+        <p class="tool-desc">推しとの理想のデートプランを考えて画像にしちゃおう♡</p>
+        <a href="https://mofu-mitsu.github.io/oshi-date-maker/" class="tool-link">作ってみる</a>
       </div>
     </div>
-    <button class="carousel-next" onclick="scrollCarousel('next')">❯</button>
-  <div style="text-align:center;margin:60px 0;">
+
+    <!-- 2. Game & Novel -->
+    <h2 class="category-title">Game & Novel</h2>
+    <div class="grid-wrapper">
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-book-open"></i></div>
+        <h3>汗と油のカオスな世界</h3>
+        <p class="tool-desc">
+            【Boothで公開中】<br>
+            豚骨出汁のお風呂に入るオタク男子「ご褒美」＆汗入りポカリを勧める筋肉男子「えいじ」が登場！<br>
+            カオスすぎる世界観のノベルゲーム。
+        </p>
+        <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-crown"></i></div>
+        <h3>とりの丘トリ’S大富豪</h3>
+        <p class="tool-desc">可愛いキャラたちとトランプの大富豪で対戦！暇つぶしにどうぞ。</p>
+        <a href="https://daifugo-mofu.vercel.app/" class="tool-link">遊んでみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-gamepad"></i></div>
+        <h3>みりんてゃソリティア</h3>
+        <p class="tool-desc">みりんてゃとソリティア対決！。クリアできるかな？</p>
+        <a href="https://mirintea-solitaire.vercel.app/" class="tool-link">遊んでみる</a>
+      </div>
+    </div>
+
+    <!-- 3. Creative Support -->
+    <h2 class="category-title">Creative Support</h2>
+    <div class="grid-wrapper">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-globe"></i></div>
+        <h3>世界観メーカー</h3>
+        <p class="tool-desc">創作の世界観設定をランダムに生成！アイデア出しのヒントに。</p>
+        <a href="https://mofu-mitsu.github.io/world-maker/" class="tool-link">作ってみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-pen-fancy"></i></div>
+        <h3>今夜のエモポスト</h3>
+        <p class="tool-desc">SNSに投稿するちょっとエモい文章を作れるメーカー。</p>
+        <a href="https://emopost-maker.pages.dev/" class="tool-link">作ってみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-moon"></i></div>
+        <h3>夢日記メーカー</h3>
+        <p class="tool-desc">見た夢をカードにして記録しよう。不思議な夢も忘れないでね。</p>
+        <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/" class="tool-link">作ってみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-eye"></i></div>
+        <h3>うちの子観察チェック</h3>
+        <p class="tool-desc">自分のオリキャラを深く知るための質問リスト！</p>
+        <a href="https://mofu-mitsu.github.io/uchinoko-check-sheet/" class="tool-link">作ってみる</a>
+      </div>
+    </div>
+
+    <!-- 4. Utility Tools -->
+    <h2 class="category-title">Utility Tools</h2>
+    <div class="grid-wrapper">
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-keyboard"></i></div>
+        <h3>タイピングマスター</h3>
+        <p class="tool-desc">タイピング練習ツール。スコアアタックに挑戦してね！</p>
+        <a href="https://mofu-mitsu.github.io/typing-Master/" class="tool-link">挑戦する</a>
+      </div>
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-utensils"></i></div>
+        <h3>先駆シェフの献立メーカー</h3>
+        <p class="tool-desc">今日の夕飯が決まらない？シェフが勝手に献立を決めてくれるよ！</p>
+        <a href="https://mofu-mitsu.github.io/kondate-maker/" class="tool-link">作ってみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-sticky-note"></i></div>
+        <h3>Cocotteメモ</h3>
+        <p class="tool-desc">ブラウザで使えるシンプルで可愛いメモ帳アプリ。</p>
+        <a href="https://cocotte-simple-memo.vercel.app/" class="tool-link">使ってみる</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin: 4em 0;">
+    <p style="font-size:0.8em; color:#aaa;">広告が表示されるスペース</p>
+    <!-- AdSenseコード -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-1330533639940949"
          data-ad-slot="1234567890"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
-    <!-- ★これだけ残す！！script async src...は完全に削除！！★ -->
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </div>
-</section>
+
   <footer>
-    制作：もふみつ｜
-    <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a>｜
-    <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a>｜
-    <a href="policy.html">プライバシーポリシー</a>｜
-    <a href="terms.html">利用規約</a>
+    制作：もふみつ工房<br>
+    <div style="margin-top:10px;">
+      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
+      <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a> ｜ 
+      <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
+      <a href="policy.html">プライバシーポリシー</a> ｜ 
+      <a href="terms.html">利用規約</a>
+    </div>
+    <p style="font-size:0.8em; margin-top:1em;">© 2024 MofuMitsu Kobo</p>
   </footer>
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menu-list");
-      menu.classList.toggle("hidden");
-    }
-    function scrollCarousel(direction) {
-      const container = document.querySelector('.card-wrapper');
-      const scrollAmount = 300;
-      if (direction === 'prev') {
-        container.scrollLeft -= scrollAmount;
-      } else {
-        container.scrollLeft += scrollAmount;
-      }
-    }
-  </script>
+
 </body>
 </html>
