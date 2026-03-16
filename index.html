@@ -39,15 +39,9 @@
     
     /* --- 背景アニメーション --- */
     .animal {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.3;
-      animation-name: floatAnimal, swaySide;
-      animation-timing-function: linear, ease-in-out;
-      animation-iteration-count: infinite, infinite;
+      position: absolute; width: 60px; height: 60px;
+      background-size: contain; background-repeat: no-repeat; opacity: 0.3;
+      animation: floatAnimal linear infinite, swaySide ease-in-out infinite;
     }
     @keyframes floatAnimal {
       0% { transform: translateY(0) rotate(0deg); opacity: 0; }
@@ -55,63 +49,40 @@
       100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; }
     }
     .animals {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: -1;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: -1;
     }
 
     /* --- ナビゲーション (PC) --- */
     .top-nav {
-      position: absolute;
-      top: 1em; right: 1em;
-      display: flex; gap: 0.8em;
-      background: rgba(255, 240, 245, 0.95);
-      padding: 0.4em 1em;
-      border-radius: 30px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      z-index: 100;
+      position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em;
+      background: rgba(255, 240, 245, 0.95); padding: 0.4em 1em;
+      border-radius: 30px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); z-index: 100;
     }
     .nav-btn {
-      background: #fbd3e9;
-      padding: 0.5em 1.2em;
-      border-radius: 20px;
-      color: #a14f74;
-      font-weight: bold;
-      font-size: 0.85em;
+      background: #fbd3e9; padding: 0.5em 1.2em; border-radius: 20px;
+      color: #a14f74; font-weight: bold; font-size: 0.85em;
       display: flex; align-items: center; gap: 0.4em;
     }
     .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
 
     /* --- ヘッダー & About --- */
     .ribbon-header {
-      background: #ffefed;
-      padding: 0.5em 1em;
-      text-align: center;
-      border-bottom: 3px dotted #f8a9c0;
+      background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0;
     }
     .ribbon-text { color: #d98c89; font-weight: bold; margin: 0; }
 
     header {
       background: url('https://www.transparenttextures.com/patterns/cream-dust.png');
-      text-align: center;
-      padding: 3em 1em 1em;
+      text-align: center; padding: 3em 1em 1em;
     }
     header h1 {
-      font-size: 2.5em;
-      color: #d98c89;
-      text-shadow: 2px 2px 0 #fff;
-      margin: 0.2em 0 0;
+      font-size: 2.5em; color: #d98c89; text-shadow: 2px 2px 0 #fff; margin: 0.2em 0 0;
     }
 
-    /* Aboutセクション */
     .about-section {
-      max-width: 800px;
-      margin: 0 auto 2em;
-      text-align: center;
-      padding: 2em 1em;
-      background: rgba(255,255,255,0.6);
-      border-radius: 20px;
+      max-width: 800px; margin: 0 auto 2em; text-align: center;
+      padding: 2em 1em; background: rgba(255,255,255,0.6); border-radius: 20px;
     }
     .about-section h2 { color: #d85f89; font-size: 1.5em; margin-bottom: 0.5em; }
     .about-section p { color: #7c4567; font-size: 1.05em; margin-bottom: 1em; }
@@ -121,32 +92,18 @@
       text-align: center; color: #8c3c63; margin-bottom: 0.5em; font-weight: bold;
     }
     .cards {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 1.5em;
-      padding: 1em 1em 2em;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      position: relative;
-      max-width: 100%;
-      margin: 0 auto 3em;
+      display: flex; flex-wrap: nowrap; gap: 1.5em; padding: 1em 1em 2em;
+      overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+      position: relative; max-width: 100%; margin: 0 auto 3em;
     }
     .cards::-webkit-scrollbar { height: 8px; }
     .cards::-webkit-scrollbar-track { background: #ffeef5; border-radius: 10px; }
     .cards::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #f9c8d9, #ffd6ec); border-radius: 10px; }
 
     .card {
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 1.5em;
-      width: 260px;
-      min-width: 260px;
-      text-align: center;
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-      border: 1px solid #fff0f5;
+      background: #fff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.5em; width: 260px; min-width: 260px; text-align: center;
+      transition: transform 0.2s ease; flex-shrink: 0; border: 1px solid #fff0f5;
     }
     .card:hover { transform: scale(1.03); border-color:#f9c8d9; }
     .card h3 { font-size: 1.2em; color: #e080a0; margin-bottom: 0.5em; }
@@ -157,29 +114,19 @@
 
     /* --- みりんてゃプロフィール --- */
     .mirin-section {
-      max-width: 800px;
-      margin: 2em auto;
-      background: #fff;
-      border-radius: 20px;
-      border: 2px solid #f9c8d9;
-      padding: 2em;
-      display: flex;
-      align-items: center;
-      gap: 2em;
-      box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3);
-      position: relative;
+      max-width: 800px; margin: 2em auto; background: #fff; border-radius: 20px;
+      border: 2px solid #f9c8d9; padding: 2em; display: flex; align-items: center;
+      gap: 2em; box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3); position: relative;
     }
     .mirin-section::before {
-      content: "PICK UP!";
-      position: absolute; top: 10px; left: -30px;
+      content: "PICK UP!"; position: absolute; top: 10px; left: -30px;
       background: #ff6b9d; color: #fff; padding: 5px 30px;
       transform: rotate(-45deg); font-weight: bold; font-size: 0.8em;
     }
     .mirin-icon {
-      width: 150px; height: 150px; border-radius: 50%;
-      background: #ffeef5; border: 4px solid #fbd3e9;
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      font-size: 4em; color: #ffb7d5; overflow: hidden;
+      width: 150px; height: 150px; border-radius: 50%; background: #ffeef5;
+      border: 4px solid #fbd3e9; flex-shrink: 0; display: flex; align-items: center;
+      justify-content: center; font-size: 4em; color: #ffb7d5; overflow: hidden;
     }
     .mirin-icon img { width: 100%; height: 100%; object-fit: cover; }
     .mirin-info h3 { color: #e080a0; margin: 0 0 0.5em; font-size: 1.5em; }
@@ -221,25 +168,20 @@
 
     /* --- スマホ用ハンバーガー --- */
     .mobile-nav {
-      position: fixed; top: 1em; right: 1em; z-index: 999;
-      display: none;
+      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
     }
     .hamburger {
       font-size: 1.6em; background: #fbd3e9; color: #a14f74;
-      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .menu {
-      position: absolute; top: 3.5em; right: 0;
-      width: 200px;
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 12px; padding: 1em; list-style: none;
+      position: absolute; top: 3.5em; right: 0; width: 200px;
+      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
       display: none; flex-direction: column; gap: 0.8em;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
     }
     .menu li a {
-      display: flex; align-items: center; gap: 0.5em;
-      color: #8c3c63; font-weight: bold;
+      display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold;
     }
     .menu.open { display: flex; }
 
@@ -247,22 +189,19 @@
     @media screen and (max-width: 768px) {
       .top-nav { display: none; }
       .mobile-nav { display: block; }
-      
       .mirin-section { flex-direction: column; text-align: center; padding: 1.5em; }
       .mirin-info h3 { justify-content: center; }
       header h1 { font-size: 1.8em; }
     }
 
     footer {
-      text-align: center; padding: 2em; background: #ffe4e1;
-      margin-top: 3em; color: #888;
+      text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888;
     }
     footer a { color: #d85f89; }
   </style>
 </head>
 <body>
 
-  <!-- 背景 -->
   <div class="clouds"></div>
   <div class="animals">
     <div class="animal" style="left: 10%; top: 100vh; animation-delay: 0s; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
@@ -327,12 +266,12 @@
       <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">作ってみる</a>
     </div>
     <div class="card">
-      <h3>汗と油のカオスな世界</h3>
-      <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786">Boothで見る</a>
+      <h3>Deep Cognition Archive</h3>
+      <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/">診断する</a>
     </div>
     <div class="card">
-      <h3>ふわふわ相性診断</h3>
-      <a href="https://mofu-mitsu.github.io/fluffy-love-check/">作ってみる</a>
+      <h3>汗と油のカオスな世界</h3>
+      <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786">Boothで見る</a>
     </div>
     <div class="card">
       <h3>夢日記メーカー</h3>
@@ -348,10 +287,9 @@
     </div>
   </div>
 
-  <!-- みりんてゃ紹介エリア（修正：画像タグ追加） -->
+  <!-- みりんてゃ紹介エリア -->
   <section id="mirin" class="mirin-section">
     <div class="mirin-icon">
-      <!-- ★ここに mirin-icon.png を入れました！ -->
       <img src="mirin-icon.png" alt="みりんてゃ">
     </div>
     <div class="mirin-info">
@@ -417,12 +355,6 @@
         <p class="tool-desc">イベントやオフ会で使える（かもしれない）推しの名刺を作成！</p>
         <a href="https://mofu-mitsu.github.io/oshi-card-generator/" class="tool-link">作ってみる</a>
       </div>
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
-        <h3>ふわふわ相性診断</h3>
-        <p class="tool-desc">2人の名前を入れると相性を占うよ♡ 結果は日替わりかも？</p>
-        <a href="https://mofu-mitsu.github.io/fluffy-love-check/" class="tool-link">作ってみる</a>
-      </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-fire"></i></div>
         <h3>推し愛爆発♡カード</h3>
@@ -437,7 +369,36 @@
       </div>
     </div>
 
-    <!-- 2. Game & Novel -->
+    <!-- 2. Diagnostic Tools -->
+    <h2 class="category-title">Diagnostic Tools</h2>
+    <div class="grid-wrapper">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-brain"></i></div>
+        <h3>Deep Cognition Archive</h3>
+        <p class="tool-desc">
+          心理機能やパラメータからソシオニクス・MBTI・エニア・サイコソフィアを測定！<br>
+          観測実験のように行動ログも記録される、深層認知診断ツールです。
+        </p>
+        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
+        <h3>ふわふわ相性診断</h3>
+        <p class="tool-desc">2人の名前を入れると相性を占うよ♡ 結果は日替わりかも？</p>
+        <a href="https://mofu-mitsu.github.io/fluffy-love-check/" class="tool-link">占ってみる</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-cat"></i></div>
+        <h3>ゆうきくんの気まぐれ猫占い</h3>
+        <p class="tool-desc">
+            猫モチーフの占い師「ゆうきくん」があなたを占うよ！<br>
+            明るくノリの良い彼が、ちょっとうさんくさく（？）未来を鑑定🔮✨
+        </p>
+        <a href="https://mofu-mitsu.github.io/yuuki_fortune/" class="tool-link">占ってもらう</a>
+      </div>
+    </div>
+
+    <!-- 3. Game & Novel -->
     <h2 class="category-title">Game & Novel</h2>
     <div class="grid-wrapper">
        <div class="tool-card">
@@ -445,7 +406,7 @@
         <h3>汗と油のカオスな世界</h3>
         <p class="tool-desc">
             【Boothで公開中】<br>
-            豚骨出汁のお風呂に入るオタク男子「ご褒美」＆汗入りポカリを勧める筋肉男子「えいじ」が登場！<br>
+            豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！<br>
             カオスすぎる世界観のノベルゲーム。
         </p>
         <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
@@ -467,14 +428,13 @@
         <h3>とりの丘トリ’S人狼</h3>
         <p class="tool-desc">
           とりの丘学園のAIキャラたちと本気の人狼勝負！<br>
-          それぞれの思考や性格を読みながら推理しよう。<br>
-          君は最後まで生き残れる？
+          それぞれの思考や性格を読みながら推理しよう。君は最後まで生き残れる？
         </p>
         <a href="https://mofu-mitsu.github.io/Torinooka-Werewolf/" class="tool-link">遊んでみる</a>
       </div>
     </div>
 
-    <!-- 3. Creative Support -->
+    <!-- 4. Creative Support -->
     <h2 class="category-title">Creative Support</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
@@ -486,8 +446,9 @@
        <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-diagram-project"></i></div>
         <h3>相関図メーカー</h3>
+        <!-- ★ここに正しいURLを入れたよ！ -->
         <p class="tool-desc">キャラ同士の関係を線で整理！恋愛・友情・敵対も自由に作れる相関図メーカー。</p>
-        <a href="https://mofu-mitsu.github.io/fluffy-love-check/" class="tool-link">作ってみる</a>
+        <a href="https://mofu-mitsu.github.io/orikyara-relationship-chart/" class="tool-link">作ってみる</a>
       </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-pen-fancy"></i></div>
@@ -509,7 +470,7 @@
       </div>
     </div>
 
-    <!-- 4. Utility Tools -->
+    <!-- 5. Utility Tools -->
     <h2 class="category-title">Utility Tools</h2>
     <div class="grid-wrapper">
        <div class="tool-card">
@@ -525,16 +486,6 @@
         <a href="https://mofu-mitsu.github.io/kondate-maker/" class="tool-link">作ってみる</a>
       </div>
       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-cat"></i></div>
-        <h3>ゆうきくんの気まぐれ猫占い</h3>
-        <p class="tool-desc">
-            猫モチーフの占い師「ゆうきくん」があなたを占うよ！<br>
-            明るくノリの良い彼が、ちょっとうさんくさく（？）未来を鑑定🔮✨<br>
-            とりの丘ワールドのAIキャラと楽しむ占いツール。
-        </p>
-        <a href="https://mofu-mitsu.github.io/yuuki_fortune/" class="tool-link">占ってもらう</a>
-      </div>
-      <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-sticky-note"></i></div>
         <h3>Cocotteメモ</h3>
         <p class="tool-desc">ブラウザで使えるシンプルで可愛いメモ帳アプリ。</p>
@@ -545,7 +496,6 @@
   </div>
 
   <div style="text-align:center; margin: 4em 0;">
-    <!-- ★ここに広告が入ります。文字は消してスッキリさせました！ -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-1330533639940949"
