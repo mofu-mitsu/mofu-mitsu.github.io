@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ</title>
-  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れる可愛いWebメーカーまとめサイトです。ノベルゲームや創作支援ツールも公開中！">
-  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推しキャラ,相性診断,夢日記,ふわふわ,もふみつ工房,みりんてゃ,BOOTH">
+  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れる可愛いWebメーカーまとめサイトです。ノベルゲームや創作支援ツール、LINEスタンプも公開中！">
+  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推しキャラ,相性診断,夢日記,ふわふわ,もふみつ工房,みりんてゃ,BOOTH,LINEスタンプ">
   <!-- OGP -->
   <meta property="og:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
   <meta property="og:description" content="推しキャラ・オリキャラをもっと可愛く楽しめるふわふわツールがいっぱい！">
@@ -27,13 +27,8 @@
   <style>
     /* --- 基本設定 --- */
     body {
-      margin: 0;
-      font-family: 'Kiwi Maru', serif;
-      background: #fff0f5;
-      color: #5d4037;
-      box-sizing: border-box;
-      line-height: 1.8;
-      overflow-x: hidden;
+      margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5;
+      color: #5d4037; box-sizing: border-box; line-height: 1.8; overflow-x: hidden;
     }
     a { text-decoration: none; transition: 0.3s; }
     
@@ -137,8 +132,14 @@
     .mirin-btn {
       display: inline-block; margin-top: 1em; background: #0085ff;
       color: white; padding: 0.6em 1.5em; border-radius: 20px;
-      font-weight: bold; box-shadow: 0 3px 0 #0060b9;
+      font-weight: bold; box-shadow: 0 3px 0 #0060b9; margin-right: 5px; margin-bottom: 5px;
     }
+    .mirin-btn-line {
+      display: inline-block; margin-top: 1em; background: #00B900;
+      color: white; padding: 0.6em 1.5em; border-radius: 20px;
+      font-weight: bold; box-shadow: 0 3px 0 #009900;
+    }
+    .mirin-btn-line:hover { background: #00a000; transform: translateY(-2px); }
 
     /* --- コンテンツ一覧 (グリッド) --- */
     .category-container { max-width: 1100px; margin: 0 auto; padding: 2em 1em; }
@@ -262,8 +263,8 @@
       <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">作ってみる</a>
     </div>
     <div class="card">
-      <h3>オリキャラプロフィール</h3>
-      <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/">作ってみる</a>
+      <h3>闇観測実験アーカイブ</h3>
+      <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/">実験に参加する</a>
     </div>
     <div class="card">
       <h3>Deep Cognition Archive</h3>
@@ -287,7 +288,7 @@
     </div>
   </div>
 
-  <!-- みりんてゃ紹介エリア -->
+  <!-- みりんてゃ紹介エリア（LINEスタンプ追加！） -->
   <section id="mirin" class="mirin-section">
     <div class="mirin-icon">
       <img src="mirin-icon.png" alt="みりんてゃ">
@@ -307,8 +308,8 @@
       <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="mirin-btn">
         <i class="fab fa-bluesky"></i> ブルスカでフォロー♡
       </a>
-      <a href="https://note.com/sorake/n/n28c7cc8e3b07" target="_blank" style="margin-left:10px; color:#d85f89; font-size:0.9em;">
-        <i class="fas fa-book"></i> 詳しい説明書
+      <a href="https://line.me/S/sticker/33291694/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="mirin-btn-line">
+        <i class="fab fa-line"></i> LINEスタンプ発売中♡
       </a>
     </div>
   </section>
@@ -373,10 +374,19 @@
     <h2 class="category-title">Diagnostic Tools</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-ghost"></i></div>
+        <h3>闇観測実験アーカイブ</h3>
+        <p class="tool-desc">
+          入力速度や迷い、修正行動まで全てが観測対象……。<br>
+          あなたの心の奥底にある「闇」を暴き出す、本格的な観測実験ツール。
+        </p>
+        <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="tool-link">実験に参加する</a>
+      </div>
+      <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-brain"></i></div>
         <h3>Deep Cognition Archive</h3>
         <p class="tool-desc">
-          心理機能やパラメータからソシオニクス・MBTI・エニア・サイコソフィアを測定！<br>
+          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
           観測実験のように行動ログも記録される、深層認知診断ツールです。
         </p>
         <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
@@ -446,7 +456,6 @@
        <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-diagram-project"></i></div>
         <h3>相関図メーカー</h3>
-        <!-- ★ここに正しいURLを入れたよ！ -->
         <p class="tool-desc">キャラ同士の関係を線で整理！恋愛・友情・敵対も自由に作れる相関図メーカー。</p>
         <a href="https://mofu-mitsu.github.io/orikyara-relationship-chart/" class="tool-link">作ってみる</a>
       </div>
@@ -493,6 +502,29 @@
       </div>
     </div>
 
+    <!-- 6. LINE Stickers & Shop (NEW!) -->
+    <h2 class="category-title">LINE Stickers & Shop</h2>
+    <div class="grid-wrapper">
+      <div class="tool-card">
+        <div class="tool-icon" style="color:#00B900;"><i class="fab fa-line"></i></div>
+        <h3>地雷系黒猫みりんてゃ</h3>
+        <p class="tool-desc">みりんてゃのあざと可愛いLINEスタンプが登場♡ 日常のトークも地雷系で染め上げよう！</p>
+        <a href="https://line.me/S/sticker/33291694/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="tool-link" style="background:#e6f8e6; color:#00B900;">スタンプを見る</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="color:#00B900;"><i class="fab fa-line"></i></div>
+        <h3>ご褒美とえいじスタンプ</h3>
+        <p class="tool-desc">汗と油のカオスな世界からまさかのスタンプ化！……送る相手は慎重に選ぼう！</p>
+        <a href="https://line.me/S/sticker/33207828/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="tool-link" style="background:#e6f8e6; color:#00B900;">スタンプを見る</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-store"></i></div>
+        <h3>もふみつ工房 BOOTH</h3>
+        <p class="tool-desc">ノベルゲームや各種グッズを頒布中！『汗と油のカオスな世界』もこちらから。</p>
+        <a href="https://torisproject.booth.pm/" target="_blank" class="tool-link">BOOTHへ行く</a>
+      </div>
+    </div>
+
   </div>
 
   <div style="text-align:center; margin: 4em 0;">
@@ -521,4 +553,3 @@
 
 </body>
 </html>
-
