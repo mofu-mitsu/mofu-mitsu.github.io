@@ -61,6 +61,23 @@
     }
     .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
 
+    /* --- スマホ用ハンバーガー --- */
+    .mobile-nav {
+      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
+    }
+    .hamburger {
+      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
+      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .menu {
+      position: absolute; top: 3.5em; right: 0; width: 220px;
+      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
+      display: none; flex-direction: column; gap: 0.8em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
+    }
+    .menu li a { display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold; }
+    .menu.open { display: flex; }
+
     /* --- ヘッダー & About --- */
     .ribbon-header {
       background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0;
@@ -82,6 +99,16 @@
     .about-section h2 { color: #d85f89; font-size: 1.5em; margin-bottom: 0.5em; }
     .about-section p { color: #7c4567; font-size: 1.05em; margin-bottom: 1em; }
 
+    /* 誘導用のアクションボタン */
+    .action-btn {
+      display: inline-block; margin: 1em 0.5em; background: linear-gradient(145deg, #f9c8d9, #ffd6ec);
+      color: #8c3c63; padding: 0.8em 2em; border-radius: 30px; font-weight: bold;
+      box-shadow: 0 4px 10px rgba(249, 200, 217, 0.4); border: 2px solid #fff; transition: 0.3s;
+    }
+    .action-btn:hover {
+      transform: translateY(-3px); box-shadow: 0 6px 15px rgba(249, 200, 217, 0.6);
+    }
+
     /* --- 横スクロール --- */
     .scroll-area-title {
       text-align: center; color: #8c3c63; margin-bottom: 0.5em; font-weight: bold;
@@ -89,7 +116,7 @@
     .cards {
       display: flex; flex-wrap: nowrap; gap: 1.5em; padding: 1em 1em 2em;
       overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-      position: relative; max-width: 100%; margin: 0 auto 3em;
+      position: relative; max-width: 100%; margin: 0 auto 1em;
     }
     .cards::-webkit-scrollbar { height: 8px; }
     .cards::-webkit-scrollbar-track { background: #ffeef5; border-radius: 10px; }
@@ -109,7 +136,7 @@
 
     /* --- みりんてゃプロフィール --- */
     .mirin-section {
-      max-width: 800px; margin: 2em auto; background: #fff; border-radius: 20px;
+      max-width: 800px; margin: 4em auto 2em; background: #fff; border-radius: 20px;
       border: 2px solid #f9c8d9; padding: 2em; display: flex; align-items: center;
       gap: 2em; box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3); position: relative;
     }
@@ -128,6 +155,7 @@
     .mirin-tags span {
       background: #ffecf2; color: #d85f89; padding: 0.2em 0.6em;
       border-radius: 10px; font-size: 0.8em; margin-right: 0.3em;
+      display: inline-block; margin-bottom: 0.3em;
     }
     .mirin-btn {
       display: inline-block; margin-top: 1em; background: #0085ff;
@@ -141,58 +169,10 @@
     }
     .mirin-btn-line:hover { background: #00a000; transform: translateY(-2px); }
 
-    /* --- コンテンツ一覧 (グリッド) --- */
-    .category-container { max-width: 1100px; margin: 0 auto; padding: 2em 1em; }
-    .category-title {
-      text-align: center; font-size: 1.8em; color: #8c3c63;
-      margin: 3em 0 1.5em; position: relative;
-    }
-    .category-title::before, .category-title::after { content: '♡'; color: #f9c8d9; margin: 0 0.5em; }
-    
-    .grid-wrapper {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em;
-    }
-    .tool-card {
-      background: #fff; border-radius: 15px; padding: 1.5em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #fff0f5;
-      transition: transform 0.2s; display: flex; flex-direction: column;
-    }
-    .tool-card:hover { transform: translateY(-5px); border-color: #f9c8d9; }
-    .tool-icon { font-size: 2em; color: #ffb7d5; margin-bottom: 0.5em; text-align: center; }
-    .tool-card h3 { font-size: 1.2em; color: #7c4567; margin: 0 0 0.5em; text-align: center; }
-    .tool-desc { font-size: 0.9em; color: #666; margin-bottom: 1em; flex-grow: 1; }
-    .tool-link {
-      display: block; text-align: center; background: #ffeff5;
-      color: #d85f89; padding: 0.6em; border-radius: 10px; font-weight: bold;
-    }
-    .tool-link:hover { background: #f9c8d9; color: #fff; }
-
-    /* --- スマホ用ハンバーガー --- */
-    .mobile-nav {
-      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
-    }
-    .hamburger {
-      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
-      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .menu {
-      position: absolute; top: 3.5em; right: 0; width: 200px;
-      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
-      display: none; flex-direction: column; gap: 0.8em;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
-    }
-    .menu li a {
-      display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold;
-    }
-    .menu.open { display: flex; }
-
-    /* スマホ対応 */
     @media screen and (max-width: 768px) {
       .top-nav { display: none; }
       .mobile-nav { display: block; }
       .mirin-section { flex-direction: column; text-align: center; padding: 1.5em; }
-      .mirin-info h3 { justify-content: center; }
-      header h1 { font-size: 1.8em; }
     }
 
     footer {
@@ -203,6 +183,7 @@
 </head>
 <body>
 
+  <!-- 背景アニメーション -->
   <div class="clouds"></div>
   <div class="animals">
     <div class="animal" style="left: 10%; top: 100vh; animation-delay: 0s; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
@@ -210,58 +191,49 @@
   </div>
 
   <div class="ribbon-header">
-    <p class="ribbon-text">ふんわり優しいツール置き場です♪</p>
+    <p class="ribbon-text">かわいい×便利×創作を楽しむためのWebアトリエ</p>
   </div>
 
-  <!-- PCナビ -->
+  <!-- PCナビゲーション -->
   <nav class="top-nav">
-    <a class="nav-btn" href="#"><i class="fas fa-home"></i> ホーム</a>
-    <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物</a>
-    <a class="nav-btn" href="#all-contents"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
-    <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a>
+    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a class="nav-btn" href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a>
+    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
+    <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a>
   </nav>
 
-  <!-- スマホナビ -->
+  <!-- スマホナビゲーション -->
   <nav class="mobile-nav">
     <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
       <i class="fas fa-bars"></i>
     </div>
     <ul id="menu-list" class="menu">
-      <li><a href="#"><i class="fas fa-home"></i> ホーム</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
+      <li><a href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a></li>
+      <li><a href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
       <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物(BOOTH)</a></li>
-      <li><a href="#all-contents"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
       <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
-      <li><a href="#mirin"><i class="fas fa-cat"></i> みりんてゃ紹介</a></li>
     </ul>
   </nav>
 
   <header>
     <h1>もふみつ工房</h1>
-    <p style="color:#a14f74;">かわいい×便利×創作を楽しむためのWebアトリエ</p>
+    <p style="color:#a14f74;">あなたの「好き」を形にするツール置き場♪</p>
   </header>
 
-  <!-- Aboutセクション -->
+  <!-- Aboutセクション (誘導) -->
   <section class="about-section">
     <h2>ようこそ、もふもふの世界へ！</h2>
     <p>
-      ここは、あなたの「好き」をもっと楽しくするためのWebアトリエ。<br>
-      推しキャラのプロフィールを作ったり、オリキャラの設定を深めたり、<br>
-      時にはちょっと不思議な世界で遊んでみたり……。
+      ここは、推し活や創作活動をもっと楽しくするためのWebアトリエ。<br>
+      可愛い見た目に隠された、深層心理の分析システムやカオスな世界観のキャラクターたちが、あなたをお待ちしています。
     </p>
-    <p>
-      創作活動のお供に、推し活の充実に。<br>
-      もふみつ工房が、あなたの毎日に小さな「かわいい」と「ワクワク」をお届けします。<br>
-      ごゆっくり遊んでいってくださいね♪
-    </p>
+    <a href="about.html" class="action-btn"><i class="fas fa-book-open"></i> もふみつ工房について（世界観と理念）</a>
   </section>
 
   <!-- 横スクロール (PICK UP) -->
-  <div class="scroll-area-title">＼ PICK UP！ ／</div>
+  <div class="scroll-area-title">＼ 注目ツール PICK UP！ ／</div>
   <div class="cards">
-    <div class="card">
-      <h3>推しキャラプロフィール</h3>
-      <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">作ってみる</a>
-    </div>
     <div class="card">
       <h3>闇観測実験アーカイブ</h3>
       <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/">実験に参加する</a>
@@ -269,6 +241,10 @@
     <div class="card">
       <h3>Deep Cognition Archive</h3>
       <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/">診断する</a>
+    </div>
+    <div class="card">
+      <h3>推しキャラプロフィール</h3>
+      <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">作ってみる</a>
     </div>
     <div class="card">
       <h3>汗と油のカオスな世界</h3>
@@ -282,10 +258,13 @@
       <h3>推し愛爆発♡カード</h3>
       <a href="https://mofu-mitsu.github.io/oshiai-card-maker/">作ってみる</a>
     </div>
-    <div class="card">
-      <h3>タイピングマスター</h3>
-      <a href="https://mofu-mitsu.github.io/typing-Master/">挑戦する</a>
-    </div>
+  </div>
+
+  <!-- 一覧ページへの巨大な誘導ボタン -->
+  <div style="text-align: center; margin-bottom: 4em;">
+    <a href="contents.html" class="action-btn" style="font-size: 1.2em; padding: 1em 3em;">
+      <i class="fas fa-search"></i> すべてのコンテンツを見る
+    </a>
   </div>
 
   <!-- みりんてゃ紹介エリア（LINEスタンプ追加！） -->
@@ -314,219 +293,7 @@
     </div>
   </section>
 
-  <!-- コンテンツ一覧 -->
-  <div id="all-contents" class="category-container">
-
-    <!-- 1. Profile & Oshi Tools -->
-    <h2 class="category-title">Profile & Oshi Tools</h2>
-    <div class="grid-wrapper">
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-heart"></i></div>
-        <h3>推しキャラプロフィール</h3>
-        <p class="tool-desc">【Ver.1】推しの魅力を詰め込んだプロフィール画像が作れるよ！布教用にぴったり。</p>
-        <a href="https://mofu-mitsu.github.io/oshi-profile-maker/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-heart"></i></div>
-        <h3>推しキャラプロフィール2</h3>
-        <p class="tool-desc">【Ver.2】デザイン一新！さらに可愛く推しを紹介できるメーカー。</p>
-        <a href="https://mofu-mitsu.github.io/oshi-profile-maker2/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-user-edit"></i></div>
-        <h3>オリキャラプロフィール</h3>
-        <p class="tool-desc">【Ver.1】創作キャラの設定画風シートが作れるメーカー。うちの子紹介に！</p>
-        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker/" class="tool-link">作ってみる</a>
-      </div>
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-user-edit"></i></div>
-        <h3>オリキャラプロフィール2</h3>
-        <p class="tool-desc">【Ver.2】デザインが変わって使いやすくなった新バージョン！</p>
-        <a href="https://mofu-mitsu.github.io/orikyara-profile-maker2/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-id-card"></i></div>
-        <h3>キャラ学生証ファクトリー</h3>
-        <p class="tool-desc">キャラクターの学生証が作れちゃう！学園モノ創作にオススメ。</p>
-        <a href="https://mofu-mitsu.github.io/Character-Student-ID-Factory/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-star"></i></div>
-        <h3>推し名刺ジェネレーター</h3>
-        <p class="tool-desc">イベントやオフ会で使える（かもしれない）推しの名刺を作成！</p>
-        <a href="https://mofu-mitsu.github.io/oshi-card-generator/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-fire"></i></div>
-        <h3>推し愛爆発♡カード</h3>
-        <p class="tool-desc">推しへの溢れる愛を文字にして画像を生成！叫びたい時に。</p>
-        <a href="https://mofu-mitsu.github.io/oshiai-card-maker/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-map-marked-alt"></i></div>
-        <h3>推しとお出かけプラン</h3>
-        <p class="tool-desc">推しとの理想のデートプランを考えて画像にしちゃおう♡</p>
-        <a href="https://mofu-mitsu.github.io/oshi-date-maker/" class="tool-link">作ってみる</a>
-      </div>
-    </div>
-
-    <!-- 2. Diagnostic Tools -->
-    <h2 class="category-title">Diagnostic Tools</h2>
-    <div class="grid-wrapper">
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-ghost"></i></div>
-        <h3>闇観測実験アーカイブ</h3>
-        <p class="tool-desc">
-          入力速度や迷い、修正行動まで全てが観測対象……。<br>
-          あなたの心の奥底にある「闇」を暴き出す、本格的な観測実験ツール。
-        </p>
-        <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="tool-link">実験に参加する</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-brain"></i></div>
-        <h3>Deep Cognition Archive</h3>
-        <p class="tool-desc">
-          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
-          観測実験のように行動ログも記録される、深層認知診断ツールです。
-        </p>
-        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
-        <h3>ふわふわ相性診断</h3>
-        <p class="tool-desc">2人の名前を入れると相性を占うよ♡ 結果は日替わりかも？</p>
-        <a href="https://mofu-mitsu.github.io/fluffy-love-check/" class="tool-link">占ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-cat"></i></div>
-        <h3>ゆうきくんの気まぐれ猫占い</h3>
-        <p class="tool-desc">
-            猫モチーフの占い師「ゆうきくん」があなたを占うよ！<br>
-            明るくノリの良い彼が、ちょっとうさんくさく（？）未来を鑑定🔮✨
-        </p>
-        <a href="https://mofu-mitsu.github.io/yuuki_fortune/" class="tool-link">占ってもらう</a>
-      </div>
-    </div>
-
-    <!-- 3. Game & Novel -->
-    <h2 class="category-title">Game & Novel</h2>
-    <div class="grid-wrapper">
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-book-open"></i></div>
-        <h3>汗と油のカオスな世界</h3>
-        <p class="tool-desc">
-            【Boothで公開中】<br>
-            豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！<br>
-            カオスすぎる世界観のノベルゲーム。
-        </p>
-        <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-crown"></i></div>
-        <h3>とりの丘トリ’S大富豪</h3>
-        <p class="tool-desc">可愛いキャラたちとトランプの大富豪で対戦！暇つぶしにどうぞ。</p>
-        <a href="https://daifugo-mofu.vercel.app/" class="tool-link">遊んでみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-gamepad"></i></div>
-        <h3>みりんてゃソリティア</h3>
-        <p class="tool-desc">みりんてゃとソリティア対決！。クリアできるかな？</p>
-        <a href="https://mirintea-solitaire.vercel.app/" class="tool-link">遊んでみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-user-secret"></i></div>
-        <h3>とりの丘トリ’S人狼</h3>
-        <p class="tool-desc">
-          とりの丘学園のAIキャラたちと本気の人狼勝負！<br>
-          それぞれの思考や性格を読みながら推理しよう。君は最後まで生き残れる？
-        </p>
-        <a href="https://mofu-mitsu.github.io/Torinooka-Werewolf/" class="tool-link">遊んでみる</a>
-      </div>
-    </div>
-
-    <!-- 4. Creative Support -->
-    <h2 class="category-title">Creative Support</h2>
-    <div class="grid-wrapper">
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-globe"></i></div>
-        <h3>世界観メーカー</h3>
-        <p class="tool-desc">創作の世界観設定をランダムに生成！アイデア出しのヒントに。</p>
-        <a href="https://mofu-mitsu.github.io/world-maker/" class="tool-link">作ってみる</a>
-      </div>
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-diagram-project"></i></div>
-        <h3>相関図メーカー</h3>
-        <p class="tool-desc">キャラ同士の関係を線で整理！恋愛・友情・敵対も自由に作れる相関図メーカー。</p>
-        <a href="https://mofu-mitsu.github.io/orikyara-relationship-chart/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-pen-fancy"></i></div>
-        <h3>今夜のエモポスト</h3>
-        <p class="tool-desc">SNSに投稿するちょっとエモい文章を作れるメーカー。</p>
-        <a href="https://emopost-maker.pages.dev/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-moon"></i></div>
-        <h3>夢日記メーカー</h3>
-        <p class="tool-desc">見た夢をカードにして記録しよう。不思議な夢も忘れないでね。</p>
-        <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-eye"></i></div>
-        <h3>うちの子観察チェック</h3>
-        <p class="tool-desc">自分のオリキャラを深く知るための質問リスト！</p>
-        <a href="https://mofu-mitsu.github.io/uchinoko-check-sheet/" class="tool-link">作ってみる</a>
-      </div>
-    </div>
-
-    <!-- 5. Utility Tools -->
-    <h2 class="category-title">Utility Tools</h2>
-    <div class="grid-wrapper">
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-keyboard"></i></div>
-        <h3>タイピングマスター</h3>
-        <p class="tool-desc">タイピング練習ツール。スコアアタックに挑戦してね！</p>
-        <a href="https://mofu-mitsu.github.io/typing-Master/" class="tool-link">挑戦する</a>
-      </div>
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-utensils"></i></div>
-        <h3>先駆シェフの献立メーカー</h3>
-        <p class="tool-desc">今日の夕飯が決まらない？シェフが勝手に献立を決めてくれるよ！</p>
-        <a href="https://mofu-mitsu.github.io/kondate-maker/" class="tool-link">作ってみる</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-sticky-note"></i></div>
-        <h3>Cocotteメモ</h3>
-        <p class="tool-desc">ブラウザで使えるシンプルで可愛いメモ帳アプリ。</p>
-        <a href="https://cocotte-simple-memo.vercel.app/" class="tool-link">使ってみる</a>
-      </div>
-    </div>
-
-    <!-- 6. LINE Stickers & Shop (NEW!) -->
-    <h2 class="category-title">LINE Stickers & Shop</h2>
-    <div class="grid-wrapper">
-      <div class="tool-card">
-        <div class="tool-icon" style="color:#00B900;"><i class="fab fa-line"></i></div>
-        <h3>地雷系黒猫みりんてゃ</h3>
-        <p class="tool-desc">みりんてゃのあざと可愛いLINEスタンプが登場♡ 日常のトークも地雷系で染め上げよう！</p>
-        <a href="https://line.me/S/sticker/33291694/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="tool-link" style="background:#e6f8e6; color:#00B900;">スタンプを見る</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon" style="color:#00B900;"><i class="fab fa-line"></i></div>
-        <h3>ご褒美とえいじスタンプ</h3>
-        <p class="tool-desc">汗と油のカオスな世界からまさかのスタンプ化！……送る相手は慎重に選ぼう！</p>
-        <a href="https://line.me/S/sticker/33207828/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="tool-link" style="background:#e6f8e6; color:#00B900;">スタンプを見る</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-store"></i></div>
-        <h3>もふみつ工房 BOOTH</h3>
-        <p class="tool-desc">ノベルゲームや各種グッズを頒布中！『汗と油のカオスな世界』もこちらから。</p>
-        <a href="https://torisproject.booth.pm/" target="_blank" class="tool-link">BOOTHへ行く</a>
-      </div>
-    </div>
-
-  </div>
-
+  <!-- AdSense表示エリア -->
   <div style="text-align:center; margin: 4em 0;">
     <ins class="adsbygoogle"
          style="display:block"
@@ -535,7 +302,7 @@
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
+         (adsbygoogle = window.adsbygoogle ||[]).push({});
     </script>
   </div>
 
@@ -548,7 +315,7 @@
       <a href="policy.html">プライバシーポリシー</a> ｜ 
       <a href="terms.html">利用規約</a>
     </div>
-    <p style="font-size:0.8em; margin-top:1em;">© 2024 MofuMitsu Kobo</p>
+    <p style="font-size:0.8em; margin-top:1em;">© 2026 MofuMitsu Kobo</p>
   </footer>
 
 </body>
