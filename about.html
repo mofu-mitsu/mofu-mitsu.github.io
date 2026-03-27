@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>もふみつ工房について｜かわいいプロフィール＆診断メーカーまとめ</title>
+  <meta name="description" content="もふみつ工房の運営方針、ツールの開発理念、とりの丘学園の世界観についてのご紹介です。">
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    /* --- 基本設定（トップと同じふわふわ仕様） --- */
+    body {
+      margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5;
+      color: #5d4037; box-sizing: border-box; line-height: 1.8;
+    }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    /* --- 背景アニメーション --- */
+    .animal {
+      position: absolute; width: 60px; height: 60px;
+      background-size: contain; background-repeat: no-repeat; opacity: 0.3;
+      animation: floatAnimal linear infinite, swaySide ease-in-out infinite;
+    }
+    @keyframes floatAnimal {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      25% { opacity: 0.4; }
+      100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; }
+    }
+    .animals {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: -1;
+    }
+
+    /* --- ナビゲーション (PC) --- */
+    .top-nav {
+      position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em;
+      background: rgba(255, 240, 245, 0.95); padding: 0.4em 1em;
+      border-radius: 30px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); z-index: 100;
+    }
+    .nav-btn {
+      background: #fbd3e9; padding: 0.5em 1.2em; border-radius: 20px;
+      color: #a14f74; font-weight: bold; font-size: 0.85em;
+      display: flex; align-items: center; gap: 0.4em;
+    }
+    .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
+
+    /* --- スマホ用ハンバーガー --- */
+    .mobile-nav {
+      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
+    }
+    .hamburger {
+      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
+      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .menu {
+      position: absolute; top: 3.5em; right: 0; width: 200px;
+      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
+      display: none; flex-direction: column; gap: 0.8em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
+    }
+    .menu li a {
+      display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold;
+    }
+    .menu.open { display: flex; }
+
+    @media screen and (max-width: 768px) {
+      .top-nav { display: none; }
+      .mobile-nav { display: block; }
+    }
+
+    /* --- 本文エリア --- */
+    .ribbon-header {
+      background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0;
+    }
+    .page-title {
+      text-align: center; color: #d98c89; font-size: 2.2em; margin: 1.5em 0 0.5em;
+      text-shadow: 2px 2px 0 #fff;
+    }
+    .content-box {
+      max-width: 800px; margin: 0 auto 3em; padding: 3em 2em;
+      background: rgba(255, 255, 255, 0.85); border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3);
+      border: 2px solid #fff0f5;
+    }
+    .content-box h2 {
+      color: #8c3c63; font-size: 1.6em; border-bottom: 3px dashed #fbd3e9;
+      padding-bottom: 0.3em; margin-top: 1.5em; display: flex; align-items: center; gap: 0.5em;
+    }
+    .content-box h2 i { color: #f9c8d9; }
+    .content-box p {
+      color: #666; font-size: 1.05em; line-height: 2; margin-bottom: 1.5em;
+    }
+    .highlight {
+      background: linear-gradient(transparent 60%, #ffe9f2 60%); font-weight: bold; color: #d85f89;
+    }
+
+    footer {
+      text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888;
+    }
+    footer a { color: #d85f89; }
+  </style>
+</head>
+<body>
+
+  <!-- 背景 -->
+  <div class="clouds"></div>
+  <div class="animals">
+    <div class="animal" style="left: 15%; top: 100vh; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
+    <div class="animal" style="left: 75%; top: 110vh; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
+  </div>
+
+  <div class="ribbon-header">
+    <p style="color: #d98c89; font-weight: bold; margin: 0;">かわいい×便利×創作を楽しむためのWebアトリエ</p>
+  </div>
+
+  <!-- ナビゲーション（※リンク先を整えました！） -->
+  <nav class="top-nav">
+    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
+    <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a>
+    <a class="nav-btn" href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a>
+  </nav>
+
+  <nav class="mobile-nav">
+    <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul id="menu-list" class="menu">
+      <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
+      <li><a href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
+      <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a></li>
+      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a></li>
+    </ul>
+  </nav>
+
+  <h1 class="page-title">もふみつ工房について</h1>
+
+  <div class="content-box">
+    <h2><i class="fas fa-paw"></i> もふみつ工房とは？</h2>
+    <p>
+      「もふみつ工房」は、推し活や創作活動を愛するすべての人へ向けた、<span class="highlight">可愛くてちょっと不思議なWebアトリエ</span>です。<br>
+      推しキャラの魅力を語り尽くせるプロフィールメーカーや、オリキャラの設定を深掘りできる診断ツール、日々の思いを記録するエモポストなど、あなたの「好き」を形にするための様々なツールを開発・公開しています。
+    </p>
+
+    <h2><i class="fas fa-brain"></i> 可愛いだけじゃない、深層心理の分析ロジック</h2>
+    <p>
+      当サイトのツールの大きな特徴は、ふんわりとしたパステルカラーのデザインの裏に隠された<span class="highlight">本格的な分析ロジック</span>にあります。<br>
+      例えば「Deep Cognition Archive」や「闇観測実験アーカイブ」では、ただ選択肢を選ぶだけのおみくじではなく、入力速度、迷い、修正行動といった「無意識の行動ログ」を測定対象としています。<br>
+      心理機能、MBTI、ソシオニクス、エニアグラムなどの理論をベースに、利用者の深層認知を浮き彫りにする「観測実験」としての側面を持たせています。可愛い見た目に油断していると、思わぬ心の深淵を覗くことになるかもしれません。
+    </p>
+
+    <h2><i class="fas fa-book-open"></i> 「とりの丘学園」の世界観</h2>
+    <p>
+      当サイトで公開しているノベルゲームや、一部のツールに登場するキャラクターたちは、「とりの丘学園」という架空の世界観に属しています。<br>
+      豚骨出汁の風呂に入るオタク男子「ご褒美」や、汗入りポカリを勧めてくる筋肉男子「えいじ」など、カオスで個性の強すぎるキャラクターたちが織りなすファンタジー（？）も、もふみつ工房の魅力の一つです。<br>
+      また、Blueskyで活動中の地雷系あざと女子Bot「みりんてゃ」も、当工房の広報担当として皆さんの推し活を応援しています。
+    </p>
+
+    <h2><i class="fas fa-code"></i> 開発者からのメッセージ</h2>
+    <p>
+      管理人である「もふみつ」は、心理機能の分析や、複雑なシステムを構築することが大好きなクリエイターです。<br>
+      「こんなツールがあったら便利だな」「こんな風に分析できたら面白いな」という直感と探求心を形にするべく、日々新しいツールの開発に取り組んでいます。<br>
+      もふみつ工房が、あなたの毎日に小さなワクワクと、新しい自己発見のきっかけを提供できれば幸いです。ごゆっくり遊んでいってくださいね。
+    </p>
+  </div>
+
+  <footer>
+    制作：もふみつ工房<br>
+    <div style="margin-top:10px;">
+      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
+      <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a> ｜ 
+      <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
+      <a href="policy.html">プライバシーポリシー</a> ｜ 
+      <a href="terms.html">利用規約</a>
+    </div>
+    <p style="font-size:0.8em; margin-top:1em;">© 2024 MofuMitsu Kobo</p>
+  </footer>
+
+</body>
+</html>
