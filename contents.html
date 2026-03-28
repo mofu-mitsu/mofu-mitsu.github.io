@@ -5,101 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>コンテンツ一覧｜もふみつ工房</title>
   <meta name="description" content="もふみつ工房で公開している、すべてのプロフィールメーカー、診断ツール、ノベルゲームの一覧ページです。">
-  
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
-    /* --- 基本設定 --- */
-    body {
-      margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5;
-      color: #5d4037; box-sizing: border-box; line-height: 1.8; overflow-x: hidden;
-    }
+    body { margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5; color: #5d4037; line-height: 1.8; overflow-x: hidden; scroll-behavior: smooth; }
     a { text-decoration: none; transition: 0.3s; }
+    
+    .animal { position: absolute; width: 60px; height: 60px; background-size: contain; background-repeat: no-repeat; opacity: 0.3; animation: floatAnimal linear infinite, swaySide ease-in-out infinite; }
+    @keyframes floatAnimal { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 25% { opacity: 0.4; } 100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; } }
+    .animals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
 
-    /* --- 背景アニメーション --- */
-    .animal {
-      position: absolute; width: 60px; height: 60px;
-      background-size: contain; background-repeat: no-repeat; opacity: 0.3;
-      animation: floatAnimal linear infinite, swaySide ease-in-out infinite;
-    }
-    @keyframes floatAnimal {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      25% { opacity: 0.4; }
-      100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; }
-    }
-    .animals {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: -1;
-    }
-
-    /* --- ナビゲーション (PC) --- */
-    .top-nav {
-      position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em;
-      background: rgba(255, 240, 245, 0.95); padding: 0.4em 1em;
-      border-radius: 30px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); z-index: 100;
-    }
-    .nav-btn {
-      background: #fbd3e9; padding: 0.5em 1.2em; border-radius: 20px;
-      color: #a14f74; font-weight: bold; font-size: 0.85em;
-      display: flex; align-items: center; gap: 0.4em;
-    }
+    .top-nav { position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em; background: rgba(255, 240, 245, 0.95); padding: 0.4em 1em; border-radius: 30px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); z-index: 100; }
+    .nav-btn { background: #fbd3e9; padding: 0.5em 1.2em; border-radius: 20px; color: #a14f74; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 0.4em; }
     .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
 
-    /* --- スマホ用ハンバーガー --- */
-    .mobile-nav {
-      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
-    }
-    .hamburger {
-      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
-      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .menu {
-      position: absolute; top: 3.5em; right: 0; width: 220px;
-      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
-      display: none; flex-direction: column; gap: 0.8em;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
-    }
+    .mobile-nav { position: fixed; top: 1em; right: 1em; z-index: 999; display: none; }
+    .hamburger { font-size: 1.6em; background: #fbd3e9; color: #a14f74; padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .menu { position: absolute; top: 3.5em; right: 0; width: 220px; background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none; display: none; flex-direction: column; gap: 0.8em; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9; }
     .menu li a { display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold; }
     .menu.open { display: flex; }
 
-    /* --- ヘッダー --- */
-    .ribbon-header {
-      background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0;
-    }
-    header {
-      background: url('https://www.transparenttextures.com/patterns/cream-dust.png');
-      text-align: center; padding: 3em 1em 1em; margin-bottom: 2em;
-    }
-    header h1 {
-      font-size: 2.5em; color: #d98c89; text-shadow: 2px 2px 0 #fff; margin: 0.2em 0 0;
-    }
+    .ribbon-header { background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0; }
+    header { background: url('https://www.transparenttextures.com/patterns/cream-dust.png'); text-align: center; padding: 3em 1em 1em; margin-bottom: 1em; }
+    header h1 { font-size: 2.5em; color: #d98c89; text-shadow: 2px 2px 0 #fff; margin: 0.2em 0 0; }
 
-    /* --- コンテンツ一覧 (グリッド) --- */
+    /* --- 検索＆タグエリア --- */
+    .utility-bar { max-width: 1100px; margin: 0 auto 2em; padding: 0 1em; text-align: center; }
+    .search-box { width: 100%; max-width: 400px; padding: 0.8em 1.2em; border-radius: 30px; border: 2px solid #fbd3e9; font-size: 1em; outline: none; font-family: 'Kiwi Maru', serif; color: #5d4037; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 1em; }
+    .search-box:focus { border-color: #f9c8d9; box-shadow: 0 0 8px rgba(249, 200, 217, 0.5); }
+    
+    .tag-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5em; }
+    .tag-btn { background: #fff; border: 1px solid #fbd3e9; color: #8c3c63; padding: 0.4em 1em; border-radius: 20px; font-size: 0.85em; font-weight: bold; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .tag-btn:hover { background: #f9c8d9; color: #fff; transform: translateY(-2px); }
+
+    /* --- コンテンツ一覧 --- */
     .category-container { max-width: 1100px; margin: 0 auto; padding: 0 1em 2em; }
-    .category-title {
-      text-align: center; font-size: 1.8em; color: #8c3c63;
-      margin: 3em 0 1.5em; position: relative;
-    }
+    .category-title { text-align: center; font-size: 1.8em; color: #8c3c63; margin: 3em 0 1.5em; position: relative; padding-top: 2em; }
     .category-title::before, .category-title::after { content: '♡'; color: #f9c8d9; margin: 0 0.5em; }
     
-    .grid-wrapper {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em;
-    }
-    .tool-card {
-      background: #fff; border-radius: 15px; padding: 1.5em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #fff0f5;
-      transition: transform 0.2s; display: flex; flex-direction: column;
-    }
+    .grid-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em; }
+    .tool-card { background: #fff; border-radius: 15px; padding: 1.5em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #fff0f5; transition: transform 0.2s; display: flex; flex-direction: column; }
     .tool-card:hover { transform: translateY(-5px); border-color: #f9c8d9; }
     .tool-icon { font-size: 2em; color: #ffb7d5; margin-bottom: 0.5em; text-align: center; }
     .tool-card h3 { font-size: 1.2em; color: #7c4567; margin: 0 0 0.5em; text-align: center; }
     .tool-desc { font-size: 0.9em; color: #666; margin-bottom: 1em; flex-grow: 1; }
-    .tool-link {
-      display: block; text-align: center; background: #ffeff5;
-      color: #d85f89; padding: 0.6em; border-radius: 10px; font-weight: bold;
-    }
+    .tool-link { display: block; text-align: center; background: #ffeff5; color: #d85f89; padding: 0.6em; border-radius: 10px; font-weight: bold; }
     .tool-link:hover { background: #f9c8d9; color: #fff; }
 
     @media screen and (max-width: 768px) {
@@ -107,16 +59,12 @@
       .mobile-nav { display: block; }
       header h1 { font-size: 1.8em; }
     }
-
-    footer {
-      text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888;
-    }
+    footer { text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888; }
     footer a { color: #d85f89; }
   </style>
 </head>
 <body>
 
-  <!-- 背景 -->
   <div class="clouds"></div>
   <div class="animals">
     <div class="animal" style="left: 10%; top: 100vh; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
@@ -127,15 +75,12 @@
     <p style="color: #d98c89; font-weight: bold; margin: 0;">かわいい×便利×創作を楽しむためのWebアトリエ</p>
   </div>
 
-  <!-- PCナビゲーション -->
   <nav class="top-nav">
     <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> ホーム</a>
     <a class="nav-btn" href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a>
-    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
     <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a>
   </nav>
 
-  <!-- スマホナビゲーション -->
   <nav class="mobile-nav">
     <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
       <i class="fas fa-bars"></i>
@@ -143,21 +88,57 @@
     <ul id="menu-list" class="menu">
       <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
       <li><a href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a></li>
-      <li><a href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
-      <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物(BOOTH)</a></li>
-      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
+      <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a></li>
+      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a></li>
     </ul>
   </nav>
 
   <header>
     <h1 style="font-size: 2em;">すべてのコンテンツ一覧</h1>
-    <p style="color:#a14f74;">もふみつ工房のツール・ゲームが全部揃っています♪</p>
+    <p style="color:#a14f74;">探したいツールを検索するか、タグからジャンプしてね♪</p>
   </header>
+
+  <!-- 検索＆タグエリア -->
+  <div class="utility-bar">
+    <input type="text" id="searchInput" class="search-box" placeholder="🔍 ツール名やキーワードで検索..." onkeyup="filterTools()">
+    <div class="tag-container">
+      <a href="#cat-typology" class="tag-btn"><i class="fas fa-brain"></i> 類型・心理学</a>
+      <a href="#cat-diagnostic" class="tag-btn"><i class="fas fa-ghost"></i> 診断・観測</a>
+      <a href="#cat-profile" class="tag-btn"><i class="fas fa-heart"></i> 推し活・プロフ</a>
+      <a href="#cat-game" class="tag-btn"><i class="fas fa-gamepad"></i> ゲーム・ノベル</a>
+      <a href="#cat-creative" class="tag-btn"><i class="fas fa-pen-fancy"></i> 創作支援</a>
+      <a href="#cat-utility" class="tag-btn"><i class="fas fa-keyboard"></i> 便利ツール</a>
+      <a href="#cat-line" class="tag-btn"><i class="fab fa-line"></i> LINEスタンプ</a>
+    </div>
+  </div>
 
   <div id="all-contents" class="category-container">
 
-    <!-- 1. Diagnostic Tools -->
-    <h2 class="category-title" style="margin-top: 1em;">Diagnostic Tools（診断・観測）</h2>
+    <!-- 1. Typology & Psychology (NEW!) -->
+    <h2 id="cat-typology" class="category-title" style="margin-top: 0;">Typology & Psychology（類型・心理）</h2>
+    <div class="grid-wrapper">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-microchip"></i></div>
+        <h3>LII/INTJ 思考暴走シミュレーター</h3>
+        <p class="tool-desc">
+          「内的論理(Ti/Ni)」が暴走し、「行動(Se)」が伴わず、思考のループから抜け出せなくなる体験ツール。<br>
+          最適解を求めるがあまり、脳のメモリが限界を迎える過程をお楽しみください。
+        </p>
+        <a href="https://mofu-mitsu.github.io/LII_simulator/" class="tool-link">思考の沼に沈む</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-brain"></i></div>
+        <h3>Deep Cognition Archive</h3>
+        <p class="tool-desc">
+          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
+          観測実験のように行動ログも記録される、深層認知診断ツールです。
+        </p>
+        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
+      </div>
+    </div>
+
+    <!-- 2. Diagnostic Tools -->
+    <h2 id="cat-diagnostic" class="category-title">Diagnostic Tools（診断・観測）</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-ghost"></i></div>
@@ -169,15 +150,6 @@
         <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="tool-link">実験に参加する</a>
       </div>
       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-brain"></i></div>
-        <h3>Deep Cognition Archive</h3>
-        <p class="tool-desc">
-          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
-          観測実験のように行動ログも記録される、深層認知診断ツールです。
-        </p>
-        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
-      </div>
-      <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
         <h3>ふわふわ相性診断</h3>
         <p class="tool-desc">2人の名前を入れると相性を占うよ♡ 結果は日替わりかも？</p>
@@ -186,16 +158,13 @@
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-cat"></i></div>
         <h3>ゆうきくんの気まぐれ猫占い</h3>
-        <p class="tool-desc">
-            猫モチーフの占い師「ゆうきくん」があなたを占うよ！<br>
-            明るくノリの良い彼が、ちょっとうさんくさく（？）未来を鑑定🔮✨
-        </p>
+        <p class="tool-desc">猫モチーフの占い師「ゆうきくん」があなたを占うよ！明るくノリの良い彼が未来を鑑定🔮✨</p>
         <a href="https://mofu-mitsu.github.io/yuuki_fortune/" class="tool-link">占ってもらう</a>
       </div>
     </div>
 
-    <!-- 2. Profile & Oshi Tools -->
-    <h2 class="category-title">Profile & Oshi Tools（推し活・プロフ）</h2>
+    <!-- 3. Profile & Oshi Tools -->
+    <h2 id="cat-profile" class="category-title">Profile & Oshi Tools（推し活・プロフ）</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-heart"></i></div>
@@ -247,17 +216,13 @@
       </div>
     </div>
 
-    <!-- 3. Game & Novel -->
-    <h2 class="category-title">Game & Novel（ゲーム・ノベル）</h2>
+    <!-- 4. Game & Novel -->
+    <h2 id="cat-game" class="category-title">Game & Novel（ゲーム・ノベル）</h2>
     <div class="grid-wrapper">
        <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-book-open"></i></div>
         <h3>汗と油のカオスな世界</h3>
-        <p class="tool-desc">
-            【Boothで公開中】<br>
-            豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！<br>
-            カオスすぎる世界観のノベルゲーム。
-        </p>
+        <p class="tool-desc">【Boothで公開中】豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！</p>
         <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
       </div>
       <div class="tool-card">
@@ -269,22 +234,19 @@
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-gamepad"></i></div>
         <h3>みりんてゃソリティア</h3>
-        <p class="tool-desc">みりんてゃとソリティア対決！。クリアできるかな？</p>
+        <p class="tool-desc">みりんてゃとソリティア対決！クリアできるかな？</p>
         <a href="https://mirintea-solitaire.vercel.app/" class="tool-link">遊んでみる</a>
       </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-user-secret"></i></div>
         <h3>とりの丘トリ’S人狼</h3>
-        <p class="tool-desc">
-          とりの丘学園のAIキャラたちと本気の人狼勝負！<br>
-          それぞれの思考や性格を読みながら推理しよう。君は最後まで生き残れる？
-        </p>
+        <p class="tool-desc">とりの丘学園のAIキャラたちと本気の人狼勝負！それぞれの思考を読みながら推理しよう。</p>
         <a href="https://mofu-mitsu.github.io/Torinooka-Werewolf/" class="tool-link">遊んでみる</a>
       </div>
     </div>
 
-    <!-- 4. Creative Support -->
-    <h2 class="category-title">Creative Support（創作支援）</h2>
+    <!-- 5. Creative Support -->
+    <h2 id="cat-creative" class="category-title">Creative Support（創作支援）</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-globe"></i></div>
@@ -318,8 +280,8 @@
       </div>
     </div>
 
-    <!-- 5. Utility Tools -->
-    <h2 class="category-title">Utility Tools（便利ツール）</h2>
+    <!-- 6. Utility Tools -->
+    <h2 id="cat-utility" class="category-title">Utility Tools（便利ツール）</h2>
     <div class="grid-wrapper">
        <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-keyboard"></i></div>
@@ -341,8 +303,8 @@
       </div>
     </div>
 
-    <!-- 6. LINE Stickers & Shop -->
-    <h2 class="category-title">LINE Stickers & Shop（スタンプ・ショップ）</h2>
+    <!-- 7. LINE Stickers & Shop -->
+    <h2 id="cat-line" class="category-title">LINE Stickers & Shop（スタンプ・店）</h2>
     <div class="grid-wrapper">
       <div class="tool-card">
         <div class="tool-icon" style="color:#00B900;"><i class="fab fa-line"></i></div>
@@ -367,13 +329,40 @@
   </div>
 
   <div style="text-align:center; margin: 4em 0;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1330533639940949"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330533639940949" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1330533639940949" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle ||[]).push({});</script>
   </div>
+
+  <footer>
+    制作：もふみつ工房<br>
+    <div style="margin-top:10px;">
+      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
+      <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
+      <a href="policy.html">プライバシーポリシー</a> ｜ 
+      <a href="terms.html">利用規約</a>
+    </div>
+    <p style="font-size:0.8em; margin-top:1em;">© 2026 MofuMitsu Kobo</p>
+  </footer>
+
+  <!-- 検索機能のJavaScript -->
+  <script>
+    function filterTools() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let cards = document.getElementsByClassName('tool-card');
+      
+      for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].querySelector('h3').innerText.toLowerCase();
+        let desc = cards[i].querySelector('.tool-desc').innerText.toLowerCase();
+        
+        if (title.includes(input) || desc.includes(input)) {
+          cards[i].style.display = "flex";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
