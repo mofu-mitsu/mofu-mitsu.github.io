@@ -102,6 +102,7 @@
   <div class="utility-bar">
     <input type="text" id="searchInput" class="search-box" placeholder="🔍 ツール名やキーワードで検索..." onkeyup="filterTools()">
     <div class="tag-container">
+      <a href="#cat-portal" class="tag-btn"><i class="fas fa-school"></i> 公式ポータル</a>
       <a href="#cat-typology" class="tag-btn"><i class="fas fa-brain"></i> 類型・心理学</a>
       <a href="#cat-diagnostic" class="tag-btn"><i class="fas fa-ghost"></i> 診断・観測</a>
       <a href="#cat-profile" class="tag-btn"><i class="fas fa-heart"></i> 推し活・プロフ</a>
@@ -114,18 +115,24 @@
 
   <div id="all-contents" class="category-container">
 
-    <!-- 1. Typology & Psychology -->
-    <h2 id="cat-typology" class="category-title" style="margin-top: 0;">Typology & Psychology（類型・心理）</h2>
+    <!-- 0. Torinooka World (NEW!) -->
+    <h2 id="cat-portal" class="category-title" style="margin-top: 0;">Torinooka World（公式ポータル）</h2>
     <div class="grid-wrapper">
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-brain"></i></div>
-        <h3>Deep Cognition Archive</h3>
+      <!-- 特別枠デザイン -->
+      <div class="tool-card" style="border: 2px solid #f9c8d9; background: #fffcfd;">
+        <div class="tool-icon" style="color: #e05b82;"><i class="fas fa-school"></i></div>
+        <h3 style="color: #e05b82;">とりの丘学園 公式ポータル</h3>
         <p class="tool-desc">
-          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
-          観測実験のように行動ログも記録される、深層認知診断ツールです。
+          キャラクターへのお手紙や掲示板、ミニゲーム、物語の更新も！<br>
+          もふみつ工房が贈る「とりの丘学園」の世界がすべて詰まった公式ポータルサイトです✨
         </p>
-        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
+        <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="tool-link" style="background: #e05b82;">ポータルへ入場する</a>
       </div>
+    </div>
+
+    <!-- 1. Typology & Psychology -->
+    <h2 id="cat-typology" class="category-title">Typology & Psychology（類型・心理）</h2>
+    <div class="grid-wrapper">
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-microscope"></i></div>
         <h3>MBTIのモヤモヤ解剖室</h3>
@@ -143,6 +150,15 @@
           最適解を求めるがあまり、脳のメモリが限界を迎える過程をお楽しみください。
         </p>
         <a href="https://mofu-mitsu.github.io/LII_simulator/" class="tool-link">思考の沼に沈む</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-brain"></i></div>
+        <h3>Deep Cognition Archive</h3>
+        <p class="tool-desc">
+          心理機能やパラメータからソシオニクス・MBTI等を測定！<br>
+          観測実験のように行動ログも記録される、深層認知診断ツールです。
+        </p>
+        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
       </div>
     </div>
 
@@ -208,7 +224,7 @@
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-star"></i></div>
         <h3>推し名刺ジェネレーター</h3>
-        <p class="tool-desc">イベントやオフ会で使える（かもしれない）推しの名刺を作成！</p>
+        <p class="tool-desc">イベントやオフ会で使える推しの名刺を作成！</p>
         <a href="https://mofu-mitsu.github.io/oshi-card-generator/" class="tool-link">作ってみる</a>
       </div>
       <div class="tool-card">
@@ -228,19 +244,19 @@
     <!-- 4. Game & Novel -->
     <h2 id="cat-game" class="category-title">Game & Novel（ゲーム・ノベル）</h2>
     <div class="grid-wrapper">
-       <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-book-open"></i></div>
-        <h3>汗と油のカオスな世界</h3>
-        <p class="tool-desc">【Boothで公開中】豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！</p>
-        <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
-      </div>
-    <div class="tool-card">
+      <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-school"></i></div>
         <h3>とりの丘学園 10日間の体験入学</h3>
         <p class="tool-desc">
             【Booth公開中】みりんてゃ達のいる2年2組へ体験入学！18人の個性豊かなクラスメイトと過ごす、笑いあり涙ありの青春ノベルゲーム。体育祭や花火大会、マルチEDも搭載！
         </p>
         <a href="https://torisproject.booth.pm/items/8155694" target="_blank" class="tool-link">Boothで見る</a>
+      </div>
+       <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-book-open"></i></div>
+        <h3>汗と油のカオスな世界</h3>
+        <p class="tool-desc">【Boothで公開中】豚骨出汁のお風呂に入る「ご褒美」＆汗入りポカリの「えいじ」が登場！</p>
+        <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="tool-link">Boothで見る</a>
       </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-crown"></i></div>
@@ -354,10 +370,11 @@
   <footer>
     制作：もふみつ工房<br>
     <div style="margin-top:10px;">
-      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜ 
+      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
       <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
       <a href="policy.html">プライバシーポリシー</a> ｜ 
-      <a href="terms.html">利用規約</a>
+      <a href="terms.html">利用規約</a> ｜
+      <a href="dev_blog.html">開発レポート</a>
     </div>
     <p style="font-size:0.8em; margin-top:1em;">© 2026 MofuMitsu Kobo</p>
   </footer>
