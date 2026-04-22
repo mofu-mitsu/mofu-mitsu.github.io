@@ -221,18 +221,24 @@
     <p style="color:#a14f74;">あなたの「好き」を形にするツール置き場♪</p>
   </header>
 
-  <!-- Aboutセクション (誘導) -->
+<!-- Aboutセクション (誘導) -->
   <section class="about-section">
     <h2>ようこそ、もふもふの世界へ！</h2>
     <p>
       ここは、推し活や創作活動をもっと楽しくするためのWebアトリエ。<br>
       可愛い見た目に隠された、深層心理の分析システムやカオスな世界観のキャラクターたちが、あなたをお待ちしています。
     </p>
-    <a href="about.html" class="action-btn"><i class="fas fa-book-open"></i> もふみつ工房について（世界観と理念）</a>
+    
+    <!-- ボタンをこの中（センター寄せの範囲）にまとめました！ -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <a href="about.html" class="action-btn">
+        <i class="fas fa-book-open"></i> もふみつ工房について（世界観と理念）
+      </a>
+      <a href="lab.html" class="action-btn" style="background: linear-gradient(145deg, #4b3a63, #2d233c); color: #f9c8d9; border-color: #fbd3e9; margin: 0;">
+        <i class="fas fa-user-astronaut"></i> 心理学研究所（類型論・実験室）
+      </a>
+    </div>
   </section>
-  <a href="lab.html" class="action-btn" style="background: linear-gradient(145deg, #4b3a63, #2d233c); color: #f9c8d9; border-color: #fbd3e9;">
-  <i class="fas fa-user-astronaut"></i> 心理学研究所（類型論・実験室）
-</a>
   <!-- 横スクロール (PICK UP) -->
   <div class="scroll-area-title">＼ 注目ツール PICK UP！ ／</div>
   <div class="cards">
@@ -316,7 +322,6 @@
     制作：もふみつ工房<br>
     <div style="margin-top:10px;">
       <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
-      <a href="https://ameblo.jp/erunea-log/" target="_blank">アメブロ</a> ｜ 
       <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
       <a href="policy.html">プライバシーポリシー</a> ｜ 
       <a href="terms.html">利用規約</a>
