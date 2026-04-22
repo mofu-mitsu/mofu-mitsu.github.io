@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratory | にー心理学研究所 - 深層心理と類型論の観測所</title>
+  <meta name="description" content="MBTI、ソシオニクス、心理機能の深淵を探究する「にー心理学研究所」。観測実験やモデルAビルダーなど、知的な探究心を満たすツールを公開中。">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; font-family: 'Kiwi Maru', serif; background: #2d233c; color: #eee; line-height: 1.8; overflow-x: hidden; }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    /* 観測所の夜空アニメーション */
+    .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; background: radial-gradient(circle at 50% 50%, #4b3a63 0%, #2d233c 100%); }
+    .star { position: absolute; background: #fff; border-radius: 50%; opacity: 0.5; animation: twinkle var(--duration) infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+    /* ナビゲーション */
+    .top-nav { position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em; z-index: 100; }
+    .nav-btn { background: rgba(255, 255, 255, 0.1); padding: 0.5em 1.2em; border-radius: 20px; color: #fbd3e9; font-weight: bold; font-size: 0.85em; border: 1px solid #fbd3e9; }
+    .nav-btn:hover { background: #fbd3e9; color: #2d233c; }
+
+    header { text-align: center; padding: 5em 1em 2em; }
+    header i { font-size: 3em; color: #f9c8d9; margin-bottom: 0.5em; display: block; }
+    header h1 { font-size: 2.2em; color: #f9c8d9; text-shadow: 0 0 15px rgba(249, 200, 217, 0.5); margin: 0; }
+    header p { color: #ccc; font-size: 1em; }
+
+    .intro { max-width: 800px; margin: 0 auto 4em; text-align: center; padding: 0 1em; }
+
+    /* ツールグリッド */
+    .lab-grid { max-width: 1100px; margin: 0 auto; padding: 0 1em 4em; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; }
+    .lab-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(249, 200, 217, 0.3); border-radius: 20px; padding: 2em; transition: 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .lab-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.1); border-color: #f9c8d9; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .lab-card i { font-size: 2.5em; color: #f9c8d9; margin-bottom: 0.5em; }
+    .lab-card h3 { color: #fbd3e9; margin: 0.5em 0; }
+    .lab-card p { font-size: 0.9em; color: #ccc; flex-grow: 1; }
+    .lab-link { display: block; text-align: center; background: #f9c8d9; color: #2d233c; padding: 0.8em; border-radius: 12px; font-weight: bold; margin-top: 1.5em; }
+
+    /* 🆕 特別なLINEスタンプセクション */
+    .special-shop { max-width: 800px; margin: 4em auto; padding: 2em; background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-radius: 30px; border: 2px dashed #f9c8d9; text-align: center; }
+    .special-shop h2 { color: #fbd3e9; font-size: 1.5em; margin-bottom: 1em; }
+    .sticker-card { background: #fff; border-radius: 20px; padding: 1.5em; display: flex; align-items: center; gap: 1.5em; text-align: left; transition: 0.3s; margin: 0 auto; max-width: 500px; }
+    .sticker-card:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(249, 200, 217, 0.6); }
+    .sticker-img { width: 80px; height: 80px; background: #fef0f5; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #e080a0; flex-shrink: 0; }
+    .sticker-info h4 { margin: 0; color: #5d4037; font-size: 1.1em; }
+    .sticker-info p { margin: 5px 0; color: #888; font-size: 0.8em; line-height: 1.4; }
+    .sticker-link { color: #00B900; font-weight: bold; font-size: 0.9em; display: flex; align-items: center; gap: 0.3em; }
+
+    footer { text-align: center; padding: 4em 2em; background: rgba(0,0,0,0.2); color: #888; font-size: 0.9em; }
+    footer a { color: #fbd3e9; margin: 0 0.5em; }
+
+    @media screen and (max-width: 768px) {
+      .top-nav { position: fixed; bottom: 1em; right: 1em; top: auto; }
+      .sticker-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="star-container"></div>
+
+  <nav class="top-nav">
+    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> HOME</a>
+    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> 一覧</a>
+  </nav>
+
+  <header>
+    <i class="fas fa-user-astronaut"></i>
+    <h1>にー心理学研究所</h1>
+    <p>— 深層心理と情報代謝の観測地点 —</p>
+  </header>
+
+  <div class="intro">
+    <p>当研究所では、心理機能（MBTI/ソシオニクス）の理論に基づき、<br>
+    人間の認知プロセスを多角的に観測・分析する実験的ツールを公開しています。<br>
+    可愛い見た目に隠された、論理的な深淵をお楽しみください。</p>
+  </div>
+
+  <div class="lab-grid">
+    <!-- 1. ソシオニクスモデルAビルダー -->
+    <div class="lab-card" style="border-width: 2px;">
+      <i class="fas fa-vial"></i>
+      <h3>モデルA・ビルダー</h3>
+      <p>ソシオニクスの「モデルA」を自分の手で構築。8つの心理機能をスロットに当てはめ、あなたの真のタイプを論理的に判定します。</p>
+      <a href="https://mofu-mitsu.github.io/model-a-builder/" class="lab-link">研究を開始する</a>
+    </div>
+
+    <!-- 2. Deep Cognition Archive -->
+    <div class="lab-card">
+      <i class="fas fa-brain"></i>
+      <h3>Deep Cognition Archive</h3>
+      <p>心理機能やパラメータからソシオ・MBTI等を高精度で測定。観測実験のように行動ログも記録される深層認知診断ツール。</p>
+      <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="lab-link">診断を実行する</a>
+    </div>
+
+    <!-- 4. LII/INTJ 思考暴走シミュレーター -->
+    <div class="lab-card">
+      <i class="fas fa-microchip"></i>
+      <h3>思考暴走シミュレーター</h3>
+      <p>内的論理(Ti/Ni)が暴走し、思考のループから抜け出せなくなる体験ツール。LII/INTJの脳内メモリの限界を追体験せよ。</p>
+      <a href="https://mofu-mitsu.github.io/LII_simulator/" class="lab-link">ループに入場する</a>
+    </div>
+
+    <!-- 5. MBTIのモヤモヤ解剖室 -->
+    <div class="lab-card">
+      <i class="fas fa-microscope"></i>
+      <h3>MBTIのモヤモヤ解剖室</h3>
+      <p>類型学への違和感や疑問を論理的に解剖。アンチへの理論武装や、自己防衛のためのメタ認知支援ツール。</p>
+      <a href="https://mofu-mitsu.github.io/mbti-moyamuya/" class="lab-link">解剖を開始する</a>
+    </div>
+  </div>
+
+  <!-- 特別公開LINEスタンプ -->
+  <div class="special-shop">
+    <h2><i class="fas fa-star"></i> Laboratory Exclusive Sticker</h2>
+    <p style="color:#ccc; font-size:0.9em; margin-bottom: 2em;">当研究所の観測対象（？）である論理タイプの二人がスタンプに。</p>
+    
+    <a href="https://line.me/S/sticker/33673024/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank">
+      <div class="sticker-card">
+        <div class="sticker-img"><i class="fas fa-dog"></i> <i class="fas fa-cat"></i></div>
+        <div class="sticker-info">
+          <h4>ILI猫とLII犬のゆる思考スタンプ</h4>
+          <p>内向的・論理的なあの子に送りたい、シュールで知的なスタンプ。INTJ/INTP気質の方へ。</p>
+          <div class="sticker-link"><i class="fab fa-line"></i> LINE STOREで見る</div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p>Researcher: NI- (LII-Ni / INTJ)</p>
+    <a href="index.html">Home</a> | <a href="contents.html">Contents</a> | <a href="about.html">About</a>
+    <p style="margin-top:2em; opacity:0.5;">© 2026 MofuMitsu Psychology Lab</p>
+  </footer>
+
+  <script>
+    // 星を降らせるスクリプト
+    const container = document.getElementById('star-container');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      const size = Math.random() * 3 + 'px';
+      star.style.width = size;
+      star.style.height = size;
+      star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+      container.appendChild(star);
+    }
+  </script>
+</body>
+</html>
