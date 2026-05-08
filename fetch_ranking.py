@@ -18,11 +18,11 @@ def fetch_top_pages():
         'model-a-builder': {'name': 'モデルA・ビルダー', 'desc': 'ソシオニクスの「モデルA」を構築・判定。', 'path': 'https://mofu-mitsu.github.io/model-a-builder/'},
         'mbti-moyamuya': {'name': 'MBTIモヤモヤ解剖室', 'desc': '類型学への違和感を論理的に解剖。', 'path': 'https://mofu-mitsu.github.io/mbti-moyamuya/'},
         'LII_simulator': {'name': '思考暴走シミュレーター', 'desc': 'LII/INTJの脳内メモリの限界を追体験。', 'path': 'https://mofu-mitsu.github.io/LII_simulator/'},
-        'Deep-Cognition-Archive': {'name': 'Deep Cognition', 'desc': '心理機能から深層タイプを精密に観測。', 'path': 'https://mofu-mitsu.github.io/Deep-Cognition-Archive/'},
+        'Deep-Cognition-Archive': {'name': 'Deep Cognition Archive', 'desc': '心理機能から深層タイプを精密に観測。', 'path': 'https://mofu-mitsu.github.io/Deep-Cognition-Archive/'},
         'yami_kansoku_archive': {'name': '闇観測実験アーカイブ', 'desc': 'あなたの心の奥底の闇を暴き出す。', 'path': 'https://mofu-mitsu.github.io/yami_kansoku_archive/'},
         'fluffy-love-check': {'name': 'ふわふわ相性診断', 'desc': '2人の名前を入れると相性を占うよ♡', 'path': 'https://mofu-mitsu.github.io/fluffy-love-check/'},
         'yuuki_fortune': {'name': '気まぐれ猫占い', 'desc': '猫占い師ゆうきくんが未来を鑑定🔮', 'path': 'https://mofu-mitsu.github.io/yuuki_fortune/'},
-        'oshi-profile-maker': {'name': '推しキャラプロフ', 'desc': '推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker/'},
+        'oshi-profile-maker': {'name': '推しキャラプロフ', 'desc': '圧倒的人気！推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker/'},
         'oshi-profile-maker2': {'name': 'オリキャラプロフ2', 'desc': '圧倒的人気！うちの子の魅力を1枚に。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker2/'}, # オリキャラプロフ2が人気なので見出しを調整
         'orikyara-profile-maker': {'name': 'オリキャラプロフ', 'desc': '設定画風シートが作れるメーカー。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker/'},
         'Character-Student-ID-Factory': {'name': '学生証ファクトリー', 'desc': '推しやオリキャラの学生証がすぐ作れる！', 'path': 'https://mofu-mitsu.github.io/Character-Student-ID-Factory/'},
