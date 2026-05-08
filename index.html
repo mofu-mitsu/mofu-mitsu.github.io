@@ -292,7 +292,12 @@
           data.forEach((tool, i) => {
             const card = document.createElement('div');
             card.className = 'ranking-card';
-            card.innerHTML = `<div class="rank-badge">${i+1}</div><h3>${tool.name}</h3><p style="font-size:0.85em;color:#666;">${tool.desc}</p><a href="${tool.path}" style="color:#d85f89;font-weight:bold;text-decoration:underline;">使ってみる →</a>`;
+            card.innerHTML = `
+              <div class="rank-badge">${i+1}</div>
+              <h3>${tool.name}</h3>
+              <p style="font-size:0.85em;color:#666;">${tool.desc}</p>
+              <a href="${tool.url}" style="color:#d85f89;font-weight:bold;text-decoration:underline;">使ってみる →</a>
+            `;
             grid.appendChild(card);
           });
         }
