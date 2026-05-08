@@ -95,15 +95,19 @@
     .card-btn { display: inline-block; background: #fff0f5; color: #d85f89; padding: 0.6em 1.5em; border-radius: 15px; font-weight: bold; border: 1px solid #fbd3e9; }
     .card-btn:hover { background: #d85f89; color: #fff; }
 
-    /* --- みりんてゃ紹介 --- */
-    .mirin-section { max-width: 900px; margin: 6em auto; background: #fff; border-radius: 30px; border: 3px solid #f9c8d9; padding: 2.5em; display: flex; align-items: center; gap: 2.5em; box-shadow: 0 10px 30px rgba(249, 200, 217, 0.3); position: relative; }
+    .mirin-section { max-width: 900px; margin: 6em auto; background: #fff; border-radius: 30px; border: 3px solid #f9c8d9; padding: 3em 2.5em; display: flex; align-items: center; gap: 3em; box-shadow: 0 10px 30px rgba(249, 200, 217, 0.3); position: relative; }
+    .mirin-section::before { content: "Official Bot"; position: absolute; top: -15px; left: 30px; background: #d85f89; color: #fff; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9em; box-shadow: 0 4px 10px rgba(216, 95, 137, 0.4); }
     .mirin-icon { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fbd3e9; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .mirin-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .mirin-info h3 { color: #e080a0; font-size: 1.8em; margin: 0 0 0.4em; }
-    .mirin-tags { margin-bottom: 1em; }
-    .mirin-tags span { background: #ffecf2; color: #d85f89; padding: 0.3em 1em; border-radius: 20px; font-size: 0.85em; margin-right: 0.5em; font-weight: bold; }
-    .m-btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5em; }
-    .m-btn { padding: 0.7em 2em; border-radius: 30px; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .mirin-info { flex-grow: 1; }
+    .mirin-info h3 { color: #e080a0; font-size: 1.8em; margin: 0 0 0.2em; display: flex; align-items: center; gap: 10px; }
+    .mirin-tags { margin-bottom: 1.2em; display: flex; flex-wrap: wrap; gap: 8px; }
+    /* 👇 white-space: nowrap; で途中の改行を防ぐ！ */
+    .mirin-tags span { background: #ffecf2; color: #d85f89; padding: 0.4em 1em; border-radius: 20px; font-size: 0.85em; font-weight: bold; white-space: nowrap; }
+    .mirin-desc { background: #fffcfd; padding: 1.5em; border-radius: 15px; border: 1px dashed #fbd3e9; color: #666; font-size: 0.95em; line-height: 1.6; margin-bottom: 1.5em; }
+    .m-btn-group { display: flex; flex-wrap: wrap; gap: 12px; }
+    .m-btn { padding: 0.8em 1.5em; border-radius: 25px; font-weight: bold; color: #fff; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9em; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s; }
+    .m-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); opacity: 0.9; }
 
     /* --- レスポンシブ --- */
     @media screen and (max-width: 768px) {
@@ -112,8 +116,12 @@
       .mirin-section { flex-direction: column; text-align: center; padding: 2em; }
       .mirin-icon { width: 140px; height: 140px; }
       .hero-container { margin-top: 1em; }
+      .mirin-section { flex-direction: column; text-align: center; padding: 3em 1.5em; gap: 1.5em; }
+      .mirin-section::before { left: 50%; transform: translateX(-50%); }
+      .mirin-info h3 { justify-content: center; flex-wrap: wrap; }
+      .mirin-tags { justify-content: center; }
+      .m-btn-group { justify-content: center; }
     }
-    
     footer { text-align: center; padding: 4em 1em; background: #ffe4e1; color: #888; font-size: 0.9em; border-top: 3px dotted #f8a9c0; }
     footer a { color: #d85f89; font-weight: bold; text-decoration: underline; }
   </style>
@@ -282,14 +290,24 @@
   </section>
 
   <!-- 🐱 みりんてゃ紹介 -->
+  <!-- 🐱 みりんてゃ公式bot紹介 -->
   <section id="mirin" class="mirin-section">
     <div class="mirin-icon"><img src="mirin-icon.png" alt="みりんてゃ"></div>
     <div class="mirin-info">
-      <h3>みりんてゃ <span style="font-size:0.6em; color:#999;">@mirinchuuu</span></h3>
-      <div class="mirin-tags"><span>地雷系あざと女子</span><span>承認欲求つよめ</span><span>黒猫</span></div>
-      <p>「みんなの推し活や創作を応援するbotだよっ♡」<br>Blueskyでツールの紹介やリプ返をしてるの。仲良くしてね♪</p>
+      <h3>みりんてゃ <span style="font-size:0.5em; color:#999; background:#eee; padding:3px 10px; border-radius:15px; font-weight:normal;">公式Bot</span></h3>
+      <div class="mirin-tags">
+        <span>地雷系あざと女子</span><span>承認欲求つよめ</span><span>黒猫モチーフ</span>
+      </div>
+      
+      <div class="mirin-desc">
+        「みんなの推し活や創作を応援するbotだよっ♡」<br>
+        AIを搭載した公式キャラクター。SNSでのツール紹介や、リプライへのお返事を気まぐれにしています。取扱説明書を読んで、たくさん話しかけてね♪
+      </div>
+
       <div class="m-btn-group">
-        <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="m-btn" style="background:#0085ff;"><i class="fab fa-bluesky"></i> ブルスカをフォロー</a>
+        <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="m-btn" style="background:#0085ff;"><i class="fab fa-bluesky"></i> Bluesky</a>
+        <a href="https://x.com/mirinteya" target="_blank" class="m-btn" style="background:#000000;"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+        <a href="https://note.com/sorake/n/n28c7cc8e3b07" target="_blank" class="m-btn" style="background:#41c9b4;"><i class="fas fa-book"></i> 取扱説明書(note)</a>
         <a href="https://line.me/S/sticker/33291694/" target="_blank" class="m-btn" style="background:#00B900;"><i class="fab fa-line"></i> LINEスタンプ</a>
       </div>
     </div>
