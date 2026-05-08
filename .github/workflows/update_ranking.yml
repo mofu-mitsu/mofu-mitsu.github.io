@@ -1,0 +1,43 @@
+name: Update Tool Ranking
+
+on:
+  schedule:
+    # 毎日日本時間 朝6時に実行（UTCで21:00）
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 手動実行も可能にする
+
+jobs:
+  update-ranking:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate Google Cloud Credentials
+      # GitHub Secrets に登録した GCP_SA_KEY をJSONファイルとして書き出す
+      run: |
+        echo '${{ secrets.GCP_SA_KEY }}' > credentials.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/credentials.json" >> $GITHUB_ENV
+
+    - name: Run Fetch Script
+      env:
+        GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
+      run: python fetch_ranking.py
+
+    - name: Commit and Push ranking.json
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add ranking.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update ranking.json" && git push)
