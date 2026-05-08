@@ -23,7 +23,8 @@ def fetch_top_pages():
         'fluffy-love-check': {'name': 'ふわふわ相性診断', 'desc': '2人の名前を入れると相性を占うよ♡', 'path': 'https://mofu-mitsu.github.io/fluffy-love-check/'},
         'yuuki_fortune': {'name': '気まぐれ猫占い', 'desc': '猫占い師ゆうきくんが未来を鑑定🔮', 'path': 'https://mofu-mitsu.github.io/yuuki_fortune/'},
         'oshi-profile-maker': {'name': '推しキャラプロフ', 'desc': '推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker/'},
-        'oshi-profile-maker2': {'name': 'オリキャラプロフ2', 'desc': '圧倒的人気！うちの子の魅力を1枚に。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker2/'}, # オリキャラプロフ2が人気なので見出しを調整
+        'oshi-profile-maker2': {'name': '推しキャラプロフ2', 'desc': '推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker2/'},
+        'orikyara-profile-maker2': {'name': 'オリキャラプロフ2', 'desc': '圧倒的人気！うちの子の魅力を1枚に。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker2/'}, # オリキャラプロフ2が人気なので見出しを調整
         'orikyara-profile-maker': {'name': 'オリキャラプロフ', 'desc': '圧倒的人気！設定画風シートが作れるメーカー。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker/'},
         'Character-Student-ID-Factory': {'name': '学生証ファクトリー', 'desc': '推しやオリキャラの学生証がすぐ作れる！', 'path': 'https://mofu-mitsu.github.io/Character-Student-ID-Factory/'},
         'oshi-card-generator': {'name': '推し名刺ジェネレーター', 'desc': 'イベントやオフ会で使える推しの名刺。', 'path': 'https://mofu-mitsu.github.io/oshi-card-generator/'},
