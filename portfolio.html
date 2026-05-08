@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics ※途切れないように少し書き方を変えたよ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNTX973GET"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GNTX973GET');
+  </script>
+  <title>Portfolio | M&2K Creative Studio - 制作実績と技術スタック</title>
+  <meta name="description" content="エンジニア兼クリエイター M&2K の制作実績ポートフォリオ。React、API連携、GitHub Actionsを活用したWebツールやゲームの技術解説を掲載。">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    body { margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5; color: #5d4037; line-height: 1.8; overflow-x: hidden; }
+    a { text-decoration: none; transition: 0.3s; color: #d85f89; }
+    
+    /* 背景アニメーション */
+    .animals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    .animal { position: absolute; width: 60px; height: 60px; background-size: contain; background-repeat: no-repeat; opacity: 0.15; animation: floatAnimal linear infinite, swaySide ease-in-out infinite; }
+    @keyframes floatAnimal { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 25% { opacity: 0.4; } 100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; } }
+
+    /* ナビゲーション */
+    .top-nav { position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em; z-index: 100; }
+    .nav-btn { background: rgba(255, 255, 255, 0.8); padding: 0.5em 1.2em; border-radius: 20px; color: #a14f74; font-weight: bold; font-size: 0.85em; border: 1px solid #fbd3e9; }
+    
+    /* ヘッダー */
+    header { text-align: center; padding: 5em 1em 3em; background: linear-gradient(#ffefed, #fff0f5); border-bottom: 3px dotted #f8a9c0; }
+    header h1 { font-size: 2.5em; color: #d98c89; margin: 0; text-shadow: 2px 2px 0 #fff; }
+    .studio-name { color: #8c3c63; font-weight: bold; font-size: 1.1em; }
+
+    /* コンテンツ幅 */
+    .container { max-width: 1000px; margin: 0 auto; padding: 2em 1em; }
+
+    /* セクション共通 */
+    section { margin-bottom: 5em; }
+    h2 { color: #8c3c63; font-size: 1.8em; border-bottom: 3px solid #fbd3e9; padding-bottom: 0.3em; margin-bottom: 1.5em; display: flex; align-items: center; gap: 10px; }
+
+    /* スキルバッジ */
+    .skill-container { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-badge { background: #fff; border: 1px solid #fbd3e9; padding: 0.5em 1.2em; border-radius: 30px; font-weight: bold; font-size: 0.9em; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+    /* 実績カード（ケーススタディ形式） */
+    .work-card { background: #fff; border-radius: 25px; padding: 2em; margin-bottom: 2em; border: 2px solid #fbd3e9; box-shadow: 0 8px 20px rgba(249, 200, 217, 0.2); }
+    .work-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5em; }
+    .work-title { font-size: 1.5em; color: #d85f89; margin: 0; }
+    .tech-stack { font-size: 0.8em; color: #999; font-weight: bold; }
+    
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .work-label { font-weight: bold; color: #a14f74; font-size: 0.9em; display: block; margin-top: 10px; }
+    .work-text { font-size: 0.95em; color: #666; margin: 0; }
+
+    @media screen and (max-width: 768px) {
+      .work-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 2em; }
+    }
+
+    footer { text-align: center; padding: 4em 1em; background: #ffe4e1; color: #888; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+  <div class="animals">
+    <div class="animal" style="left: 10%; top: 100vh; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
+    <div class="animal" style="left: 80%; top: 110vh; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
+  </div>
+
+  <nav class="top-nav">
+    <a class="nav-btn" href="index.html">HOME</a>
+    <a class="nav-btn" href="contents.html">ツール一覧</a>
+  </nav>
+
+  <header>
+    <h1>Portfolio / Works</h1>
+    <p class="studio-name">M&2K Creative Studio</p>
+  </header>
+
+  <div class="container">
+    <!-- 🍞 パンくずリスト -->
+    <nav style="font-size: 0.85em; margin-bottom: 2em; color: #a14f74;">
+      <a href="index.html" style="text-decoration: underline;">ホーム</a> ＞ ポートフォリオ
+    </nav>
+
+    <!-- 自己紹介 -->
+    <section>
+      <h2><i class="fas fa-user-tag"></i> About M&2K</h2>
+      <p>
+        「かわいい×技術」をテーマに活動するWebデベロッパー兼クリエイター。<br>
+        16タイプの心理機能やソシオニクスに基づいた精密な分析ロジックの構築を得意とし、
+        ユーザーの「無意識の行動」を数値化・可視化する実験的なWebアプリを多数開発しています。
+        また、3Dモデル(VRoid)制作やキャラクターの世界観構築など、技術と表現の融合を追求しています。
+      </p>
+    </section>
+
+    <!-- スキル -->
+    <section>
+      <h2><i class="fas fa-code"></i> Technical Skills</h2>
+      <div class="skill-container">
+        <div class="skill-badge">HTML / CSS (Responsive)</div>
+        <div class="skill-badge">JavaScript (Vanilla / ES6)</div>
+        <div class="skill-badge">React / Vite</div>
+        <div class="skill-badge">Supabase (PostgreSQL / RLS)</div>
+        <div class="skill-badge">GitHub Actions (CI/CD)</div>
+        <div class="skill-badge">Google Analytics Data API (Python)</div>
+        <div class="skill-badge">VRoid Studio (3D Modeling)</div>
+        <div class="skill-badge">GAS (Google Apps Script)</div>
+      </div>
+    </section>
+
+    <!-- 実績一覧 -->
+    <section>
+      <h2><i class="fas fa-laptop-code"></i> Project Case Studies</h2>
+
+      <!-- Case 1: 分析ランキングシステム -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">GA4連携 自動ランキング生成システム</h3>
+          <span class="tech-stack">Python / GitHub Actions / Google Analytics API</span>
+        </div>
+        <div class="work-grid">
+          <div>
+            <span class="work-label">課題</span>
+            <p class="work-text">静的サイト(GitHub Pages)において、手動更新の手間を省きつつ、常に最新の人気コンテンツをユーザーに提示したい。</p>
+          </div>
+          <div>
+            <span class="work-label">解決策</span>
+            <p class="work-text">PythonスクリプトでGA4のAPIを叩き、PV数上位を取得。GitHub Actionsで毎日1回自動実行し、JSON形式でランキングを動的に出力。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: 深層診断アプリ -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">Deep Cognition Archive</h3>
+          <span class="tech-stack">JavaScript / HTML5 / CSS3</span>
+        </div>
+        <div class="work-grid">
+          <div>
+            <span class="work-label">技術的工夫</span>
+            <p class="work-text">単なる選択肢の集計ではなく、回答時の「ミリ秒単位の迷い」や「修正行動」をログ化。情報代謝プロセスを定量的に分析するロジックを実装。</p>
+          </div>
+          <div>
+            <span class="work-label">成果</span>
+            <p class="work-text">心理学ガチ勢から高い評価を獲得。独自性の高いアルゴリズムにより、従来の簡易診断とは一線を画す精度の高さを実現。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: シンプルメモアプリ -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">Cocotte - Simple Memo App</h3>
+          <span class="tech-stack">React / Supabase / Vercel / PWA</span>
+        </div>
+        <div class="work-grid">
+          <div>
+            <span class="work-label">バックエンド設計</span>
+            <p class="work-text">SupabaseのRLS(Row Level Security)を活用。デバイス固有のIDを用いて、ユーザー登録不要ながらセキュアなデータ分離保存を実現。</p>
+          </div>
+          <div>
+            <span class="work-label">付加機能</span>
+            <p class="work-text">PWA対応によりスマホアプリのような挙動を実現。QRコードによるデバイス間同期やファイル添付など、実用性を重視。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4: UTAU音源 -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">地雷系黒猫みりんてゃ UTAU音声ライブラリ</h3>
+          <span class="tech-stack">Recording / Audio Editing / UTAU Engine</span>
+        </div>
+        <div class="work-grid">
+          <div>
+            <span class="work-label">制作プロセス</span>
+            <p class="work-text">自作キャラクターに「声」を与えるべく、全50音および促音、拗音を含む数千の音声サンプルを録音・編集。原音設定まで完遂。</p>
+          </div>
+          <div>
+            <span class="work-label">評価</span>
+            <p class="work-text">キャラクターのIP(知的財産)価値を向上させ、ボカロ界隈のクリエイターが素材として活用できるエコシステムを構築。</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 連絡先 -->
+    <section style="text-align: center;">
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <p>
+        開発依頼や技術的なご相談は、以下のフォームまたはSNSよりお気軽にお問い合わせください。
+      </p>
+      <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank" style="display: inline-block; background: #d85f89; color: #fff; padding: 1em 3em; border-radius: 30px; font-weight: bold; margin-top: 1em;">
+        お問い合わせフォームを開く
+      </a>
+    </section>
+  </div>
+
+  <footer>
+    <p>Web Developer & Creator: M&2K</p>
+    <p style="font-size:0.8em; margin-top:1em; opacity: 0.7;">© 2026 M&2K Creative Studio / もふみつ工房</p>
+  </footer>
+
+</body>
+</html>
