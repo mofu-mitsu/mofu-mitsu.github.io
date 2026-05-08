@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics ※みつきが全ページに貼った魂のタグ -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNTX973GET"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,336 +11,296 @@
     gtag('js', new Date());
     gtag('config', 'G-GNTX973GET');
   </script>
-  <title>もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ</title>
-  <meta name="description" content="もふみつ工房は、オリキャラや推しキャラのプロフィール、相性診断などを簡単に作れる可愛いWebメーカーまとめサイトです。ノベルゲームや創作支援ツール、LINEスタンプも公開中！">
-  <meta name="keywords" content="プロフィールメーカー,診断メーカー,オリキャラ,推しキャラ,相性診断,夢日記,ふわふわ,もふみつ工房,みりんてゃ,BOOTH,LINEスタンプ">
-  <!-- OGP -->
-  <meta property="og:title" content="もふみつ工房｜かわいいプロフィール＆診断メーカーまとめ">
-  <meta property="og:description" content="推しキャラ・オリキャラをもっと可愛く楽しめるふわふわツールがいっぱい！">
-  <meta property="og:image" content="https://mofu-mitsu.github.io/ogp.png">
-  <meta property="og:url" content="https://mofu-mitsu.github.io/">
-  <meta property="og:type" content="website">
-  <!-- Twitterカード -->
-  <meta name="twitter:card" content="summary_large_image">
-  
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330533639940949"
-       crossorigin="anonymous"></script>
-  <meta name="google-site-verification" content="asXFHz9t9b5MSUrHRfKPT3fYOs-qxfbJCM56p1ONUAM" />
-  
+  <title>もふみつ工房｜M&2K - かわいい創作支援・心理学ツールアトリエ</title>
+  <meta name="description" content="M&2K（もふみつ工房）は、オリキャラ設定・推し活を楽しくする無料Webツール集です。心理学に基づいた深層診断や、ノベルゲーム、LINEスタンプも公開中。">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
-    /* --- 基本設定 --- */
-    body {
-      margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5;
-      color: #5d4037; box-sizing: border-box; line-height: 1.8; overflow-x: hidden;
-    }
-    a { text-decoration: none; transition: 0.3s; }
-    
-    /* --- 背景アニメーション --- */
-    .animal {
-      position: absolute; width: 60px; height: 60px;
-      background-size: contain; background-repeat: no-repeat; opacity: 0.3;
-      animation: floatAnimal linear infinite, swaySide ease-in-out infinite;
-    }
-    @keyframes floatAnimal {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      25% { opacity: 0.4; }
-      100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; }
-    }
-    .animals {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: -1;
-    }
+    /* --- 全体設計 --- */
+    body { margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5; color: #5d4037; line-height: 1.8; overflow-x: hidden; }
+    a { text-decoration: none; transition: 0.3s; color: inherit; }
 
-    /* --- ナビゲーション (PC) --- */
-    .top-nav {
-      position: absolute; top: 1em; right: 1em; display: flex; gap: 0.8em;
-      background: rgba(255, 240, 245, 0.95); padding: 0.4em 1em;
-      border-radius: 30px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); z-index: 100;
-    }
-    .nav-btn {
-      background: #fbd3e9; padding: 0.5em 1.2em; border-radius: 20px;
-      color: #a14f74; font-weight: bold; font-size: 0.85em;
-      display: flex; align-items: center; gap: 0.4em;
-    }
-    .nav-btn:hover { background: #f9c8d9; transform: translateY(-2px); }
+    /* 背景アニメーション */
+    .animals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    .animal { position: absolute; width: 60px; height: 60px; background-size: contain; background-repeat: no-repeat; opacity: 0.25; animation: floatAnimal linear infinite, swaySide ease-in-out infinite; }
+    @keyframes floatAnimal { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 25% { opacity: 0.4; } 100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; } }
 
-    /* --- スマホ用ハンバーガー --- */
-    .mobile-nav {
-      position: fixed; top: 1em; right: 1em; z-index: 999; display: none;
-    }
-    .hamburger {
-      font-size: 1.6em; background: #fbd3e9; color: #a14f74;
-      padding: 0.6em 0.8em; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .menu {
-      position: absolute; top: 3.5em; right: 0; width: 220px;
-      background: rgba(255, 255, 255, 0.98); border-radius: 12px; padding: 1em; list-style: none;
-      display: none; flex-direction: column; gap: 0.8em;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #fbd3e9;
-    }
-    .menu li a { display: flex; align-items: center; gap: 0.5em; color: #8c3c63; font-weight: bold; }
+    /* --- ナビゲーション --- */
+    .top-nav { position: absolute; top: 1.5em; right: 1.5em; display: flex; gap: 1em; z-index: 100; }
+    .nav-btn { background: rgba(255, 255, 255, 0.9); padding: 0.6em 1.5em; border-radius: 30px; color: #a14f74; font-weight: bold; font-size: 0.9em; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #fbd3e9; }
+    .nav-btn:hover { background: #fbd3e9; transform: translateY(-2px); }
+
+    .mobile-nav { position: fixed; top: 1em; right: 1em; z-index: 999; display: none; }
+    .hamburger { font-size: 1.6em; background: #fbd3e9; color: #a14f74; padding: 0.6em 0.8em; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .menu { position: absolute; top: 3.5em; right: 0; width: 220px; background: #fff; border-radius: 15px; padding: 1em; list-style: none; display: none; flex-direction: column; gap: 0.8em; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 2px solid #fbd3e9; }
     .menu.open { display: flex; }
 
-    /* --- ヘッダー & About --- */
-    .ribbon-header {
-      background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0;
-    }
-    .ribbon-text { color: #d98c89; font-weight: bold; margin: 0; }
+    /* --- ヘッダー（復活） --- */
+    .ribbon-header { background: #ffefed; padding: 0.6em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0; color: #d98c89; font-weight: bold; font-size: 0.9em; }
+    header { background: url('https://www.transparenttextures.com/patterns/cream-dust.png'), linear-gradient(#ffefed, #fff0f5); text-align: center; padding: 5em 1em 4em; border-bottom: 5px double #f9c8d9; }
+    header h1 { font-size: 3.2em; color: #d98c89; text-shadow: 3px 3px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; margin: 0; }
+    .studio-name { color: #8c3c63; font-weight: bold; font-size: 1.2em; letter-spacing: 2px; margin-top: 5px; }
 
-    header {
-      background: url('https://www.transparenttextures.com/patterns/cream-dust.png');
-      text-align: center; padding: 3em 1em 1em;
-    }
-    header h1 {
-      font-size: 2.5em; color: #d98c89; text-shadow: 2px 2px 0 #fff; margin: 0.2em 0 0;
-    }
+    /* --- ヒーロー導線エリア --- */
+      /* 🆕 ようこそボックス */
+    .welcome-box { background: #fff; border-radius: 30px; padding: 2.5em 2em; text-align: center; margin-bottom: 3em; border: 2px solid #fbd3e9; box-shadow: 0 8px 25px rgba(249, 200, 217, 0.2); }
+    .welcome-box h2 { color: #d85f89; font-size: 1.8em; margin: 0 0 0.5em; }
+    .welcome-box p { color: #8c3c63; font-weight: bold; font-size: 1.1em; margin: 0; }
+    .hero-container { max-width: 1100px; margin: -2em auto 4em; padding: 0 1em; }
+    .main-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .action-card { background: #fff; border-radius: 30px; padding: 2em 1.5em; text-align: center; border: 2px solid #fbd3e9; box-shadow: 0 8px 25px rgba(249, 200, 217, 0.4); transition: 0.3s; }
+    .action-card:hover { transform: translateY(-8px); border-color: #d85f89; box-shadow: 0 12px 30px rgba(249, 200, 217, 0.6); }
+    .action-card i { font-size: 2.5em; color: #f9c8d9; margin-bottom: 0.5em; }
+    .action-card h2 { color: #8c3c63; font-size: 1.4em; margin: 0.5em 0; }
+    .action-card p { font-size: 0.85em; color: #888; margin-bottom: 1.5em; min-height: 3.6em; }
+    .action-link { display: inline-block; background: #f9c8d9; color: #fff; padding: 0.8em 2.5em; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 0 #e0a3b8; }
+    .action-link:hover { background: #d85f89; box-shadow: 0 2px 0 #b04e6e; transform: translateY(2px); }
 
-    .about-section {
-      max-width: 800px; margin: 0 auto 2em; text-align: center;
-      padding: 2em 1em; background: rgba(255,255,255,0.6); border-radius: 20px;
-    }
-    .about-section h2 { color: #d85f89; font-size: 1.5em; margin-bottom: 0.5em; }
-    .about-section p { color: #7c4567; font-size: 1.05em; margin-bottom: 1em; }
+    /* 特別ボタン（About / Lab） */
+    .sub-actions { display: flex; justify-content: center; gap: 15px; margin-top: 2em; flex-wrap: wrap; }
+    .sub-btn { padding: 0.8em 2em; border-radius: 35px; font-weight: bold; font-size: 0.95em; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #fff; transition: transform 0.3s, box-shadow 0.3s; }
+    .btn-about { background: #fbd3e9; color: #a14f74; }
+    .btn-lab { background: #2d233c; color: #f9c8d9; border-color: #4b3a63; }
+    .sub-btn:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); opacity: 0.95; }
 
-    /* 誘導用のアクションボタン */
-    .action-btn {
-      display: inline-block; margin: 1em 0.5em; background: linear-gradient(145deg, #f9c8d9, #ffd6ec);
-      color: #8c3c63; padding: 0.8em 2em; border-radius: 30px; font-weight: bold;
-      box-shadow: 0 4px 10px rgba(249, 200, 217, 0.4); border: 2px solid #fff; transition: 0.3s;
-    }
-    .action-btn:hover {
-      transform: translateY(-3px); box-shadow: 0 6px 15px rgba(249, 200, 217, 0.6);
-    }
+    /* --- 人気ランキング --- */
+    .ranking-section { max-width: 1100px; margin: 5em auto; text-align: center; }
+    .section-title { font-size: 1.8em; color: #d85f89; margin-bottom: 1.5em; }
+    .ranking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 1em; }
+    .ranking-card { background: #fff; border-radius: 25px; padding: 2em; position: relative; border: 1px solid #fbd3e9; box-shadow: 0 6px 15px rgba(249, 200, 217, 0.2); }
+    .rank-badge { position: absolute; top: -15px; left: -15px; background: linear-gradient(135deg, #ff8da1, #d85f89); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4em; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-    /* --- 横スクロール --- */
-    .scroll-area-title {
-      text-align: center; color: #8c3c63; margin-bottom: 0.5em; font-weight: bold;
-    }
-    .cards {
-      display: flex; flex-wrap: nowrap; gap: 1.5em; padding: 1em 1em 2em;
-      overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-      position: relative; max-width: 100%; margin: 0 auto 1em;
-    }
-    .cards::-webkit-scrollbar { height: 8px; }
+    /* --- お知らせセクション（AdSense対策） --- */
+    .news-box { max-width: 800px; margin: 4em auto; padding: 2em; background: #fff; border-radius: 25px; border: 2px dashed #fbd3e9; }
+    .news-box h3 { color: #d85f89; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+    /* ここから下を追加・修正 */
+    .news-list { max-height: 200px; overflow-y: auto; padding-right: 10px; }
+    .news-list::-webkit-scrollbar { width: 6px; }
+    .news-list::-webkit-scrollbar-track { background: #fef0f5; border-radius: 10px; }
+    .news-list::-webkit-scrollbar-thumb { background: #f9c8d9; border-radius: 10px; }
+    .news-item { border-bottom: 1px solid #fef0f5; padding: 1em 0; text-align: left; display: flex; gap: 15px; }
+    .news-date { color: #a14f74; font-weight: bold; font-size: 0.9em; flex-shrink: 0; }
+    .news-text { font-size: 0.95em; color: #666; }
+    /* --- 横スクロール PICK UP --- */
+    .cards-container { max-width: 1100px; margin: 5em auto; padding: 0 1em; }
+    .cards { display: flex; flex-wrap: nowrap; gap: 1.5em; padding: 1em 0.5em 2.5em; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .cards::-webkit-scrollbar { height: 10px; }
     .cards::-webkit-scrollbar-track { background: #ffeef5; border-radius: 10px; }
-    .cards::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #f9c8d9, #ffd6ec); border-radius: 10px; }
+    .cards::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #f9c8d9, #ffd6ec); border-radius: 10px; border: 2px solid #ffeef5; }
+    .card { background: #fff; border-radius: 20px; padding: 1.8em; width: 280px; min-width: 280px; text-align: center; border: 1px solid #fff0f5; flex-shrink: 0; box-shadow: 0 8px 20px rgba(0,0,0,0.06); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px) scale(1.02); border-color: #f9c8d9; }
+    .card h3 { font-size: 1.15em; color: #e080a0; margin-bottom: 1em; min-height: 2.8em; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
+    .card-btn { display: inline-block; background: #fff0f5; color: #d85f89; padding: 0.6em 1.5em; border-radius: 15px; font-weight: bold; border: 1px solid #fbd3e9; }
+    .card-btn:hover { background: #d85f89; color: #fff; }
 
-    .card {
-      background: #fff; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 1.5em; width: 260px; min-width: 260px; text-align: center;
-      transition: transform 0.2s ease; flex-shrink: 0; border: 1px solid #fff0f5;
-    }
-    .card:hover { transform: scale(1.03); border-color:#f9c8d9; }
-    .card h3 { font-size: 1.2em; color: #e080a0; margin-bottom: 0.5em; }
-    .card a {
-      display: inline-block; margin-top: 1em; padding: 0.5em 1.2em;
-      background: #f9c8d9; color: white; border-radius: 10px; font-weight: bold;
-    }
-
-    /* --- みりんてゃプロフィール --- */
-    .mirin-section {
-      max-width: 800px; margin: 4em auto 2em; background: #fff; border-radius: 20px;
-      border: 2px solid #f9c8d9; padding: 2em; display: flex; align-items: center;
-      gap: 2em; box-shadow: 0 4px 15px rgba(249, 200, 217, 0.3); position: relative;
-    }
-    .mirin-section::before {
-      content: "PICK UP!"; position: absolute; top: 10px; left: -30px;
-      background: #ff6b9d; color: #fff; padding: 5px 30px;
-      transform: rotate(-45deg); font-weight: bold; font-size: 0.8em;
-    }
-    .mirin-icon {
-      width: 150px; height: 150px; border-radius: 50%; background: #ffeef5;
-      border: 4px solid #fbd3e9; flex-shrink: 0; display: flex; align-items: center;
-      justify-content: center; font-size: 4em; color: #ffb7d5; overflow: hidden;
-    }
+    /* --- みりんてゃ紹介 --- */
+    .mirin-section { max-width: 900px; margin: 6em auto; background: #fff; border-radius: 30px; border: 3px solid #f9c8d9; padding: 2.5em; display: flex; align-items: center; gap: 2.5em; box-shadow: 0 10px 30px rgba(249, 200, 217, 0.3); position: relative; }
+    .mirin-icon { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fbd3e9; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .mirin-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .mirin-info h3 { color: #e080a0; margin: 0 0 0.5em; font-size: 1.5em; }
-    .mirin-tags span {
-      background: #ffecf2; color: #d85f89; padding: 0.2em 0.6em;
-      border-radius: 10px; font-size: 0.8em; margin-right: 0.3em;
-      display: inline-block; margin-bottom: 0.3em;
-    }
-    .mirin-btn {
-      display: inline-block; margin-top: 1em; background: #0085ff;
-      color: white; padding: 0.6em 1.5em; border-radius: 20px;
-      font-weight: bold; box-shadow: 0 3px 0 #0060b9; margin-right: 5px; margin-bottom: 5px;
-    }
-    .mirin-btn-line {
-      display: inline-block; margin-top: 1em; background: #00B900;
-      color: white; padding: 0.6em 1.5em; border-radius: 20px;
-      font-weight: bold; box-shadow: 0 3px 0 #009900;
-    }
-    .mirin-btn-line:hover { background: #00a000; transform: translateY(-2px); }
+    .mirin-info h3 { color: #e080a0; font-size: 1.8em; margin: 0 0 0.4em; }
+    .mirin-tags { margin-bottom: 1em; }
+    .mirin-tags span { background: #ffecf2; color: #d85f89; padding: 0.3em 1em; border-radius: 20px; font-size: 0.85em; margin-right: 0.5em; font-weight: bold; }
+    .m-btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5em; }
+    .m-btn { padding: 0.7em 2em; border-radius: 30px; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 10px; }
 
+    /* --- レスポンシブ --- */
     @media screen and (max-width: 768px) {
-      .top-nav { display: none; }
-      .mobile-nav { display: block; }
-      .mirin-section { flex-direction: column; text-align: center; padding: 1.5em; }
+      .top-nav { display: none; } .mobile-nav { display: block; }
+      header h1 { font-size: 2.2em; }
+      .mirin-section { flex-direction: column; text-align: center; padding: 2em; }
+      .mirin-icon { width: 140px; height: 140px; }
+      .hero-container { margin-top: 1em; }
     }
-
-    footer {
-      text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888;
-    }
-    footer a { color: #d85f89; }
+    
+    footer { text-align: center; padding: 4em 1em; background: #ffe4e1; color: #888; font-size: 0.9em; border-top: 3px dotted #f8a9c0; }
+    footer a { color: #d85f89; font-weight: bold; text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- 背景アニメーション -->
-  <div class="clouds"></div>
   <div class="animals">
-    <div class="animal" style="left: 10%; top: 100vh; animation-delay: 0s; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
-    <div class="animal" style="left: 80%; top: 110vh; animation-delay: 5s; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
+    <div class="animal" style="left: 5%; top: 100vh; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
+    <div class="animal" style="left: 85%; top: 110vh; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
+    <div class="animal" style="left: 45%; top: 120vh; animation-duration: 40s; background-image: url('cat-icon.png');"></div>
   </div>
 
-  <div class="ribbon-header">
-    <p class="ribbon-text">かわいい×便利×創作を楽しむためのWebアトリエ</p>
-  </div>
+  <div class="ribbon-header">ふんわり優しい、創作支援と心理学のアトリエへようこそ♪</div>
 
-  <!-- PCナビゲーション -->
   <nav class="top-nav">
-    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> ホーム</a>
-    <a class="nav-btn" href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a>
-    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a>
+    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> HOME</a>
+    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> ツール一覧</a>
     <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a>
   </nav>
 
-  <!-- スマホナビゲーション -->
   <nav class="mobile-nav">
     <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
       <i class="fas fa-bars"></i>
     </div>
     <ul id="menu-list" class="menu">
-      <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
-      <li><a href="about.html"><i class="fas fa-paw"></i> もふみつ工房について</a></li>
-      <li><a href="contents.html"><i class="fas fa-th-large"></i> コンテンツ一覧</a></li>
-      <li><a href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> お買い物(BOOTH)</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+      <li><a href="contents.html"><i class="fas fa-th-large"></i> ツール一覧</a></li>
+      <li><a href="about.html"><i class="fas fa-paw"></i> 当工房について</a></li>
+      <li><a href="https://torisproject.booth.pm/"><i class="fas fa-shopping-cart"></i> BOOTH</a></li>
       <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
     </ul>
   </nav>
 
   <header>
     <h1>もふみつ工房</h1>
-    <p style="color:#a14f74;">あなたの「好き」を形にするツール置き場♪</p>
+    <p class="studio-name">M&2K Creative Studio</p>
   </header>
 
-<!-- Aboutセクション (誘導) -->
-  <section class="about-section">
-    <h2>ようこそ、もふもふの世界へ！</h2>
-    <p>
-      ここは、推し活や創作活動をもっと楽しくするためのWebアトリエ。<br>
-      可愛い見た目に隠された、深層心理の分析システムやカオスな世界観のキャラクターたちが、あなたをお待ちしています。
-    </p>
-    
-    <!-- ボタンをこの中（センター寄せの範囲）にまとめました！ -->
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-      <a href="about.html" class="action-btn">
-        <i class="fas fa-book-open"></i> もふみつ工房について（世界観と理念）
-      </a>
-      <a href="lab.html" class="action-btn" style="background: linear-gradient(145deg, #4b3a63, #2d233c); color: #f9c8d9; border-color: #fbd3e9; margin: 0;">
-        <i class="fas fa-user-astronaut"></i> 心理学研究所（類型論・実験室）
-      </a>
+  <!-- 🎯 メイン導線 -->
+  <main class="hero-container">
+    <!-- 🆕 ようこそエリアを囲いました！ -->
+    <div class="welcome-box">
+      <h2>ようこそ、もふもふの世界へ！</h2>
+      <p>創作支援・推し活ツールのWebアトリエへようこそ♪<br>登録不要ですぐに遊べる、無料のWebツール集です。</p>
     </div>
-  </section>
-  <!-- 横スクロール (PICK UP) -->
-  <div class="scroll-area-title">＼ 注目ツール PICK UP！ ／</div>
-  <div class="cards">
-    <div class="card portal-card">
-      <h3 style="color:#e05b82;"><i class="fas fa-school"></i> とりの丘学園<br>公式ポータル</h3>
-      <a href="https://mofu-mitsu.github.io/Torinooka_portal/" style="background:#e05b82;">ポータルへ入場</a>
-    </div>
-    <div class="card">
-      <h3 style="color:#e05b82;"><i class="fas fa-microphone-alt"></i> みりんてゃ UTAU音源</h3>
-      <a href="https://torisproject.booth.pm/items/8268069" target="_blank" style="background:#e05b82;">BoothでDLする</a>
-    </div>
-    <div class="card">
-      <h3>闇観測実験アーカイブ</h3>
-      <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/">実験に参加する</a>
-    </div>
-    <div class="card">
-      <h3>Deep Cognition Archive</h3>
-      <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/">診断する</a>
-    </div>
-    <div class="card">
-      <h3>推しキャラプロフィール</h3>
-      <a href="https://mofu-mitsu.github.io/oshi-profile-maker/">作ってみる</a>
-    </div>
-    <div class="card">
-      <h3>汗と油のカオスな世界</h3>
-      <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786">Boothで見る</a>
-    </div>
-    <div class="card">
-      <h3>夢日記メーカー</h3>
-      <a href="https://mofu-mitsu.github.io/yumekawa-dream-card/">作ってみる</a>
-    </div>
-    <div class="card">
-      <h3>推し愛爆発♡カード</h3>
-      <a href="https://mofu-mitsu.github.io/oshiai-card-maker/">作ってみる</a>
-    </div>
-  </div>
 
-  <!-- 一覧ページへの巨大な誘導ボタン -->
-  <div style="text-align: center; margin-bottom: 4em;">
-    <a href="contents.html" class="action-btn" style="font-size: 1.2em; padding: 1em 3em;">
-      <i class="fas fa-search"></i> すべてのコンテンツを見る
-    </a>
-  </div>
-
-  <!-- みりんてゃ紹介エリア（LINEスタンプ追加！） -->
-  <section id="mirin" class="mirin-section">
-    <div class="mirin-icon">
-      <img src="mirin-icon.png" alt="みりんてゃ">
-    </div>
-    <div class="mirin-info">
-      <h3>みりんてゃ <span style="font-size:0.6em; color:#999; margin-left:10px;">@mirinchuuu</span></h3>
-      <div class="mirin-tags">
-        <span>地雷系あざと女子</span>
-        <span>承認欲求つよめ</span>
-        <span>黒猫モチーフ</span>
+    <!-- 既存の3つのカード -->
+    <div class="main-actions">
+      <div class="action-card">
+        <i class="fas fa-magic"></i>
+        <h2>創作サポート</h2>
+        <p>オリキャラ設定、相関図、学生証メーカーなど、物語やキャラクターを形にするツールが勢揃い。</p>
+        <a href="contents.html" class="action-link">ツールを見る</a>
       </div>
-      <p>
-        「みんなの推し活や創作を応援するbotだよっ♡」<br>
-        Blueskyでもふみつ工房で作られたツールを紹介したり、リプにお返事したりしてるの。<br>
-        可愛いものが大好き！よかったら仲良くしてね♪
-      </p>
-      <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="mirin-btn">
-        <i class="fab fa-bluesky"></i> ブルスカでフォロー♡
-      </a>
-      <a href="https://line.me/S/sticker/33291694/?lang=ja&utm_source=gnsh_stickerDetail" target="_blank" class="mirin-btn-line">
-        <i class="fab fa-line"></i> LINEスタンプ発売中♡
-      </a>
+      <div class="action-card">
+        <i class="fas fa-school"></i>
+        <h2>とりの丘学園</h2>
+        <p>公式ポータルサイト。キャラクターへのお手紙、交流掲示板、ここだけの物語を楽しもう。</p>
+        <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="action-link">学園へ入る</a>
+      </div>
+      <div class="action-card">
+        <i class="fas fa-gamepad"></i>
+        <h2>ゲームで遊ぶ</h2>
+        <p>本格的なAI対戦人狼から、感情を撃ち抜くシューティングまで。ブラウザですぐ遊べます。</p>
+        <a href="contents.html#cat-game" class="action-link">ゲーム一覧</a>
+      </div>
+    </div>
+
+    <!-- 既存のサブボタン -->
+    <div class="sub-actions">
+      <a href="about.html" class="sub-btn btn-about"><i class="fas fa-book-open"></i> もふみつ工房について</a>
+      <a href="lab.html" class="sub-btn btn-lab"><i class="fas fa-user-astronaut"></i> 心理学研究所（実験室）</a>
+    </div>
+  </main>
+
+  <!-- 🏆 人気ツールランキング -->
+  <section class="ranking-section">
+    <h2 class="section-title"><i class="fas fa-crown"></i> 人気ランキング（直近30日）</h2>
+    <div id="ranking-grid" class="ranking-grid">
+      <!-- フォールバック（データがない時） -->
+      <div class="ranking-card"><div class="rank-badge">1</div><h3>オリキャラプロフ</h3><p style="font-size:0.8em;color:#666;">圧倒的人気のうちの子紹介ツール！</p></div>
+      <div class="ranking-card"><div class="rank-badge">2</div><h3>Deep Cognition</h3><p style="font-size:0.8em;color:#666;">精密な深層心理分析テスト。</p></div>
+      <div class="ranking-card"><div class="rank-badge">3</div><h3>学生証メーカー</h3><p style="font-size:0.8em;color:#666;">推しや自分の学生証を作ろう！</p></div>
     </div>
   </section>
 
-  <!-- AdSense表示エリア -->
-  <div style="text-align:center; margin: 4em 0;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1330533639940949"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle ||[]).push({});
-    </script>
+  <!-- 📋 おしらせ（AdSense用テキスト盛り） -->
+  <section class="news-box">
+    <h3><i class="fas fa-bullhorn"></i> 最近のアップデート</h3>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-date">2026.05.08</div>
+        <div class="news-text">新ツール「顔文字メーカー」を公開！自分だけのオリジナル顔文字を組み合わせて作れるようになりました。</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">2026.05.05</div>
+        <div class="news-text">心理学研究所ページを新設。「夢コード」や「思考暴走シミュレーター」などの専門的なツールを統合しました。</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">2026.04.30</div>
+        <div class="news-text">「とりの丘学園 公式ポータル」をリニューアル。キャラクターへのお手紙投稿機能を追加。</div>
+      </div>
+      <!-- これ以上増えても、この枠の中でスクロールするようになるよ！ -->
+    </div>
+  </section>
+
+  <!-- 🎠 PICK UP（注目コンテンツ） -->
+  <section class="cards-container">
+    <p style="text-align:center; font-weight:bold; color:#8c3c63; margin-bottom: 0.5em;">＼ 注目コンテンツ ／</p>
+    <div class="cards">
+      <div class="card" style="border-top: 5px solid #e05b82;">
+        <h3 style="color:#e05b82;"><i class="fas fa-microphone-alt"></i> みりんてゃ UTAU音源</h3>
+        <p style="font-size:0.8em;color:#888;">自作音声ライブラリ！</p>
+        <a href="https://torisproject.booth.pm/items/8268069" target="_blank" class="card-btn">BoothでDL</a>
+      </div>
+      <div class="card" style="border-top: 5px solid #4b3a63;">
+        <h3>夢コード - Dream Code</h3>
+        <p style="font-size:0.8em;color:#888;">心理機能RPG診断</p>
+        <a href="https://mofu-mitsu.github.io/dream-code/" class="card-btn">遊んでみる</a>
+      </div>
+      <div class="card" style="border-top: 5px solid #fbd3e9;">
+        <h3>闇観測実験アーカイブ</h3>
+        <p style="font-size:0.8em;color:#888;">思考の闇を暴く診断</p>
+        <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="card-btn">実験に参加</a>
+      </div>
+      <div class="card" style="border-top: 5px solid #fbd3e9;">
+        <h3>顔文字メーカー</h3>
+        <p style="font-size:0.8em;color:#888;">SNSですぐ使える！</p>
+        <a href="https://mofu-mitsu.github.io/kaomoji-maker/" class="card-btn">顔文字を作る</a>
+      </div>
+      <div class="card" style="border-top: 5px solid #8c3c63;">
+        <h3>タイピングマスター</h3>
+        <p style="font-size:0.8em;color:#888;">スコアアタックに挑戦</p>
+        <a href="https://mofu-mitsu.github.io/typing-Master/" class="card-btn">挑戦する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🐱 みりんてゃ紹介 -->
+  <section id="mirin" class="mirin-section">
+    <div class="mirin-icon"><img src="mirin-icon.png" alt="みりんてゃ"></div>
+    <div class="mirin-info">
+      <h3>みりんてゃ <span style="font-size:0.6em; color:#999;">@mirinchuuu</span></h3>
+      <div class="mirin-tags"><span>地雷系あざと女子</span><span>承認欲求つよめ</span><span>黒猫</span></div>
+      <p>「みんなの推し活や創作を応援するbotだよっ♡」<br>Blueskyでツールの紹介やリプ返をしてるの。仲良くしてね♪</p>
+      <div class="m-btn-group">
+        <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="m-btn" style="background:#0085ff;"><i class="fab fa-bluesky"></i> ブルスカをフォロー</a>
+        <a href="https://line.me/S/sticker/33291694/" target="_blank" class="m-btn" style="background:#00B900;"><i class="fab fa-line"></i> LINEスタンプ</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center; margin:5em 0;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1330533639940949" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
   <footer>
-    制作：もふみつ工房<br>
+    <p>Developer: M&2K Creative Studio</p>
     <div style="margin-top:10px;">
-      <a href="https://torisproject.booth.pm/" target="_blank">BOOTH</a> ｜
-      <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
-      <a href="policy.html">プライバシーポリシー</a> ｜ 
-      <a href="terms.html">利用規約</a>
-      <a href="dev_blog.html">開発レポート</a>
+      <a href="https://torisproject.booth.pm/">BOOTHショップ</a> ｜ <a href="policy.html">プライバシーポリシー</a> ｜ <a href="dev_blog.html">開発レポート（審査用）</a>
     </div>
-    <p style="font-size:0.8em; margin-top:1em;">© 2026 MofuMitsu Kobo</p>
+    <p style="font-size:0.8em; margin-top:1.5em; opacity: 0.7;">© 2026 M&2K / もふみつ工房</p>
   </footer>
 
+  <script>
+    // GitHub Actionsで生成した ranking.json を読み込む
+    async function loadRanking() {
+      const grid = document.getElementById('ranking-grid');
+      try {
+        const response = await fetch('ranking.json');
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        if (data && data.length > 0) {
+          grid.innerHTML = '';
+          data.forEach((tool, i) => {
+            const card = document.createElement('div');
+            card.className = 'ranking-card';
+            card.innerHTML = `<div class="rank-badge">${i+1}</div><h3>${tool.name}</h3><p style="font-size:0.85em;color:#666;">${tool.desc}</p><a href="${tool.path}" style="color:#d85f89;font-weight:bold;text-decoration:underline;">使ってみる →</a>`;
+            grid.appendChild(card);
+          });
+        }
+      } catch (e) {
+        // ranking.jsonがない場合はデフォルトを表示したまま
+      }
+    }
+    loadRanking();
+  </script>
 </body>
 </html>
