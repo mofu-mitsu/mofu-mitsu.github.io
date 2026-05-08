@@ -2,7 +2,7 @@ import os
 import json
 import re
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, FilterExpression, FilterExpressionList, DimensionFilter, Filter
+from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, FilterExpression, Filter, RunReportRequest
 
 def fetch_top_pages():
     # 環境変数からプロパティIDを取得
@@ -41,14 +41,24 @@ def fetch_top_pages():
         'kondate-maker': {'name': '献立メーカー', 'desc': 'シェフが勝手に献立を決めてくれるよ！', 'path': 'https://mofu-mitsu.github.io/kondate-maker/'}
     }
 
-    # APIリクエスト（直近30日のPVが多いページを抽出）
-    request = {
-        "property": f"properties/{property_id}",
-        "dimensions":[Dimension(name="pagePath")],
-        "metrics": [Metric(name="screenPageViews")],
-        "date_ranges":[DateRange(start_date="30daysAgo", end_date="today")],
-        "limit": 20
-    }
+    # APIリクエスト（除外フィルターをPythonクライアントの記法に修正！）
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[Dimension(name="pagePath")],
+        metrics=[Metric(name="screenPageViews")],
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimension_filter=FilterExpression(
+            not_expression=FilterExpression(
+                filter=Filter(
+                    field_name="pagePath",
+                    in_list_filter=Filter.InListFilter(
+                        values=["/", "/index.html", "/contents.html", "/about.html", "/lab.html", "/Torinooka_portal/"]
+                    )
+                )
+            )
+        ),
+        limit=20
+    )
 
     response = client.run_report(request)
     
