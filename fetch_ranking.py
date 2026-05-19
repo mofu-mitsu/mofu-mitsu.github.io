@@ -14,17 +14,26 @@ def fetch_top_pages():
 
     # みつきのツール完全網羅マップ
     tool_map = {
-        'dream-code': {'name': '夢コード', 'desc': 'AIキャラと戦う心理学アドベンチャー。', 'path': 'https://mofu-mitsu.github.io/dream-code/'},
-        'model-a-builder': {'name': 'モデルA・ビルダー', 'desc': 'ソシオニクスの「モデルA」を構築・判定。', 'path': 'https://mofu-mitsu.github.io/model-a-builder/'},
-        'mbti-moyamuya': {'name': 'MBTIモヤモヤ解剖室', 'desc': '類型学への違和感を論理的に解剖。', 'path': 'https://mofu-mitsu.github.io/mbti-moyamuya/'},
-        'LII_simulator': {'name': '思考暴走シミュレーター', 'desc': 'LII/INTJの脳内メモリの限界を追体験。', 'path': 'https://mofu-mitsu.github.io/LII_simulator/'},
-        'Deep-Cognition-Archive': {'name': 'Deep Cognition Archive', 'desc': '心理機能から深層タイプを精密に観測。', 'path': 'https://mofu-mitsu.github.io/Deep-Cognition-Archive/'},
-        'yami_kansoku_archive': {'name': '闇観測実験アーカイブ', 'desc': 'あなたの心の奥底の闇を暴き出す。', 'path': 'https://mofu-mitsu.github.io/yami_kansoku_archive/'},
+        # --- 心理・ソシオ・MBTI系 ---
+        'Wonderland-G-Tracker': {'name': 'Gモデル診断：Wonderland G-Tracker', 'desc': 'ソシオニクスの最新理論「モデルG」に基づく行動観察型診断。不思議の国のギミックを通し、あなたの無意識下に眠る「社会的使命」を観測します。', 'path': 'https://mofu-mitsu.github.io/Wonderland-G-Tracker/'},
+        'logic-playground': {'name': 'ソシオTi強度チェッカー', 'desc': 'ソシオニクスの内的論理（Ti）に特化した精密測定ツール。あなたのTiの強度を0〜100で数値化し、8つのポジションからその性質を論理的に判定。', 'path': 'https://mofu-mitsu.github.io/logic-playground/'},
+        'creator-brain-log': {'name': '創作16タイプ診断', 'desc': '創作活動における「情報代謝の癖」を16タイプで分析。脳がどのように物語を生成し、どのような表現スタイルを得意とするのかを解き明かします。', 'path': 'https://mofu-mitsu.github.io/creator-brain-log/'},
+        'love-type-diagnosis': {'name': '恋愛4タイプ診断', 'desc': 'ソシオニクスの理論に基づき、恋愛傾向を「侵略者・犠牲者・子ども・保護者」に分類。深層心理に眠る愛の形を解き明かします。', 'path': 'https://mofu-mitsu.github.io/love-type-diagnosis/'},
+        'ideal-partner-diagnosis': {'name': '理想のソシオ恋愛診断', 'desc': 'あなたが魂レベルで求めている理想のパートナーを観測。4つのスタイルから相手を抽出し、真に補完関係にあるソシオタイプを算出します。', 'path': 'https://mofu-mitsu.github.io/ideal-partner-diagnosis/'},
+        'chroma-log': {'name': 'Chroma Log / 深層心理カラー診断', 'desc': '約1658万色の中から現在の精神状態を象徴する「唯一無二の色」を抽出。色彩選択から情報代謝を逆算するカラー観測エディタ。', 'path': 'https://mofu-mitsu.github.io/chroma-log/'},
+        'Deep-Cognition-Archive': {'name': 'Deep Cognition Archive', 'desc': '心理機能やパラメータからソシオ・MBTI等を高精度で測定。観測実験のように行動ログも記録される深層認知診断ツール。', 'path': 'https://mofu-mitsu.github.io/Deep-Cognition-Archive/'},
+        'model-a-builder': {'name': 'モデルA・ビルダー', 'desc': 'ソシオニクスの「モデルA」を自分の手で構築。8つの心理機能をスロットに当てはめ、真のタイプを論理的に判定します。', 'path': 'https://mofu-mitsu.github.io/model-a-builder/'},
+        'mbti-moyamuya': {'name': 'MBTIモヤモヤ解剖室', 'desc': '類型学への違和感や疑問を論理的に解剖。アンチへの理論武装や、自己防衛のためのメタ認知支援ツール。', 'path': 'https://mofu-mitsu.github.io/mbti-moyamuya/'},
+        'LII_simulator': {'name': '思考暴走シミュレーター', 'desc': '内的論理(Ti/Ni)が暴走し、思考のループから抜け出せなくなる体験ツール。LII/INTJの脳内メモリの限界を追体験せよ。', 'path': 'https://mofu-mitsu.github.io/LII_simulator/'},
+        'dream-code': {'name': '夢コード', 'desc': 'AIキャラと戦う心理学アドベンチャー。16タイプの心理機能の偏りを突いてくるAIたちを倒し、唯一無二のコードを手に入れろ！', 'path': 'https://mofu-mitsu.github.io/dream-code/'},
+        'yami_kansoku_archive': {'name': '闇観測実験アーカイブ', 'desc': 'あなたの心の奥底の闇を暴き出す、深層心理に深く潜り込むための観測装置。', 'path': 'https://mofu-mitsu.github.io/yami_kansoku_archive/'},
+
+        # --- カジュアル・占い・ツール系 ---
         'fluffy-love-check': {'name': 'ふわふわ相性診断', 'desc': '2人の名前を入れると相性を占うよ♡', 'path': 'https://mofu-mitsu.github.io/fluffy-love-check/'},
         'yuuki_fortune': {'name': '気まぐれ猫占い', 'desc': '猫占い師ゆうきくんが未来を鑑定🔮', 'path': 'https://mofu-mitsu.github.io/yuuki_fortune/'},
         'oshi-profile-maker': {'name': '推しキャラプロフ', 'desc': '推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker/'},
-        'oshi-profile-maker2': {'name': '推しキャラプロフ2', 'desc': '推しの魅力を詰め込んだプロフ画像作成。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker2/'},
-        'orikyara-profile-maker2': {'name': 'オリキャラプロフ2', 'desc': '圧倒的人気！うちの子の魅力を1枚に。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker2/'}, # オリキャラプロフ2が人気なので見出しを調整
+        'oshi-profile-maker2': {'name': '推しキャラプロフ2', 'desc': '推しの魅力を詰め込んだプロフ画像作成（Ver.2）。', 'path': 'https://mofu-mitsu.github.io/oshi-profile-maker2/'},
+        'orikyara-profile-maker2': {'name': 'オリキャラプロフ2', 'desc': '圧倒的人気！うちの子の魅力を1枚に。設定画風シート作成。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker2/'},
         'orikyara-profile-maker': {'name': 'オリキャラプロフ', 'desc': '圧倒的人気！設定画風シートが作れるメーカー。', 'path': 'https://mofu-mitsu.github.io/orikyara-profile-maker/'},
         'Character-Student-ID-Factory': {'name': '学生証ファクトリー', 'desc': '推しやオリキャラの学生証がすぐ作れる！', 'path': 'https://mofu-mitsu.github.io/Character-Student-ID-Factory/'},
         'oshi-card-generator': {'name': '推し名刺ジェネレーター', 'desc': 'イベントやオフ会で使える推しの名刺。', 'path': 'https://mofu-mitsu.github.io/oshi-card-generator/'},
