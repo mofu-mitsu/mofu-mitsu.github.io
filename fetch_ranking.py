@@ -25,7 +25,7 @@ def fetch_top_pages():
         'model-a-builder': {'name': 'モデルA・ビルダー', 'desc': 'ソシオニクスの「モデルA」を自分の手で構築。8つの心理機能をスロットに当てはめ、真のタイプを論理的に判定します。', 'path': 'https://mofu-mitsu.github.io/model-a-builder/'},
         'mbti-moyamuya': {'name': 'MBTIモヤモヤ解剖室', 'desc': '類型学への違和感や疑問を論理的に解剖。アンチへの理論武装や、自己防衛のためのメタ認知支援ツール。', 'path': 'https://mofu-mitsu.github.io/mbti-moyamuya/'},
         'LII_simulator': {'name': '思考暴走シミュレーター', 'desc': '内的論理(Ti/Ni)が暴走し、思考のループから抜け出せなくなる体験ツール。LII/INTJの脳内メモリの限界を追体験せよ。', 'path': 'https://mofu-mitsu.github.io/LII_simulator/'},
-        'dream-code': {'name': '夢コード', 'desc': 'AIキャラと戦う心理学アドベンチャー。16タイプの心理機能の偏りを突いてくるAIたちを倒し、唯一無二のコードを手に入れろ！', 'path': 'https://mofu-mitsu.github.io/dream-code/'},
+        'dream-code': {'name': '夢コード', 'desc': 'AIキャラと遊ぶ心理学アドベンチャー。16タイプの心理機能の偏りを突いてくるAIたちと関わり、唯一無二のコードを手に入れろ！', 'path': 'https://mofu-mitsu.github.io/dream-code/'},
         'yami_kansoku_archive': {'name': '闇観測実験アーカイブ', 'desc': 'あなたの心の奥底の闇を暴き出す、深層心理に深く潜り込むための観測装置。', 'path': 'https://mofu-mitsu.github.io/yami_kansoku_archive/'},
 
         # --- カジュアル・占い・ツール系 ---
