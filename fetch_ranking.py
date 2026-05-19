@@ -5,7 +5,6 @@ from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, FilterExpression, Filter, RunReportRequest
 
 def fetch_top_pages():
-    # 環境変数からプロパティIDを取得
     property_id = os.environ.get("GA_PROPERTY_ID")
     if not property_id:
         raise ValueError("GA_PROPERTY_ID is not set in environment variables.")
@@ -50,16 +49,16 @@ def fetch_top_pages():
         'kondate-maker': {'name': '献立メーカー', 'desc': 'シェフが勝手に献立を決めてくれるよ！', 'url': 'https://mofu-mitsu.github.io/kondate-maker/'}
     }
 
-    # APIリクエスト（除外フィルターをPythonクライアントの記法に修正！）
+    # APIリクエスト (pagePathに修正！)
     request = RunReportRequest(
         property=f"properties/{property_id}",
-        dimensions=[Dimension(name="pageurl")],
+        dimensions=[Dimension(name="pagePath")],
         metrics=[Metric(name="screenPageViews")],
         date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
         dimension_filter=FilterExpression(
             not_expression=FilterExpression(
                 filter=Filter(
-                    field_name="pageurl",
+                    field_name="pagePath",
                     in_list_filter=Filter.InListFilter(
                         values=["/", "/index.html", "/contents.html", "/about.html", "/lab.html", "/Torinooka_portal/"]
                     )
@@ -71,22 +70,29 @@ def fetch_top_pages():
 
     response = client.run_report(request)
     
-    ranking =[]
+    ranking = []
     added_keys = set()
 
+    print("--- GA4 PV Ranking Raw Data ---")
     for row in response.rows:
-        url = row.dimension_values[0].value
-        # 余計なスラッシュやindex.htmlを取り除く
-        key = re.sub(r'/index\.html$', '', url).strip('/')
+        path = row.dimension_values[0].value
+        print(f"Path found: {path} ({row.metric_values[0].value} PV)")
+        
+        # キーの抽出（末尾スラッシュや.htmlを正規化）
+        key = re.sub(r'/index\.html$', '', path).strip('/')
         
         if key in tool_map and key not in added_keys:
             ranking.append(tool_map[key])
             added_keys.add(key)
+            print(f"  -> Match found! Key: {key}")
         
         if len(ranking) >= 3:
             break
 
-    # JSONファイルに保存
+    # 結果を保存
+    print(f"--- Final Ranking (Length: {len(ranking)}) ---")
+    print(json.dumps(ranking, ensure_ascii=False, indent=2))
+
     with open('ranking.json', 'w', encoding='utf-8') as f:
         json.dump(ranking, f, ensure_ascii=False, indent=2)
 
