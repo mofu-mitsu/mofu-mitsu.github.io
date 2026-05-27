@@ -3,14 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNTX973GET"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GNTX973GET');
-  </script>
   <title>コンテンツ一覧｜もふみつ工房</title>
   <meta name="description" content="もふみつ工房で公開している、すべてのプロフィールメーカー、診断ツール、ノベルゲームの一覧ページです。">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -36,23 +28,19 @@
     .menu.open { display: flex; }
 
     .ribbon-header { background: #ffefed; padding: 0.5em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0; }
-    header { background: url('https://www.transparenttextures.com/patterns/cream-dust.png'); text-align: center; padding: 3em 1em 1em; margin-bottom: 1em; }
+    header { background: url('https://www.transparenttextures.com/patterns/cream-dust.png'); text-align: center; padding: 2em 1em 1em; margin-bottom: 1em; }
     header h1 { font-size: 2.5em; color: #d98c89; text-shadow: 2px 2px 0 #fff; margin: 0.2em 0 0; }
 
-    /* --- 検索＆タグエリア --- */
     .utility-bar { max-width: 1100px; margin: 0 auto 2em; padding: 0 1em; text-align: center; }
     .search-box { width: 100%; max-width: 400px; padding: 0.8em 1.2em; border-radius: 30px; border: 2px solid #fbd3e9; font-size: 1em; outline: none; font-family: 'Kiwi Maru', serif; color: #5d4037; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 1em; }
     .search-box:focus { border-color: #f9c8d9; box-shadow: 0 0 8px rgba(249, 200, 217, 0.5); }
-    
     .tag-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5em; }
     .tag-btn { background: #fff; border: 1px solid #fbd3e9; color: #8c3c63; padding: 0.4em 1em; border-radius: 20px; font-size: 0.85em; font-weight: bold; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .tag-btn:hover { background: #f9c8d9; color: #fff; transform: translateY(-2px); }
 
-    /* --- コンテンツ一覧 --- */
     .category-container { max-width: 1100px; margin: 0 auto; padding: 0 1em 2em; }
     .category-title { text-align: center; font-size: 1.8em; color: #8c3c63; margin: 3em 0 1.5em; position: relative; padding-top: 2em; }
     .category-title::before, .category-title::after { content: '♡'; color: #f9c8d9; margin: 0 0.5em; }
-    
     .grid-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em; }
     .tool-card { background: #fff; border-radius: 15px; padding: 1.5em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #fff0f5; transition: transform 0.2s; display: flex; flex-direction: column; }
     .tool-card:hover { transform: translateY(-5px); border-color: #f9c8d9; }
@@ -62,16 +50,43 @@
     .tool-link { display: block; text-align: center; background: #ffeff5; color: #d85f89; padding: 0.6em; border-radius: 10px; font-weight: bold; }
     .tool-link:hover { background: #f9c8d9; color: #fff; }
 
-    @media screen and (max-width: 768px) {
-      .top-nav { display: none; }
-      .mobile-nav { display: block; }
-      header h1 { font-size: 1.8em; }
+    /* 🆕 上に戻るボタンのスタイル */
+    .page-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #d85f89;
+      color: #fff;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      border: 3px solid #fff;
+    }
+    .page-top-btn.show { opacity: 1; visibility: visible; }
+    .page-top-btn:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(216, 95, 137, 0.4); background: #a14f74; }
+
+    @media screen and (max-width: 768px) { 
+      .top-nav { display: none; } 
+      .mobile-nav { display: block; } 
+      header h1 { font-size: 1.8em; } 
+      /* スマホではハンバーガーメニューと被らないように位置を少し上げる */
+      .page-top-btn { bottom: 90px; right: 20px; width: 45px; height: 45px; font-size: 1.2em; }
     }
     footer { text-align: center; padding: 2em; background: #ffe4e1; margin-top: 3em; color: #888; }
     footer a { color: #d85f89; }
   </style>
 </head>
-<body>
+<body id="top">
 
   <div class="clouds"></div>
   <div class="animals">
@@ -100,15 +115,16 @@
       <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援</a></li>
     </ul>
   </nav>
+
   <div style="max-width: 1100px; margin: 0 auto; padding: 15px 1em 0; font-size: 0.85em; color: #a14f74;">
     <a href="index.html" style="color: #d85f89; text-decoration: underline;"><i class="fas fa-home"></i> ホーム</a> ＞ すべてのコンテンツ
   </div>
+
   <header>
     <h1 style="font-size: 2em;">すべてのコンテンツ一覧</h1>
     <p style="color:#a14f74;">探したいツールを検索するか、タグからジャンプしてね♪</p>
   </header>
 
-  <!-- 検索＆タグエリア -->
   <div class="utility-bar">
     <input type="text" id="searchInput" class="search-box" placeholder="🔍 ツール名やキーワードで検索..." onkeyup="filterTools()">
     <div class="tag-container">
@@ -125,18 +141,14 @@
 
   <div id="all-contents" class="category-container">
 
-    <!-- 0. Torinooka World (NEW!) -->
+    <!-- 0. Torinooka World -->
     <h2 id="cat-portal" class="category-title" style="margin-top: 0;">Torinooka World（公式ポータル）</h2>
     <div class="grid-wrapper">
-      <!-- 特別枠デザイン -->
       <div class="tool-card" style="border: 2px solid #f9c8d9; background: #fffcfd;">
         <div class="tool-icon" style="color: #e05b82;"><i class="fas fa-school"></i></div>
         <h3 style="color: #e05b82;">とりの丘学園 公式ポータル</h3>
-        <p class="tool-desc">
-          キャラクターへのお手紙や掲示板、ミニゲーム、物語の更新も！<br>
-          もふみつ工房が贈る「とりの丘学園」の世界がすべて詰まった公式ポータルサイトです✨
-        </p>
-        <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="tool-link" style="background: #e05b82; color: #ffffff; box-shadow: 0 3px 0 #b03a5d;">ポータルへ入場する</a>
+        <p class="tool-desc">キャラクターへのお手紙や掲示板、ミニゲーム、物語の更新も！もふみつ工房が贈る「とりの丘学園」の世界がすべて詰まった公式ポータルサイトです✨</p>
+        <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="tool-link" style="background: #e05b82; color: #fff; box-shadow: 0 3px 0 #b03a5d;">ポータルへ入場する</a>
       </div>
     </div>
 
@@ -149,36 +161,58 @@
         <p class="tool-desc" style="color: #ccc;">類型学・ソシオニクス・心理機能のガチ診断や観測実験ツールは、こちらの特設研究所ページへ集約されました。</p>
         <a href="lab.html" class="tool-link" style="background: #f9c8d9; color: #2d233c;">研究所へ入場する</a>
       </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-brain"></i></div>
+        <h3>Deep Cognition Archive</h3>
+        <p class="tool-desc">心理機能やパラメータからソシオニクス・MBTI等を測定！行動ログも記録される深層認知診断ツール。</p>
+        <a href="https://mofu-mitsu.github.io/Deep-Cognition-Archive/" class="tool-link">診断する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-door-open"></i></div>
+        <h3>夢コード - Dream Code</h3>
+        <p class="tool-desc">夢の世界に迷い込み、16タイプの心理機能の偏りを突いてくるAIたちと戦う探索型アドベンチャー。行動ログから「唯一無二」の夢コードを手に入れろ！</p>
+        <a href="https://mofu-mitsu.github.io/dream-code/" class="tool-link">夢の世界へ接続する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-vial"></i></div>
+        <h3>モデルA・ビルダー</h3>
+        <p class="tool-desc">ソシオニクスの「モデルA」を構築。8つの心理機能を当てはめ、真のタイプを論理的に判定します。</p>
+        <a href="https://mofu-mitsu.github.io/model-a-builder/" class="tool-link">研究を開始する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-microscope"></i></div>
+        <h3>MBTIのモヤモヤ解剖室</h3>
+        <p class="tool-desc">「MBTIって違和感ある…」そのモヤモヤを解剖。アンチへの理論武装や自己防衛のためのメタ認知支援ツール。</p>
+        <a href="https://mofu-mitsu.github.io/mbti-moyamuya/" class="tool-link">モヤモヤを解剖する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-microchip"></i></div>
+        <h3>LII/INTJ 思考暴走シミュレーター</h3>
+        <p class="tool-desc">「内的論理」が暴走し、思考のループから抜け出せなくなる体験ツール。脳のメモリが限界を迎える過程をお楽しみください。</p>
+        <a href="https://mofu-mitsu.github.io/LII_simulator/" class="tool-link">思考の沼に沈む</a>
+      </div>
     </div>
 
     <!-- 2. Diagnostic Tools -->
     <h2 id="cat-diagnostic" class="category-title">Diagnostic Tools（診断・観測）</h2>
     <div class="grid-wrapper">
-  <!-- 🆕 Chroma Log -->
-      <div class="tool-card">
-        <div class="tool-icon"><i class="fas fa-palette"></i></div>
-        <h3>Chroma Log / 深層心理カラー診断</h3>
-        <p class="tool-desc">
-          1658万色から抽出される、今のあなたを象徴する色。色彩心理に基づき、あなたの内面をカラーコード化する次世代の診断ツールです。
-        </p>
-        <a href="https://mofu-mitsu.github.io/chroma-log/" class="tool-link">カラーを抽出する</a>
-      </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3>創作16タイプ診断 (Creator Brain Log)</h3>
-        <p class="tool-desc">
-          あなたの「創作の脳」を16タイプに分類！物語の作り方や表現の癖を心理機能の観点から分析する、クリエイター特化型の自己分析ツールです。
-        </p>
+        <h3>創作16タイプ診断</h3>
+        <p class="tool-desc">あなたの「創作の脳」を16タイプに分類！物語の作り方や表現の癖を心理機能の観点から分析する、クリエイター特化型の自己分析ツールです。</p>
         <a href="https://mofu-mitsu.github.io/creator-brain-log/" class="tool-link">診断を開始する</a>
       </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-ghost"></i></div>
         <h3>闇観測実験アーカイブ</h3>
-        <p class="tool-desc">
-          入力速度や迷い、修正行動まで全てが観測対象……。<br>
-          あなたの心の奥底にある「闇」を暴き出す、本格的な観測実験ツール。
-        </p>
+        <p class="tool-desc">入力速度や迷い、修正行動まで全てが観測対象。心の奥底にある「闇」を暴き出す本格的な観測実験ツール。</p>
         <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="tool-link">実験に参加する</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-palette"></i></div>
+        <h3>Chroma Log / 深層心理カラー診断</h3>
+        <p class="tool-desc">1658万色から抽出される、今のあなたを象徴する色。色彩心理に基づき内面をカラー化する次世代の診断。</p>
+        <a href="https://mofu-mitsu.github.io/chroma-log/" class="tool-link">カラーを抽出する</a>
       </div>
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-venus-mars"></i></div>
@@ -324,7 +358,7 @@
       <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-smile-beam"></i></div>
         <h3>顔文字メーカー (Kaomoji Maker)</h3>
-        <p class="tool-desc">目や口、パーツを自由に組み合わせて、自分だけのオリジナル顔文字を作ろう！SNSですぐに使えるよ♡</p>
+        <p class="tool-desc">目や口、パーツを自由に組み合わせて、自分だけのオリジナル顔文字を作ろう！SNSですぐ使えるよ♡</p>
         <a href="https://mofu-mitsu.github.io/kaomoji-maker/" class="tool-link">顔文字を作る</a>
       </div>
     </div>
@@ -332,6 +366,13 @@
     <!-- 6. Utility Tools -->
     <h2 id="cat-utility" class="category-title">Utility Tools（便利ツール）</h2>
     <div class="grid-wrapper">
+      <!-- 🆕 もふもふ相談室をここに追加！ -->
+      <div class="tool-card">
+        <div class="tool-icon" style="color: #d85f89;"><i class="fas fa-envelope-open-text"></i></div>
+        <h3>もふもふ相談室 (Contact)</h3>
+        <p class="tool-desc">ツールのバグ報告、ご感想、お仕事の依頼などは独自の相談フォームからお気軽にどうぞ！</p>
+        <a href="https://mofu-mitsu.github.io/mofumofu-room/" target="_blank" class="tool-link" style="background: #fbd3e9; color: #8c3c63;">相談室を開く</a>
+      </div>
        <div class="tool-card">
         <div class="tool-icon"><i class="fas fa-keyboard"></i></div>
         <h3>タイピングマスター</h3>
@@ -384,16 +425,8 @@
   </div>
 
   <div style="text-align:center; margin: 4em 0;">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330533639940949" crossorigin="anonymous"></script>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1330533639940949" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle ||[]).push({});</script>
-  </div>
-
-  <div style="text-align:center; margin: 50px auto;">
-    <p style="font-size: 0.7em; color: #ccc; margin-bottom: 5px;">ADVERTISEMENT</p>
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/o/1a2928b6382583608f3a696245cb92b2"></script>
-    <!-- admax -->
   </div>
 
   <footer>
@@ -403,12 +436,18 @@
       <a href="https://forms.gle/Lh5nyDPCSJvH4YVs7" target="_blank">お問い合わせ</a> ｜ 
       <a href="policy.html">プライバシーポリシー</a> ｜ 
       <a href="terms.html">利用規約</a> ｜
-      <a href="dev_blog.html">開発レポート</a>
+      <a href="dev_blog.html">開発レポート</a> ｜
+      <!-- 🆕 お問い合わせを相談室に差し替え！ -->
+      <a href="https://mofu-mitsu.github.io/mofumofu-room/" target="_blank">もふもふ相談室</a>
     </div>
     <p style="font-size:0.8em; margin-top:1em;">© 2026 MofuMitsu Kobo / M&2K</p>
   </footer>
 
+  <!-- 🆕 上に戻るボタンの実体 -->
+  <a href="#top" id="page-top" class="page-top-btn"><i class="fas fa-arrow-up"></i></a>
+
   <script>
+    // ツール検索フィルター
     function filterTools() {
       let input = document.getElementById('searchInput').value.toLowerCase();
       let cards = document.getElementsByClassName('tool-card');
@@ -424,6 +463,20 @@
         }
       }
     }
+
+    // 🆕 上に戻るボタンの表示・非表示コントロール
+    const topBtn = document.getElementById('page-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
+    topBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 
 </body>
