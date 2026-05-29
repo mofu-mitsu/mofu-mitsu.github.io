@@ -40,6 +40,7 @@ def fetch_top_pages():
         'world-maker': {'name': '世界観メーカー', 'desc': '創作の世界観設定をランダムに生成！', 'url': 'https://mofu-mitsu.github.io/world-maker/'},
         'orikyara-relationship-chart': {'name': '相関図メーカー', 'desc': 'キャラ同士の関係を線で整理！', 'url': 'https://mofu-mitsu.github.io/orikyara-relationship-chart/'},
         'yumekawa-dream-card': {'name': '夢日記メーカー', 'desc': '見た夢をカードにして記録しよう。', 'url': 'https://mofu-mitsu.github.io/yumekawa-dream-card/'},
+        'lore-book-maker': {'name': '設定資料集ジェネレーター', 'desc': '設定を1冊のPDF資料集として出力！', 'url': 'https://mofu-mitsu.github.io/lore-book-maker/'},
         'uchinoko-check-sheet': {'name': 'うちの子観察チェック', 'desc': 'オリキャラを深く知るための質問リスト！', 'url': 'https://mofu-mitsu.github.io/uchinoko-check-sheet/'},
         'kaomoji-maker': {'name': '顔文字メーカー', 'desc': '自分だけのオリジナル顔文字を作ろう！', 'url': 'https://mofu-mitsu.github.io/kaomoji-maker/'},
         'typing-Master': {'name': 'タイピングマスター', 'desc': 'スコアアタックに挑戦してね！', 'url': 'https://mofu-mitsu.github.io/typing-Master/'},
