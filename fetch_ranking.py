@@ -17,6 +17,7 @@ def fetch_top_pages():
         'logic-playground': {'name': 'ソシオTi強度チェッカー', 'desc': 'ソシオニクスの内的論理（Ti）に特化した精密測定ツール。', 'url': 'https://mofu-mitsu.github.io/logic-playground/'},
         'creator-brain-log': {'name': '創作16タイプ診断', 'desc': '創作活動における「情報代謝の癖」を16タイプで分析。', 'url': 'https://mofu-mitsu.github.io/creator-brain-log/'},
         'love-type-diagnosis': {'name': '恋愛4タイプ診断', 'desc': 'ソシオニクスの理論に基づき、恋愛傾向を4タイプに分類。', 'url': 'https://mofu-mitsu.github.io/love-type-diagnosis/'},
+        'cognitive-dive': {'name': '認知機能ダイブ', 'desc': '行動から心理機能を測る体感型MBTI測定。', 'url': 'https://mofu-mitsu.github.io/cognitive-dive/'},
         'ideal-partner-diagnosis': {'name': '理想のソシオ恋愛診断', 'desc': 'あなたが魂レベルで求めている理想のパートナーを観測。', 'url': 'https://mofu-mitsu.github.io/ideal-partner-diagnosis/'},
         'chroma-log': {'name': 'Chroma Log / 深層心理カラー診断', 'desc': '約1658万色の中から現在の精神状態を象徴する色を抽出。', 'url': 'https://mofu-mitsu.github.io/chroma-log/'},
         'Deep-Cognition-Archive': {'name': 'Deep Cognition Archive', 'desc': '心理機能やパラメータからソシオ等を高精度で測定。', 'url': 'https://mofu-mitsu.github.io/Deep-Cognition-Archive/'},
