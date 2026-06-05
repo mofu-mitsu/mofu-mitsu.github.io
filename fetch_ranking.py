@@ -45,6 +45,7 @@ def fetch_top_pages():
         'uchinoko-check-sheet': {'name': 'うちの子観察チェック', 'desc': 'オリキャラを深く知るための質問リスト！', 'url': 'https://mofu-mitsu.github.io/uchinoko-check-sheet/'},
         'kaomoji-maker': {'name': '顔文字メーカー', 'desc': '自分だけのオリジナル顔文字を作ろう！', 'url': 'https://mofu-mitsu.github.io/kaomoji-maker/'},
         'typing-Master': {'name': 'タイピングマスター', 'desc': 'スコアアタックに挑戦してね！', 'url': 'https://mofu-mitsu.github.io/typing-Master/'},
+        'InternetArchaeology': {'name': 'インターネット考古学', 'desc': '過去のネット遺跡を発掘するシミュレーター。', 'url': 'https://mofu-mitsu.github.io/InternetArchaeology/'},
         'kondate-maker': {'name': '献立メーカー', 'desc': 'シェフが勝手に献立を決めてくれるよ！', 'url': 'https://mofu-mitsu.github.io/kondate-maker/'}
     }
 
