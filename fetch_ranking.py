@@ -35,6 +35,7 @@ def fetch_top_pages():
         'Character-Student-ID-Factory': {'name': '学生証ファクトリー', 'desc': '推しやオリキャラの学生証がすぐ作れる！', 'url': 'https://mofu-mitsu.github.io/Character-Student-ID-Factory/'},
         'oshi-card-generator': {'name': '推し名刺ジェネレーター', 'desc': 'イベントやオフ会で使える推しの名刺。', 'url': 'https://mofu-mitsu.github.io/oshi-card-generator/'},
         'oshiai-card-maker': {'name': '推し愛爆発♡カード', 'desc': '推しの尊さを1枚の画像に凝縮！', 'url': 'https://mofu-mitsu.github.io/oshiai-card-maker/'},
+        'oshigoroku-maker': {'name': '推し語録メーカー', 'desc': '推しのセリフや名言をまとめてシェア。', 'url': 'https://mofu-mitsu.github.io/oshigoroku-maker/'},
         'oshi-date-maker': {'name': '推しとお出かけプラン', 'desc': '推しとの理想のデートプランを自動生成。', 'url': 'https://mofu-mitsu.github.io/oshi-date-maker/'},
         'Psycho-Shooter': {'name': 'Psycho-Shooter', 'desc': 'ネガティブな感情を撃ち抜くシューティング！', 'url': 'https://mofu-mitsu.github.io/Psycho-Shooter/'},
         'Torinooka-Werewolf': {'name': 'とりの丘トリ’S人狼', 'desc': 'とりの丘学園のAIキャラたちと人狼勝負！', 'url': 'https://mofu-mitsu.github.io/Torinooka-Werewolf/'},
