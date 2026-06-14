@@ -25,6 +25,7 @@ def fetch_top_pages():
         'mbti-moyamuya': {'name': 'MBTIモヤモヤ解剖室', 'desc': '類型学への違和感を論理的に解剖。自己防衛ツール。', 'url': 'https://mofu-mitsu.github.io/mbti-moyamuya/'},
         'LII_simulator': {'name': '思考暴走シミュレーター', 'desc': '内的論理(Ti/Ni)が暴走し、思考ループに陥る体験。', 'url': 'https://mofu-mitsu.github.io/LII_simulator/'},
         'dream-code': {'name': '夢コード', 'desc': 'AIキャラと遊ぶ心理学アドベンチャー。', 'url': 'https://mofu-mitsu.github.io/dream-code/'},
+        'amatorica-letter': {'name': 'アマトリカ診断', 'desc': '10種類の愛を測定する心理診断。', 'url': 'https://mofu-mitsu.github.io/amatorica-letter/'},
         'yami_kansoku_archive': {'name': '闇観測実験アーカイブ', 'desc': 'あなたの心の奥底の闇を暴き出す。', 'url': 'https://mofu-mitsu.github.io/yami_kansoku_archive/'},
         'fluffy-love-check': {'name': 'ふわふわ相性診断', 'desc': '2人の名前を入れると相性を占うよ♡', 'url': 'https://mofu-mitsu.github.io/fluffy-love-check/'},
         'yuuki_fortune': {'name': '気まぐれ猫占い', 'desc': '猫占い師ゆうきくんが未来を鑑定🔮', 'url': 'https://mofu-mitsu.github.io/yuuki_fortune/'},
