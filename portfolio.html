@@ -12,7 +12,7 @@
     gtag('config', 'G-GNTX973GET');
   </script>
 <title>Portfolio | M&2K - Webデベロッパー & クリエイター</title>
-  <meta name="description" content="M&2K（もふみつ工房）の制作実績ポートフォリオ。React、Supabase、API連携を活用したWebアプリ開発や、心理学ロジックの構築、キャラクターIP展開のケーススタディを掲載。">
+  <meta name="description" content="M&2K（もふみつ工房）の制作実績ポートフォリオ。React、Supabase、API連携、Docker、Cloud Runを活用したWebアプリ開発や、心理学ロジックのケーススタディを掲載。">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -34,7 +34,7 @@
     header { text-align: center; padding: 6em 1em 4em; background: linear-gradient(#ffefed, #fff0f5); border-bottom: 3px dotted #f8a9c0; }
     .profile-icon { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fbd3e9; margin: 0 auto 1em; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(249, 200, 217, 0.4); display: flex; align-items: center; justify-content: center; }
     .profile-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .profile-icon i { font-size: 4em; color: #f9c8d9; } /* 画像がない場合の仮アイコン */
+    .profile-icon i { font-size: 4em; color: #f9c8d9; }
     header h1 { font-size: 2.5em; color: #d98c89; margin: 0; text-shadow: 2px 2px 0 #fff; }
     .studio-name { color: #8c3c63; font-weight: bold; font-size: 1.1em; letter-spacing: 1px; }
 
@@ -55,7 +55,7 @@
     .work-title { font-size: 1.6em; color: #d85f89; margin: 0 0 0.5em; }
     .work-meta { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85em; color: #888; background: #fef0f5; padding: 0.8em 1.2em; border-radius: 15px; }
     .work-meta span { display: flex; align-items: center; gap: 5px; }
-    .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1em; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5em; }
     .tech-tag { background: #a14f74; color: #fff; padding: 0.2em 0.8em; border-radius: 15px; font-size: 0.75em; font-weight: bold; }
     
     .work-grid { display: grid; grid-template-columns: 1fr; gap: 1.5em; }
@@ -95,8 +95,7 @@
     <a class="nav-btn" href="contents.html">ツール一覧</a>
   </nav>
 
-<header>
-    <!-- 🆕 コメントを外して、画像を表示するようにしたよ！ -->
+  <header>
     <div class="profile-icon">
       <img src="profile-icon.png" alt="M&2K">
     </div>
@@ -105,7 +104,6 @@
   </header>
 
   <div class="container">
-    <!-- 🍞 パンくずリスト -->
     <nav style="font-size: 0.85em; margin-bottom: 3em; color: #a14f74;">
       <a href="index.html" style="text-decoration: underline;">ホーム</a> ＞ ポートフォリオ（制作実績）
     </nav>
@@ -140,8 +138,11 @@
       <div class="skill-container">
         <div class="skill-badge">HTML5 / CSS3 (UI Design)</div>
         <div class="skill-badge">JavaScript (Vanilla / ES6)</div>
-        <div class="skill-badge">React / Vite</div>
+        <div class="skill-badge">React 18 / TypeScript / Vite</div>
+        <div class="skill-badge">Node.js / Express.js / REST API</div>
         <div class="skill-badge">Supabase (PostgreSQL / RLS)</div>
+        <div class="skill-badge">Drizzle ORM</div>
+        <div class="skill-badge">Docker / Cloud Run</div>
         <div class="skill-badge">Python (Bot開発 / 自動化)</div>
         <div class="skill-badge">GitHub Actions (CI/CD)</div>
         <div class="skill-badge">Google Analytics API</div>
@@ -157,7 +158,75 @@
     <section>
       <h2><i class="fas fa-star"></i> Featured Case Studies</h2>
 
-      <!-- 代表作 1：Cocotte メモ -->
+      <!-- 🆕 代表作 1：Plot Palette (M&2Kの最高傑作！) -->
+      <div class="work-card" style="border: 2px solid #e080a0; box-shadow: 0 8px 25px rgba(224, 128, 160, 0.25);">
+        <div class="work-header">
+          <h3 class="work-title" style="color: #e080a0;"><i class="fas fa-feather-alt"></i> Plot Palette</h3>
+          <div class="work-meta">
+            <span><i class="fas fa-tasks"></i> 担当: 企画・UI/DB設計・フルスタック実装・インフラ</span>
+            <span><i class="fas fa-clock"></i> 期間: 約2ヶ月強 (2026.04中旬〜06中旬)</span>
+            <span><i class="fas fa-users"></i> 対象: 小説作家・プロット重視の創作クリエイター</span>
+          </div>
+          <div class="tech-list">
+            <span class="tech-tag" style="background:#e080a0;">React 18</span>
+            <span class="tech-tag" style="background:#e080a0;">TypeScript</span>
+            <span class="tech-tag" style="background:#e080a0;">Express.js</span>
+            <span class="tech-tag" style="background:#e080a0;">Drizzle ORM</span>
+            <span class="tech-tag" style="background:#e080a0;">PostgreSQL</span>
+            <span class="tech-tag" style="background:#e080a0;">Cloud Run</span>
+            <span class="tech-tag" style="background:#e080a0;">Docker</span>
+          </div>
+        </div>
+        
+        <div class="work-grid">
+          <div class="work-section" style="grid-column: 1 / -1;">
+            <span class="work-label">概要と課題解決</span>
+            <p class="work-text">
+              物語のプロット(起承転結・伏線回収)、登場人物の相関関係、舞台設定のメモ作りから、美しい「縦書き」でのエディター執筆、さらに組版風のPDF印刷出力までを「一本のカラーパレット」のように美しくカスタマイズされたアトリエ空間で一元化できるフルスタックWebサービス。<br>
+              「プロットと執筆画面を行き来するのが煩わしい」「自分の原稿を美しい縦書きで印刷・PDF化して推敲したいが、既存のツールではレイアウトが崩れてしまう」という、多くの創作小説クリエイターが抱える課題をひとつのダッシュボードから直感的にアプローチできるよう設計・開発しました。
+            </p>
+          </div>
+          
+          <div class="work-section">
+            <span class="work-label">技術的な工夫点（フロントエンド）</span>
+            <div class="work-text">
+              <strong>1. 美しい「縦書き ↔ 横書き」エディターと原稿用紙風CSS設計</strong><br>
+              独自の manuscript クラスと縦書きレイアウト、行のガイドラインやマス目表示を Tailwind CSS とカスタム CSS Variables で制御。執筆時の没入感を引き出すため、余白や文字送りのトラッキング値を極限までパーソナライズ。<br><br>
+              <strong>2. 複数ページのA4縦書き小説組版の自動計算＆「見切れ」のない高精度PDF生成</strong><br>
+              jsPDFとhtml2canvasをシームレスに結合。PDF出力の際に、Webフォントの読み込み保障(CORS対応)を完璧にし、画面のスクロール位置による見切れやフォント不均等を解消するため、キャプチャ時に最上部へ「瞬間仮想スクロール＆画面縦幅適応キャプチャ」を施す。描画完了後は自動でA4サイズに適した比率へ等縮小し、スクロール量はみ出し分を次ページへ「自動で位置補正分割描画（AddPageループ）」する自作アルゴリズムを実装。これにより、複数ページの小説冊子でも全く崩れない出力が可能に。
+            </div>
+          </div>
+
+          <div class="work-section">
+            <span class="work-label">技術的な工夫点（バックエンド・機能）</span>
+            <div class="work-text">
+              <strong>3. フリッカー・ロード待ち完全ゼロ化のための「Optimistic UI (楽観的画面更新)」</strong><br>
+              プロット項目やキャラクターカードの追加、付箋メモの貼り付けなどの頻繁なデータ操作において、画面上にローカル仮IDを用いてコンマゼロ秒でカードを先行反映（Optimistic Update）させ、背後で非同期にExpress REST APIを叩く設計。たとえネットワークに遅延が発生している環境やオフラインでも、ユーザーにストレスを一切与えない超快適で軽快な「もふみつアトリエ」独特の筆記体験を完全実現。<br><br>
+              <strong>4. 1600万色調色カラーパレット機能 (テーマカスタマイズ)</strong><br>
+              サポーター向け特典機能として、1600万色調色のできるプレミアムカスタムカラーパレットを実装。コンポーネントを完全にまたいでの動的なカラー適用を実現するため、CSS Variablesをドキュメントルート全体に再定義・反映させている。さらにこれらのパーソナル設定はバックエンドのPostgreSQLデータベースとシームレスに同期。
+            </div>
+          </div>
+
+          <div class="work-section" style="grid-column: 1 / -1;">
+            <span class="work-label">苦労した点と解決策</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>複数ページの小説PDF出力における見切れ問題：</strong><br>
+                初期実装では画面にスクロールバーが出ていると「画面内の見える範囲しかレンダリングされない」「2枚目以降でテキストが断裂して見切れる」「一番下に配置しているクレジット・ウォーターマークが消える」といった課題が発生。<br>
+                これを解決するために、キャプチャ生成関数（App.tsx 内の `handlePrintEpisode`）において、スクロール位置を一時的に最上部に補正するハックや、html2canvas の windowHeight と height パラメータを要素の `scrollHeight`（内容の実寸高）に同期させて「画面外の見えない要素領域も含めた超巨大キャンバス」を仮想レンダリングさせる手法を構築。さらにjsPDF側でループを回してA4サイズ幅に縮尺を調整しながら次ページにシフトして描き継ぐ、シームレスな自動改ページ分割制御を実装。これにより、長文エピソードであっても破綻なく印刷・PWA利用者がデバイスを問わず小説本のように綺麗に保存できる状態を完成させました。</li>
+                <li><strong>接続診断、およびセキュリティ面での信頼性向上のためのサンドボックス隔離：</strong><br>
+                「会員登録をせずにサクッと使ってみたい」「でもデータは消えてほしくない」という要望を満たすため、ブラウザデバイス単位で擬似的にクラウド同期できるセキュアな「サンドボックス接続」と、Google認証などの「パブリック接続」を完全に隔離しながらデータベースで統合するロジックを設計。同一ブラウザ内の別人のアカウントのセッションキャッシュが混ざるのを防ぐため、ログイン認証時にローカルストレージの整合性チェックを行う「セキュアセッション・アイソレーション」を実装し、製品の信頼性と安全性を高めました。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="link-group">
+          <a href="https://plot-palette.vercel.app/" target="_blank" class="ext-link" style="background:#e080a0; color:#fff; border-color:#e080a0;"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
+          <a href="https://github.com/mofu-mitsu/" target="_blank" class="ext-link"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <!-- 代表作 2：Cocotte メモ -->
       <div class="work-card">
         <div class="work-header">
           <h3 class="work-title">Cocotte - Simple Memo App</h3>
@@ -180,8 +249,8 @@
             <span class="work-label">技術的な工夫点</span>
             <div class="work-text">
               <ul>
-                <li>SupabaseのRLSポリシーを利用し、デバイスID基準でデータを分離。</li>
-                <li>QRコードによるデバイス間ログイン（同期）機能を実装。</li>
+                <li>SupabaseのRLS（Row Level Security）ポリシーを利用し、デバイスID基準でデータを分離。</li>
+                <li>QRコードによるデバイス間ログイン（同期）機能の実装。</li>
                 <li>画像ファイルのアップロードと連携保存に対応。</li>
               </ul>
             </div>
@@ -189,7 +258,7 @@
           <div class="work-section" style="grid-column: 1 / -1;">
             <span class="work-label">苦労した点と解決策</span>
             <p class="work-text">
-              データ型の不一致によるビルドエラーが発生したため、データベースのスキーマを整理・再定義。また、RLSポリシーの設計が複雑化したため、「デバイスID」を認証の基準として再構築し、堅牢性を確保しました。
+              データ型の不一致によるビルドエラーが発生したため、データベースのスキーマを整理・再定義。また、RLSポリシーの設計が複雑化したため、「デバイスID」を基準としたポリシーに再設計することで、堅牢性を確保しました。
             </p>
           </div>
         </div>
@@ -199,7 +268,7 @@
         </div>
       </div>
 
-      <!-- 代表作 2：Deep Cognition Archive -->
+      <!-- 代表作 3：Deep Cognition Archive -->
       <div class="work-card">
         <div class="work-header">
           <h3 class="work-title">Deep Cognition Archive & 心理機能分析ツール</h3>
@@ -226,7 +295,7 @@
         </div>
       </div>
 
-      <!-- 代表作 3：とりの丘ポータル & IP展開 -->
+      <!-- 代表作 4：とりの丘ポータル & IP展開 -->
       <div class="work-card">
         <div class="work-header">
           <h3 class="work-title">とりの丘学園 公式ポータル ＆ IP展開</h3>
@@ -265,23 +334,23 @@
         <a href="https://mofu-mitsu.github.io/orikyara-profile-maker2/" target="_blank" class="other-card">
           <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#f9c8d9; color:#8c3c63;">画像生成</span></div>
           <h4>オリキャラプロフィールメーカー</h4>
-          <p>サイト内アクセスランキング1位。創作キャラの魅力を1枚の画像に凝縮するジェネレーター。</p>
+          <p>創作キャラの魅力を1枚の画像に凝縮するジェネレーター。デザイン一新のVer.2も公開中。</p>
         </a>
         <a href="https://mofu-mitsu.github.io/orikyara-relationship-chart/" target="_blank" class="other-card">
           <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#f9c8d9; color:#8c3c63;">UI操作</span></div>
           <h4>オリキャラ相関図メーカー</h4>
           <p>画像を自由に配置して関係性を整理できる、創作支援用の直感的なUIツール。</p>
         </a>
-        <a href="https://go.bsky.app/redirect?u=https%3A%2F%2Ftorisproject.booth.pm%2Fitems%2F7328786" target="_blank" class="other-card">
-          <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#4b3a63;">Game</span></div>
-          <h4>汗と油のカオスな世界</h4>
-          <p>「とりの丘学園」のキャラクターたちが織りなす、マルチエンディング搭載ノベルゲーム。</p>
+        <a href="https://mofu-mitsu.github.io/oshigoroku-maker/" target="_blank" class="other-card">
+          <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#f9c8d9; color:#8c3c63;">推し活</span></div>
+          <h4>推し語録メーカー</h4>
+          <p>推しの名言や思い出のセリフをきれいに1枚の画像にまとめて布教・シェアできるジェネレーター。</p>
         </a>
-        <div class="other-card" style="border-style: dashed;">
-          <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#ccc; color:#fff;">開発中</span></div>
-          <h4 style="color:#888;">小説・プロット執筆支援ツール</h4>
-          <p>創作フロー（キャラ作成→相関図→執筆）を完結させるための本命ツールを現在開発中。</p>
-        </div>
+        <a href="https://mofu-mitsu.github.io/InternetArchaeology/" target="_blank" class="other-card">
+          <div class="tech-list" style="margin-top:0;"><span class="tech-tag" style="background:#fbd3e9; color:#8c3c63;">シミュレーター</span></div>
+          <h4>インターネット考古学研究所</h4>
+          <p>過去のネットの地層から古い個人サイトやネット文化を「発掘」するゲーム型シミュレーター。</p>
+        </a>
       </div>
       <div style="text-align: center; margin-top: 2em;">
         <a href="contents.html" class="ext-link" style="font-size: 1em;">すべてのツール一覧を見る →</a>
@@ -290,15 +359,14 @@
 
     <!-- 連絡先 -->
     <section style="text-align: center;">
-      <h2><i class="fas fa-envelope"></i> Connect & Contact</h2>
+      <h2><i class="fas fa-link"></i> Connect</h2>
       <p>日常の開発進捗、ツールの更新情報などはSNSより発信しています。<br>お仕事のご相談やご感想等も、自作のお問い合わせフォームよりお気軽にお送りください。</p>
       <div class="sns-container">
         <a href="https://bsky.app/profile/mofumitsukoubou.bsky.social" target="_blank" class="sns-btn" style="background: #0085ff;">
           <i class="fab fa-bluesky"></i> Bluesky
         </a>
-        <!-- 🆕 もふもふ相談室へ変更 -->
         <a href="https://mofu-mitsu.github.io/mofumofu-room/" target="_blank" class="sns-btn" style="background: #d85f89;">
-          <i class="fas fa-envelope"></i> もふもふ相談室 (Contact)
+          <i class="fas fa-envelope"></i> もふみつ相談室
         </a>
       </div>
     </section>
