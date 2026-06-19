@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Analytics ※みつきが全ページに貼った魂のタグ -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNTX973GET"></script>
   <script>
@@ -11,520 +11,248 @@
     gtag('js', new Date());
     gtag('config', 'G-GNTX973GET');
   </script>
-  <title>もふみつ工房｜M&2K - かわいい創作支援・心理学ツールアトリエ</title>
-  <meta name="description" content="M&2K（もふみつ工房）は、オリキャラ設定・推し活を楽しくする無料Webツール集です。心理学に基づいた深層診断や、ノベルゲーム、LINEスタンプも公開中。">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- OGP (復活版！) -->
-  <meta property="og:title" content="もふみつ工房｜M&2K - かわいい創作支援・心理学ツールアトリエ" />
-  <meta property="og:description" content="オリキャラ設定や推し活を楽しくする無料Webツール集。心理学に基づいた深層診断や、ノベルゲーム、LINEスタンプも公開中。" />
-  <meta property="og:image" content="https://mofu-mitsu.github.io/ogp.png" />
-  <meta property="og:url" content="https://mofu-mitsu.github.io/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <style>
-    /* --- 全体設計 --- */
-    body { margin: 0; font-family: 'Kiwi Maru', serif; background: #fff0f5; color: #5d4037; line-height: 1.8; overflow-x: hidden; }
-    a { text-decoration: none; transition: 0.3s; color: inherit; }
+  <!-- 🔍 検索エンジン（SEO）対策用タイトル・キーワード -->
+  <title>【無料エニアグラム診断】Nightscape Tritype - 精密トライタイプ＆生得本能(sp/sx/so)診断</title>
+  <meta name="description" content="美しい夜景を紡ぐエニアグラム診断ツール「Nightscape Tritype」。エニアグラム9タイプ、3センターのトライタイプ、3つの生得本能(sp/sx/so)を詳細に分析。高画質画像保存機能＆詳細な行動ログ出力付き。">
+  <meta name="keywords" content="エニアグラム, トライタイプ, 生得本能, 性格診断, 無料診断, sp/sx/so, Nightscape Tritype, 心理テスト, 自己分析, 性格タイプ">
+  
+  <!-- 📱 OGP (SNS用シェア設定) -->
+  <meta property="og:title" content="【無料エニアグラム診断】Nightscape Tritype - 精密トライタイプ＆生得本能診断">
+  <meta property="og:description" content="美しい夜景を紡ぐエニアグラム・トライタイプ診断。あなたの本質を精密に分析し、美しい夜景画像と共鳴スコアを生成します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mofu-mitsu.github.io/nightscape-tritype/">
+  <!-- OGP画像のパスを設定。ogp.pngをリポジトリの直下に置けば表示されるよ！ -->
+  <meta property="og:image" content="https://mofu-mitsu.github.io/nightscape-tritype/ogp.png">
+  <meta property="og:site_name" content="Nightscape Tritype">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="【無料エニアグラム診断】Nightscape Tritype">
+  <meta name="twitter:description" content="美しい夜景を紡ぐエニアグラム・トライタイプ診断。生得本能(sp/sx/so)も含めて詳細に性格を分析します。">
+  <meta name="twitter:image" content="https://mofu-mitsu.github.io/nightscape-tritype/ogp.png">
 
-    /* 背景アニメーション */
-    .animals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-    .animal { position: absolute; width: 60px; height: 60px; background-size: contain; background-repeat: no-repeat; opacity: 0.25; animation: floatAnimal linear infinite, swaySide ease-in-out infinite; }
-    @keyframes floatAnimal { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 25% { opacity: 0.4; } 100% { transform: translateY(-200vh) rotate(360deg); opacity: 0; } }
+  <!-- 🌃 Favicon (絵文字を直接SVG化して読み込ませる超おしゃれハック！) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌃</text></svg>">
 
-    /* --- ナビゲーション --- */
-    .top-nav { position: absolute; top: 1.5em; right: 1.5em; display: flex; gap: 1em; z-index: 100; }
-    .nav-btn { background: rgba(255, 255, 255, 0.9); padding: 0.6em 1.5em; border-radius: 30px; color: #a14f74; font-weight: bold; font-size: 0.9em; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #fbd3e9; }
-    .nav-btn:hover { background: #fbd3e9; transform: translateY(-2px); }
-
-    .mobile-nav { position: fixed; top: 1em; right: 1em; z-index: 999; display: none; }
-    .hamburger { font-size: 1.6em; background: #fbd3e9; color: #a14f74; padding: 0.6em 0.8em; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .menu { position: absolute; top: 3.5em; right: 0; width: 220px; background: #fff; border-radius: 15px; padding: 1em; list-style: none; display: none; flex-direction: column; gap: 0.8em; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 2px solid #fbd3e9; }
-    .menu.open { display: flex; }
-
-    /* --- ヘッダー（復活） --- */
-    .ribbon-header { background: #ffefed; padding: 0.6em 1em; text-align: center; border-bottom: 3px dotted #f8a9c0; color: #d98c89; font-weight: bold; font-size: 0.9em; }
-    header { background: url('https://www.transparenttextures.com/patterns/cream-dust.png'), linear-gradient(#ffefed, #fff0f5); text-align: center; padding: 5em 1em 4em; border-bottom: 5px double #f9c8d9; }
-    header h1 { font-size: 3.2em; color: #d98c89; text-shadow: 3px 3px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; margin: 0; }
-    .studio-name { color: #8c3c63; font-weight: bold; font-size: 1.2em; letter-spacing: 2px; margin-top: 5px; }
-
-    /* --- ヒーロー導線エリア --- */
-      /* 🆕 ようこそボックス */
-    .welcome-box { background: #fff; border-radius: 30px; padding: 2.5em 2em; text-align: center; margin-bottom: 3em; border: 2px solid #fbd3e9; box-shadow: 0 8px 25px rgba(249, 200, 217, 0.2); }
-    .welcome-box h2 { color: #d85f89; font-size: 1.8em; margin: 0 0 0.5em; }
-    .welcome-box p { color: #8c3c63; font-weight: bold; font-size: 1.1em; margin: 0; }
-    .hero-container { max-width: 1100px; margin: -2em auto 4em; padding: 0 1em; }
-    .main-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .action-card { background: #fff; border-radius: 30px; padding: 2em 1.5em; text-align: center; border: 2px solid #fbd3e9; box-shadow: 0 8px 25px rgba(249, 200, 217, 0.4); transition: 0.3s; }
-    .action-card:hover { transform: translateY(-8px); border-color: #d85f89; box-shadow: 0 12px 30px rgba(249, 200, 217, 0.6); }
-    .action-card i { font-size: 2.5em; color: #f9c8d9; margin-bottom: 0.5em; }
-    .action-card h2 { color: #8c3c63; font-size: 1.4em; margin: 0.5em 0; }
-    .action-card p { font-size: 0.85em; color: #888; margin-bottom: 1.5em; min-height: 3.6em; }
-    .action-link { display: inline-block; background: #f9c8d9; color: #fff; padding: 0.8em 2.5em; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 0 #e0a3b8; }
-    .action-link:hover { background: #d85f89; box-shadow: 0 2px 0 #b04e6e; transform: translateY(2px); }
-
-    /* 特別ボタン（About / Lab） */
-    .sub-actions { display: flex; justify-content: center; gap: 15px; margin-top: 2em; flex-wrap: wrap; }
-    .sub-btn { padding: 0.8em 2em; border-radius: 35px; font-weight: bold; font-size: 0.95em; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #fff; transition: transform 0.3s, box-shadow 0.3s; }
-    .btn-about { background: #fbd3e9; color: #a14f74; }
-    .btn-lab { background: #2d233c; color: #f9c8d9; border-color: #4b3a63; }
-    .sub-btn:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); opacity: 0.95; }
-
-    /* --- 人気ランキング --- */
-    .ranking-section { max-width: 1100px; margin: 5em auto; text-align: center; }
-    .section-title { font-size: 1.8em; color: #d85f89; margin-bottom: 1.5em; }
-    .ranking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 1em; }
-    .ranking-card { background: #fff; border-radius: 25px; padding: 2em; position: relative; border: 1px solid #fbd3e9; box-shadow: 0 6px 15px rgba(249, 200, 217, 0.2); }
-    .rank-badge { position: absolute; top: -15px; left: -15px; background: linear-gradient(135deg, #ff8da1, #d85f89); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4em; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-    /* --- お知らせセクション（AdSense対策） --- */
-    .news-box { max-width: 800px; margin: 4em auto; padding: 2em; background: #fff; border-radius: 25px; border: 2px dashed #fbd3e9; }
-    .news-box h3 { color: #d85f89; margin-top: 0; display: flex; align-items: center; gap: 10px; }
-    /* ここから下を追加・修正 */
-    .news-list { max-height: 200px; overflow-y: auto; padding-right: 10px; }
-    .news-list::-webkit-scrollbar { width: 6px; }
-    .news-list::-webkit-scrollbar-track { background: #fef0f5; border-radius: 10px; }
-    .news-list::-webkit-scrollbar-thumb { background: #f9c8d9; border-radius: 10px; }
-/* --- ニュース項目のホバー演出 --- */
-    .news-item { 
-      border-bottom: 1px solid #fef0f5; 
-      padding: 1em; 
-      text-align: left; 
-      display: flex; 
-      gap: 15px; 
-      transition: 0.3s; 
-      border-radius: 10px;
-    }
-    /* リンク付きニュースの見た目 */
-    a.news-item:hover { 
-      background: #fffcfd; 
-      transform: translateX(5px); 
-      box-shadow: inset 5px 0 0 #f9c8d9; 
-    }
-    .news-date { color: #a14f74; font-weight: bold; font-size: 0.9em; flex-shrink: 0; }
-    .news-text { font-size: 0.95em; color: #666; flex-grow: 1; }
-    .news-text b { color: #d85f89; }
-    .news-text i { font-size: 0.8em; color: #f9c8d9; margin-left: 5px; }
-    /* --- 横スクロール PICK UP --- */
-    .cards-container { max-width: 1100px; margin: 5em auto; padding: 0 1em; }
-    .cards { display: flex; flex-wrap: nowrap; gap: 1.5em; padding: 1em 0.5em 2.5em; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-    .cards::-webkit-scrollbar { height: 10px; }
-    .cards::-webkit-scrollbar-track { background: #ffeef5; border-radius: 10px; }
-    .cards::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #f9c8d9, #ffd6ec); border-radius: 10px; border: 2px solid #ffeef5; }
-    .card { background: #fff; border-radius: 20px; padding: 1.8em; width: 280px; min-width: 280px; text-align: center; border: 1px solid #fff0f5; flex-shrink: 0; box-shadow: 0 8px 20px rgba(0,0,0,0.06); transition: 0.3s; }
-    .card:hover { transform: translateY(-5px) scale(1.02); border-color: #f9c8d9; }
-    .card h3 { font-size: 1.15em; color: #e080a0; margin-bottom: 1em; min-height: 2.8em; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
-    .card-btn { display: inline-block; background: #fff0f5; color: #d85f89; padding: 0.6em 1.5em; border-radius: 15px; font-weight: bold; border: 1px solid #fbd3e9; }
-    .card-btn:hover { background: #d85f89; color: #fff; }
-
-    .mirin-section { max-width: 900px; margin: 6em auto; background: #fff; border-radius: 30px; border: 3px solid #f9c8d9; padding: 3em 2.5em; display: flex; align-items: center; gap: 3em; box-shadow: 0 10px 30px rgba(249, 200, 217, 0.3); position: relative; }
-    .mirin-section::before { content: "Official Bot"; position: absolute; top: -15px; left: 30px; background: #d85f89; color: #fff; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9em; box-shadow: 0 4px 10px rgba(216, 95, 137, 0.4); }
-    .mirin-icon { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fbd3e9; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    .mirin-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .mirin-info { flex-grow: 1; }
-    .mirin-info h3 { color: #e080a0; font-size: 1.8em; margin: 0 0 0.2em; display: flex; align-items: center; gap: 10px; }
-    .mirin-tags { margin-bottom: 1.2em; display: flex; flex-wrap: wrap; gap: 8px; }
-    /* 👇 white-space: nowrap; で途中の改行を防ぐ！ */
-    .mirin-tags span { background: #ffecf2; color: #d85f89; padding: 0.4em 1em; border-radius: 20px; font-size: 0.85em; font-weight: bold; white-space: nowrap; }
-    .mirin-desc { background: #fffcfd; padding: 1.5em; border-radius: 15px; border: 1px dashed #fbd3e9; color: #666; font-size: 0.95em; line-height: 1.6; margin-bottom: 1.5em; }
-    .m-btn-group { display: flex; flex-wrap: wrap; gap: 12px; }
-    .m-btn { padding: 0.8em 1.5em; border-radius: 25px; font-weight: bold; color: #fff; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9em; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s; }
-    .m-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); opacity: 0.9; }
-
-    /* --- レスポンシブ --- */
-    @media screen and (max-width: 768px) {
-      .top-nav { display: none; } .mobile-nav { display: block; }
-      header h1 { font-size: 2.2em; }
-      .mirin-section { flex-direction: column; text-align: center; padding: 2em; }
-      .mirin-icon { width: 140px; height: 140px; }
-      .hero-container { margin-top: 1em; }
-      .mirin-section { flex-direction: column; text-align: center; padding: 3em 1.5em; gap: 1.5em; }
-      .mirin-section::before { left: 50%; transform: translateX(-50%); }
-      .mirin-info h3 { justify-content: center; flex-wrap: wrap; }
-      .mirin-tags { justify-content: center; }
-      .m-btn-group { justify-content: center; }
-    }
-    footer { text-align: center; padding: 4em 1em; background: #ffe4e1; color: #888; font-size: 0.9em; border-top: 3px dotted #f8a9c0; }
-    footer a { color: #d85f89; font-weight: bold; text-decoration: underline; }
-  </style>
+  <!-- Google Fonts: Noto Serif JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="animals">
-    <div class="animal" style="left: 5%; top: 100vh; animation-duration: 35s; background-image: url('cat-icon.png');"></div>
-    <div class="animal" style="left: 85%; top: 110vh; animation-duration: 30s; background-image: url('dog-icon.png');"></div>
-    <div class="animal" style="left: 45%; top: 120vh; animation-duration: 40s; background-image: url('cat-icon.png');"></div>
+  <!-- 🚀 ローディング画面 -->
+  <div id="loading-screen">
+    <div class="loader-container">
+      <div class="loader"></div>
+      <p class="loading-text">星を瞬かせています...</p>
+    </div>
   </div>
 
-  <div class="ribbon-header">ふんわり優しい、創作支援と心理学のアトリエへようこそ♪</div>
+  <!-- 🏠 ホームへ戻るリンク -->
+  <div id="home-link-container">
+    <a href="https://mofu-mitsu.github.io/lab.html" id="home-link">
+      <i class="fa-solid fa-house"></i> ホームへ戻る
+    </a>
+  </div>
 
-  <nav class="top-nav">
-    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> HOME</a>
-    <a class="nav-btn" href="contents.html"><i class="fas fa-th-large"></i> ツール一覧</a>
-    <a class="nav-btn" href="https://torisproject.booth.pm/" target="_blank"><i class="fas fa-shopping-cart"></i> BOOTH</a>
-  </nav>
-
-  <nav class="mobile-nav">
-    <div class="hamburger" onclick="document.getElementById('menu-list').classList.toggle('open')">
-      <i class="fas fa-bars"></i>
+  <!-- 夜空と星レイヤー -->
+  <div id="night-sky">
+    <div id="stars-container"></div>
+    <!-- 🟢 下から湧き上がる玉ボケ（オーブ） -->
+    <div class="orbs-container">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="orb orb4"></div>
+      <div class="orb orb5"></div>
     </div>
-    <ul id="menu-list" class="menu">
-      <li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
-      <li><a href="contents.html"><i class="fas fa-th-large"></i> ツール一覧</a></li>
-      <li><a href="about.html"><i class="fas fa-paw"></i> 当工房について</a></li>
-      <li><a href="https://torisproject.booth.pm/"><i class="fas fa-shopping-cart"></i> BOOTH</a></li>
-      <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
-    </ul>
-  </nav>
-
-  <header>
-    <h1>もふみつ工房</h1>
-    <p class="studio-name">M&2K Creative Studio</p>
-  </header>
-
-  <!-- 🎯 メイン導線 -->
-  <main class="hero-container">
-    <!-- 🆕 ようこそエリアを囲いました！ -->
-    <div class="welcome-box">
-      <h2>ようこそ、もふもふの世界へ！</h2>
-      <p>創作支援・推し活ツールのWebアトリエへようこそ♪<br>登録不要ですぐに遊べる、無料のWebツール集です。</p>
+  </div>
+  <div id="weather-layer"></div>
+  
+  <!-- 街のシルエット -->
+  <div id="cityscape">
+    <div class="building b1"><div class="windows"></div></div>
+    <div class="building b2"><div class="windows"></div></div>
+    <div class="tower">
+      <div class="tower-top"></div>
+      <div class="tower-body"></div>
     </div>
+    <div class="building b3"><div class="windows"></div></div>
+    <div class="building b4"><div class="windows"></div></div>
+  </div>
 
-    <!-- 既存の3つのカード -->
-    <div class="main-actions">
-      <div class="action-card">
-        <i class="fas fa-magic"></i>
-        <h2>創作サポート</h2>
-        <p>オリキャラ設定、相関図、学生証メーカーなど、物語やキャラクターを形にするツールが勢揃い。</p>
-        <a href="contents.html" class="action-link">ツールを見る</a>
-      </div>
-      <div class="action-card">
-        <i class="fas fa-school"></i>
-        <h2>とりの丘学園</h2>
-        <p>公式ポータルサイト。キャラクターへのお手紙、交流掲示板、ここだけの物語を楽しもう。</p>
-        <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="action-link">学園へ入る</a>
-      </div>
-      <div class="action-card">
-        <i class="fas fa-gamepad"></i>
-        <h2>ゲームで遊ぶ</h2>
-        <p>本格的なAI対戦人狼から、感情を撃ち抜くシューティングまで。ブラウザですぐ遊べます。</p>
-        <a href="contents.html#cat-game" class="action-link">ゲーム一覧</a>
-      </div>
-    </div>
-
-    <!-- 既存のサブボタン -->
-    <div class="sub-actions">
-      <a href="about.html" class="sub-btn btn-about"><i class="fas fa-book-open"></i> もふみつ工房について</a>
-      <a href="lab.html" class="sub-btn btn-lab"><i class="fas fa-user-astronaut"></i> 心理学研究所（実験室）</a>
-      <a href="portfolio.html" class="sub-btn" style="background: #fff; color: #8c3c63; border-color: #fbd3e9;"><i class="fas fa-briefcase"></i> ポートフォリオ(制作実績)</a>
-    </div>
-  </main>
-<!-- 🔰 はじめての方へ（3ステップガイド） -->
-  <section style="max-width: 900px; margin: 4em auto; padding: 2.5em; background: #fff; border-radius: 30px; border: 2px dashed #fbd3e9; text-align: center; box-shadow: 0 4px 15px rgba(249, 200, 217, 0.2);">
-    <h2 style="color: #d85f89; font-size: 1.6em; margin-top: 0; margin-bottom: 1.5em;"><i class="fas fa-seedling"></i> はじめての方へ（遊び方）</h2>
+  <!-- 診断UIコンテナ -->
+  <div id="app-container">
     
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-      <!-- STEP 1 -->
-      <div style="flex: 1; min-width: 220px; background: #fff0f5; padding: 1.5em; border-radius: 20px; position: relative;">
-        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #d85f89; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; border: 3px solid #fff;">1</div>
-        <i class="fas fa-mouse-pointer" style="font-size: 2em; color: #e080a0; margin: 0.5em 0;"></i>
-        <h3 style="color: #8c3c63; margin: 0.5em 0;">ツールを選ぶ</h3>
-        <p style="font-size: 0.85em; color: #666; margin: 0;">面倒な登録やログインは一切不要！気になるツールをタップしてね♡</p>
-      </div>
-
-      <!-- STEP 2 -->
-      <div style="flex: 1; min-width: 220px; background: #fff0f5; padding: 1.5em; border-radius: 20px; position: relative;">
-        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #d85f89; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; border: 3px solid #fff;">2</div>
-        <i class="fas fa-keyboard" style="font-size: 2em; color: #e080a0; margin: 0.5em 0;"></i>
-        <h3 style="color: #8c3c63; margin: 0.5em 0;">項目を入力する</h3>
-        <p style="font-size: 0.85em; color: #666; margin: 0;">スマホやPCのブラウザ上で、名前や設定を入力するだけでOK！</p>
-      </div>
-
-      <!-- STEP 3 -->
-      <div style="flex: 1; min-width: 220px; background: #fff0f5; padding: 1.5em; border-radius: 20px; position: relative;">
-        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #d85f89; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; border: 3px solid #fff;">3</div>
-        <i class="fas fa-share-alt" style="font-size: 2em; color: #e080a0; margin: 0.5em 0;"></i>
-        <h3 style="color: #8c3c63; margin: 0.5em 0;">画像保存＆シェア</h3>
-        <p style="font-size: 0.85em; color: #666; margin: 0;">完成した可愛い画像を保存して、うちの子紹介や推し活に使ってね♡</p>
-      </div>
-    </div>
-  </section>
-  <!-- 🏆 人気ツールランキング -->
-  <section class="ranking-section">
-    <h2 class="section-title"><i class="fas fa-crown"></i> 人気ランキング（直近30日）</h2>
-    <div id="ranking-grid" class="ranking-grid">
-      <!-- フォールバック（データがない時） -->
-      <div class="ranking-card"><div class="rank-badge">1</div><h3>オリキャラプロフ</h3><p style="font-size:0.8em;color:#666;">圧倒的人気のうちの子紹介ツール！</p></div>
-      <div class="ranking-card"><div class="rank-badge">2</div><h3>Deep Cognition</h3><p style="font-size:0.8em;color:#666;">精密な深層心理分析テスト。</p></div>
-      <div class="ranking-card"><div class="rank-badge">3</div><h3>学生証メーカー</h3><p style="font-size:0.8em;color:#666;">推しや自分の学生証を作ろう！</p></div>
-    </div>
-  </section>
-
-<!-- 📋 アップデート（AdSense合格祈願！文字数マシマシ＆リンク付き） -->
-  <section class="news-box">
-    <h3 style="color:#d85f89; margin-top:0;"><i class="fas fa-bullhorn"></i> 最近のアップデート</h3>
-    <div class="news-list" style="display: block;">
-
-<!-- 🆕 創作小説アトリエ Plot Palette -->
-      <a href="https://plot-palette.vercel.app/" class="news-item" target="_blank">
-        <div class="news-date">2026.06.18</div>
-        <div class="news-text">
-          <b>新アプリ公開：創作小説アトリエ Plot Palette (プロット・パレット)</b><br>
-          プロット構築、縦書きエディター執筆、複数ページのA4組版風PDF出力までを一元化できるReact製フルスタックWebサービスをリリース。遅延ゼロの軽快なUIと、1600万色のテーマ調色機能を搭載したM&2Kの最高傑作です。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-<!-- 🆕 CRYSTAL ORIGIN -->
-      <a href="https://crystal-origin.vercel.app/" class="news-item" target="_blank">
-        <div class="news-date">2026.06.16</div>
-        <div class="news-text">
-          <b>新診断公開：CRYSTAL ORIGIN | わたしを紐解く宝石診断</b><br>
-          直感のままに「光」を探す行動から内なる原石を鑑定する、Vercel公開の体感型心理シミュレーターをリリース。質問に答えず、感覚と直感のプロセスから深層心理を紐解きます。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-      <a href="https://mofu-mitsu.github.io/amatorica-letter/" class="news-item">
-        <div class="news-date">2026.06.14</div>
-        <div class="news-text">
-          <b>新診断公開：アマトリカ診断 (Amatorica Letter)</b><br>
-          エロス、アガペー、フィリア等の古典的な愛の概念に、分析型（Analita）や征服型（Victoria）などを加えた10種類の愛の形を精密測定。あなたの深層心理に眠る愛のバランスを紐解きます。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-<!-- 🆕 バーチャル結婚式ツール追加 -->
-      <a href="https://wedding-pipeline.vercel.app/" class="news-item" target="_blank">
-        <div class="news-date">2026.06.10</div>
-        <div class="news-text">
-          <b>新ツール公開：バーチャル結婚式ツール (Wedding Pipeline)</b><br>
-          Reactで開発したリアルタイムバーチャル挙式ツールをリリース。推しに性格（MBTI/ソシオ）を設定して世界観を深めたり、合言葉でお部屋を作ってお友達を招待してリアルタイムで挙式することが可能です。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <!-- 🆕 推し語録メーカー追加 -->
-      <a href="https://mofu-mitsu.github.io/oshigoroku-maker/" class="news-item">
-        <div class="news-date">2026.06.10</div>
-        <div class="news-text">
-          <b>新ツール公開：推し語録メーカー</b><br>
-          推しの名言や思い出のセリフ、布教したいフレーズをきれいに1枚の画像にまとめて保存・シェアできる推し活カードジェネレーターを公開しました。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-      <a href="https://mofu-mitsu.github.io/InternetArchaeology/" class="news-item">
-        <div class="news-date">2026.06.05</div>
-        <div class="news-text">
-          <b>新ツール公開：インターネット考古学研究所</b><br>
-          かつてのインターネットの地層から古い個人サイトやネット文化を発掘するシミュレーター。ポイントを貯めてより深い地層（カテゴリー）をアンロックしましょう！ <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-  <!-- 🆕 認知機能ダイブ・シミュレーター -->
-      <a href="https://mofu-mitsu.github.io/cognitive-dive/" class="news-item">
-        <div class="news-date">2026.05.31</div>
-        <div class="news-text">
-          <b>新ツール公開：認知機能ダイブ・シミュレーター</b><br>
-          行動から心理機能を測る、体感型のMBTI / モデルG的測定ツールです。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-      <!-- 🆕 設定資料集ジェネレーター -->
-      <a href="https://mofu-mitsu.github.io/lore-book-maker/" class="news-item">
-        <div class="news-date">2026.05.29</div>
-        <div class="news-text">
-          <b>新ツール公開：世界観・設定資料集ジェネレーター (Lore Book Maker)</b><br>
-          世界観、キャラクター、相関図、年表などをまとめ、綺麗な1冊の設定資料集（PDF）として出力できる創作支援ツールをリリースしました。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
+    <!-- スタート画面 -->
+    <div id="start-screen" class="screen">
+      <i class="fa-solid fa-moon title-icon"></i>
+      <h1>Nightscape Tritype</h1>
+      <p class="subtitle">〜 星が導く、あなたの輪郭 〜</p>
+      <div class="diag-type-badge">エニアグラム × トライタイプ × 生得本能</div>
+      <p class="desc-text">
+        夜景を完成させながら、あなたの「本質」を見つけましょう。<br>
+        本診断では、エニアグラムのメインタイプ、3つのセンターから形成されるトライタイプ、そして自己保存(sp)・社会的(so)・性的(sx)の生得本能を網羅して分析します。<br>
+        直感に従って、夜空を見上げてください。
+      </p>
       
-      <a href="https://mofu-mitsu.github.io/mofumofu-room/" class="news-item">
-        <div class="news-date">2026.05.27</div>
-        <div class="news-text">
-          <b>もふもふ相談室（お問い合わせフォーム）を新設</b><br>
-          通知漏れを防ぎ、より確実にご意見やご感想を受け取るため、独自の相談・お問い合わせフォームを構築しました。お気軽にメッセージを送ってくださいね♪ <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-      <a href="https://mofu-mitsu.github.io/ideal-partner-diagnosis/" class="news-item">
-        <div class="news-date">2026.05.19</div>
-        <div class="news-text">
-          <b>新診断公開：理想のソシオ恋愛診断 (Ideal Partner Style)</b><br>
-          ソシオニクスの理論に基づき、あなたが無意識に求めている「理想のパートナー」を精密に分析・算出するツールをリリース。4つのロマンス・スタイル（侵略者・犠牲者・子ども・保護者）の相補性を考慮し、詳細な追加質問によって、あなたと真に補完関係にある理想のソシオニクスタイプまで導き出すことが可能です。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/logic-playground/" class="news-item">
-        <div class="news-date">2026.05.17</div>
-        <div class="news-text">
-          <b>新ツール公開：ソシオTi強度チェッカー (Logic Playground)</b><br>
-          内的論理（Ti）の性質を深く掘り下げるための専門的な測定ツール。あなたのTiの強度を0〜100の数値で可視化するだけでなく、ソシオニクスの8つの心理機能ポジション（主導、補助、規範、脆弱など）のどこにあなたのTiが位置しているかを論理的に判定する機能を搭載しています。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/creator-brain-log/" class="news-item">
-        <div class="news-date">2026.05.16</div>
-        <div class="news-text">
-          <b>新診断公開：創作16タイプ診断 (Creator Brain Log)</b><br>
-          クリエイター向けに特化した情報代謝分析ツール。16タイプの心理機能の観点から、あなたの脳がどのように物語を生成し、どのような表現スタイルを強みとしているのかを解明します。自身の執筆スタイルの再発見や、アイデアの源泉を知るための創作支援ツールとしてご活用ください。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/love-type-diagnosis/" class="news-item">
-        <div class="news-date">2026.05.14</div>
-        <div class="news-text">
-          <b>新診断公開：恋愛4タイプ診断 (Romance Style)</b><br>
-          ソシオニクスの理論に基づいた「ロマンス・スタイル」判定ツールをリリース。あなたの深層心理に根ざした恋愛の行動原理を「侵略者・犠牲者・子ども・保護者」の4つのカテゴリーから詳細に分析し、自分自身の愛の形を客観的に見つめ直すためのヒントを提供します。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/Wonderland-G-Tracker/" class="news-item">
-        <div class="news-date">2026.05.12</div>
-        <div class="news-text">
-          <b>新診断公開：Wonderland G-Tracker（Gモデル診断）</b><br>
-          ソシオニクスの最新理論「モデルG（グレンコ・モデル）」に基づいた、世界でも類を見ない行動観察型診断ツール。全23問の特殊なギミックを通し、回答の迷いや操作の正確性といった行動ログから、あなたの無意識下に眠る「社会的使命（Social Mission）」とエネルギー代謝を多角的に観測・分析します。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/chroma-log/" class="news-item">
-        <div class="news-date">2026.05.09</div>
-        <div class="news-text">
-          <b>新ツール公開：Chroma Log / 深層心理カラー診断</b><br>
-          約1658万色のフルカラーパレットから、あなたの現在の精神状態を象徴する「唯一無二の色」を抽出。色彩心理学の知見を応用し、無意識のカラー選択からあなたの深層心理と情報代謝の状態をカラーコードとして出力する、次世代型の心理観測エディタを公開しました。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/kaomoji-maker/" class="news-item">
-        <div class="news-date">2026.05.08</div>
-        <div class="news-text">
-          <b>新ツール公開：顔文字メーカー (Kaomoji Maker)</b><br>
-          目、口、手などのパーツを自由に組み合わせて、オリジナルの顔文字を生成できるクリエイティブツール。直感的なUIで、自分だけの「エモい」顔文字やユニークな表現を簡単に作成し、コピー＆ペーストでSNSやメッセージにすぐ利用することが可能です。 <i class="fas fa-external-link-alt"></i>
-        </div>
-      </a>
-
-      <a href="lab.html" class="news-item">
-        <div class="news-date">2026.05.05</div>
-        <div class="news-text">
-          <b>もふみつ心理学研究所「Laboratory」ページを新設</b><br>
-          MBTIやソシオニクス、深層心理の分析に特化した専門的な観測ツールを集約するための特設ページを開設しました。「夢コード」や「思考暴走シミュレーター」など、より知的な探究心を刺激する実験的なコンテンツのハブとして機能します。 <i class="fas fa-arrow-right"></i>
-        </div>
-      </a>
-
-      <a href="https://mofu-mitsu.github.io/Torinooka_portal/" class="news-item">
-        <div class="news-date">2026.04.30</div>
-        <div class="news-text">
-          <b>「とりの丘学園 公式ポータル」リニューアルアップデート</b><br>
-          もふみつ工房の創作世界観を網羅するポータルサイトを大幅更新。キャラクターへのメッセージ投稿機能や掲示板、最新の物語更新情報など、ユーザーがよりインタラクティブに「とりの丘」の世界を楽しめるよう機能を拡充しました。 <i class="fas fa-arrow-right"></i>
-        </div>
-      </a>
-
-    </div>
-  </section>
-  <!-- 🎠 PICK UP（注目コンテンツ） -->
-  <section class="cards-container">
-    <p style="text-align:center; font-weight:bold; color:#8c3c63; margin-bottom: 0.5em;">＼ 注目コンテンツ ／</p>
-    <div class="cards">
-      <div class="card" style="border-top: 5px solid #e05b82;">
-        <h3 style="color:#e05b82;"><i class="fas fa-microphone-alt"></i> みりんてゃ UTAU音源</h3>
-        <p style="font-size:0.8em;color:#888;">自作音声ライブラリ！</p>
-        <a href="https://torisproject.booth.pm/items/8268069" target="_blank" class="card-btn">BoothでDL</a>
-      </div>
-    <div class="card" style="border-top: 5px solid #a14f74;">
-      <h3>世界観・設定資料集ジェネレーター</h3>
-      <p style="font-size:0.8em;color:#888;">設定を1冊のPDFに！</p>
-      <a href="https://mofu-mitsu.github.io/lore-book-maker/" class="card-btn">資料集を作る</a>
-    </div>
-      <div class="card" style="border-top: 5px solid #4b3a63;">
-        <h3>夢コード - Dream Code</h3>
-        <p style="font-size:0.8em;color:#888;">心理機能RPG診断</p>
-        <a href="https://mofu-mitsu.github.io/dream-code/" class="card-btn">遊んでみる</a>
-      </div>
-      <div class="card" style="border-top: 5px solid #fbd3e9;">
-        <h3>闇観測実験アーカイブ</h3>
-        <p style="font-size:0.8em;color:#888;">思考の闇を暴く診断</p>
-        <a href="https://mofu-mitsu.github.io/yami_kansoku_archive/" class="card-btn">実験に参加</a>
-      </div>
-      <div class="card" style="border-top: 5px solid #fbd3e9;">
-        <h3>顔文字メーカー</h3>
-        <p style="font-size:0.8em;color:#888;">SNSですぐ使える！</p>
-        <a href="https://mofu-mitsu.github.io/kaomoji-maker/" class="card-btn">顔文字を作る</a>
-      </div>
-      <div class="card" style="border-top: 5px solid #8c3c63;">
-        <h3>タイピングマスター</h3>
-        <p style="font-size:0.8em;color:#888;">スコアアタックに挑戦</p>
-        <a href="https://mofu-mitsu.github.io/typing-Master/" class="card-btn">挑戦する</a>
+      <div class="start-actions">
+        <input type="text" id="self-type-input" placeholder="自認タイプがあれば入力 (任意)">
+        <button id="start-btn">夜空を見上げる <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        <button id="show-explain-btn" class="sub-action-btn"><i class="fa-solid fa-book-open"></i> エニアグラム解説</button>
       </div>
     </div>
-  </section>
 
-  <!-- 🐱 みりんてゃ紹介 -->
-  <!-- 🐱 みりんてゃ公式bot紹介 -->
-  <section id="mirin" class="mirin-section">
-    <div class="mirin-icon"><img src="mirin-icon.png" alt="みりんてゃ"></div>
-    <div class="mirin-info">
-      <h3>みりんてゃ <span style="font-size:0.5em; color:#999; background:#eee; padding:3px 10px; border-radius:15px; font-weight:normal;">公式Bot</span></h3>
-      <div class="mirin-tags">
-        <span>地雷系あざと女子</span><span>承認欲求つよめ</span><span>黒猫モチーフ</span>
+    <!-- フェーズ1: チェックボックス -->
+    <div id="phase1-screen" class="screen">
+      <div class="progress-bar"><div class="progress" id="p1-progress"></div></div>
+      <h2>Phase 1: 記憶の欠片 <span id="p1-page-text"></span></h2>
+      <p>当てはまるものをすべて選んでください。</p>
+      <div id="checkbox-container"></div>
+      <div class="nav-buttons">
+        <button id="prev-phase1-btn" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 戻る</button>
+        <button id="next-phase1-btn">次へ <i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- フェーズ2: 5段階評価 -->
+    <div id="phase2-screen" class="screen">
+      <div class="progress-bar"><div class="progress" id="p2-progress"></div></div>
+      <h2>Phase 2: 価値観の秤</h2>
+      <div id="question-text"></div>
+      <div id="options-container"></div>
+      <div class="nav-buttons">
+        <button id="prev-phase2-btn" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 戻る</button>
+      </div>
+      <!-- 🐛 隠れLSI芋虫 -->
+      <div id="lsi-caterpillar" class="hidden">🐛</div>
+    </div>
+
+    <!-- フェーズ3: ギミック (星選び) -->
+    <div id="star-gimmick-screen" class="screen">
+      <h2>Mini Game: 惹かれる星</h2>
+      <p>夜空から、直感で3つの星をタップしてください。</p>
+      <div id="star-field"></div>
+    </div>
+
+    <!-- フェーズ3: ギミック (雨) -->
+    <div id="rain-gimmick-screen" class="screen">
+      <h2>Event: 突然の雨</h2>
+      <p>急に雨が降ってきました。あなたはどうしますか？</p>
+      <div id="rain-options"></div>
+    </div>
+
+    <!-- フェーズ4: 願い事 -->
+    <div id="wish-screen" class="screen">
+      <h2>自由入力: 流れ星への願い</h2>
+      <p>今、叶えたい願い事を自由に書いてください。</p>
+      <input type="text" id="wish-input" placeholder="例: 自由に生きたい">
+      <button id="wish-btn">夜空に流す <i class="fa-regular fa-paper-plane"></i></button>
+    </div>
+
+    <!-- 結果画面 -->
+    <div id="result-screen" class="screen">
+      <div id="capture-area">
+        <h2 style="border:none; margin-bottom:5px;">My Nightscape</h2>
+        <div id="tritype-result" class="result-highlight"></div>
+        <div id="instinct-result" class="result-highlight-sub"></div>
+        
+        <div id="scores-container">
+          <h3 style="margin-top:0;">星々の共鳴スコア</h3>
+          <div class="chart-wrapper">
+            <canvas id="resultChart"></canvas>
+          </div>
+        </div>
       </div>
       
-      <div class="mirin-desc">
-        「みんなの推し活や創作を応援するbotだよっ♡」<br>
-        AIを搭載した公式キャラクター。SNSでのツール紹介や、リプライへのお返事を気まぐれにしています。取扱説明書を読んで、たくさん話しかけてね♪
+      <!-- 各タイプの解説 -->
+      <div id="result-explain-container">
+        <h4><i class="fa-solid fa-circle-info"></i> 各タイプの解説</h4>
+        <div class="result-explain-scroll">
+          <p><strong>Type 1:</strong> 完璧主義、正義感が強い、ルール重視</p>
+          <p><strong>Type 2:</strong> 献飾的、他者を助ける、愛情重視</p>
+          <p><strong>Type 3:</strong> 目標志向、有能でありたい、成功重視</p>
+          <p><strong>Type 4:</strong> 独自の世界観、感情の深さ、個性重視</p>
+          <p><strong>Type 5:</strong> 分析的、知識を蓄える、一人の時間重視</p>
+          <p><strong>Type 6:</strong> 慎重、最悪を想定する、安全と絆重視</p>
+          <p><strong>Type 7:</strong> 自由、楽しい体験を求める、好奇心重視</p>
+          <p><strong>Type 8:</strong> パワフル、コントロール、大切な仲間を守る</p>
+          <p><strong>Type 9:</strong> 平和主義、調和を好む、対立を避ける</p>
+        </div>
       </div>
 
-      <div class="m-btn-group">
-        <a href="https://bsky.app/profile/mirinchuuu.bsky.social" target="_blank" class="m-btn" style="background:#0085ff;"><i class="fab fa-bluesky"></i> Bluesky</a>
-        <a href="https://x.com/mirinteya" target="_blank" class="m-btn" style="background:#000000;"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
-        <a href="https://note.com/sorake/n/n28c7cc8e3b07" target="_blank" class="m-btn" style="background:#41c9b4;"><i class="fas fa-book"></i> 取扱説明書(note)</a>
-        <a href="https://line.me/S/sticker/33291694/" target="_blank" class="m-btn" style="background:#00B900;"><i class="fab fa-line"></i> LINEスタンプ</a>
-        <a href="https://lin.ee/xIwh3N2" target="_blank" class="m-btn" style="background:#06C755; box-shadow: 0 3px 0 #049640;"><i class="fab fa-line"></i> 公式LINE（友だち追加）</a>
+      <!-- 📋 行動ログ枠 (画像保存の外に配置) -->
+      <div id="action-log-container">
+        <h4><i class="fa-solid fa-receipt"></i> 行動ログ</h4>
+        <textarea id="action-log-textarea" readonly></textarea>
+        <button id="copy-log-btn"><i class="fa-solid fa-copy"></i> ログをコピー</button>
+      </div>
+      
+      <p id="result-desc">星々が導き出した、あなたの輪郭です。</p>
+      
+      <div class="result-actions">
+        <button id="save-img-btn"><i class="fa-solid fa-download"></i> 画像として保存</button>
+        <button id="share-btn"><i class="fa-solid fa-share-nodes"></i> 結果を共有</button>
+      </div>
+      <button id="restart-btn">もう一度夜空を見上げる</button>
+    </div>
+  </div>
+
+  <!-- エニアグラム特性解説モーダル -->
+  <div id="explain-modal" class="hidden">
+    <div class="modal-content">
+      <h3><i class="fa-solid fa-book-open"></i> エニアグラム 9つの性格タイプ</h3>
+      <div class="explain-list">
+        <div class="explain-item"><strong>タイプ1: 改革する人</strong><p>完璧主義で正義感が強く、物事を正しく行おうとします。</p></div>
+        <div class="explain-item"><strong>タイプ2: 助ける人</strong><p>他者をサポートし、愛情深く、人との結びつきを大切にします。</p></div>
+        <div class="explain-item"><strong>タイプ3: 達成する人</strong><p>効率的で目標志向。成功やステータスを重視します。</p></div>
+        <div class="explain-item"><strong>タイプ4: 個性的な人</strong><p>独自の美意識を持ち、自分の深い感情や特別さを大切にします。</p></div>
+        <div class="explain-item"><strong>タイプ5: 調べる人</strong><p>客観的で、知識を蓄え、物事の仕組みを深く分析します。</p></div>
+        <div class="explain-item"><strong>タイプ6: 忠実な人</strong><p>慎重で安全性を求め、仲間との絆や義務を重んじます。</p></div>
+        <div class="explain-item"><strong>タイプ7: 熱中する人</strong><p>自由を愛し、新しいワクワクする体験や楽しさを追求します。</p></div>
+        <div class="explain-item"><strong>タイプ8: 挑戦する人</strong><p>自己主張が強くパワフル。自分の人生と大切な仲間を守り抜きます。</p></div>
+        <div class="explain-item"><strong>タイプ9: 平和をもたらす人</strong><p>穏やかで調和を好み、他者との葛藤を避けのんびり過ごします。</p></div>
+      </div>
+      <button id="close-explain-btn">閉じる</button>
+    </div>
+  </div>
+
+  <!-- 📳 スマホ風通知ポップアップ -->
+  <div id="notification-popup" class="hidden">
+    <div class="noti-header">
+      <div class="noti-title"><i class="fa-solid fa-comment-dots"></i> 新着メッセージ</div>
+      <div class="noti-time">たった今</div>
+    </div>
+    
+    <!-- 1. プレビュー表示ステート -->
+    <div id="noti-preview-state">
+      <div class="noti-body">メッセージが届いています。タップして開く。</div>
+      <div class="noti-actions">
+        <button id="noti-open">開く</button>
+        <button id="noti-close">閉じる</button>
       </div>
     </div>
-  </section>
-
-  <div style="text-align:center; margin:5em 0;">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1330533639940949" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div style="text-align:center; margin: 50px auto;">
-    <p style="font-size: 0.7em; color: #ccc; margin-bottom: 5px;">ADVERTISEMENT</p>
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/o/1a2928b6382583608f3a696245cb92b2"></script>
-    <!-- admax -->
-  </div>
-
-  <footer>
-    <p>Developer: M&2K Creative Studio</p>
-    <div style="margin-top:10px;">
-      <a href="https://torisproject.booth.pm/">BOOTHショップ</a> ｜<a href="https://mofu-mitsu.github.io/mofumofu-room/" target="_blank">お問い合わせ（相談室）</a> ｜ <a href="policy.html">プライバシーポリシー</a> ｜ <a href="dev_blog.html">開発レポート</a>
+    
+    <!-- 2. 詳細表示ステート -->
+    <div id="noti-detail-state" class="hidden">
+      <div id="noti-message">
+        <div class="noti-icon"></div>
+        <div class="noti-text"></div>
+        <div class="noti-actions">
+          <button id="noti-ok">閉じる</button>
+        </div>
+      </div>
     </div>
-    <p style="font-size:0.8em; margin-top:1.5em; opacity: 0.7;">© 2026 M&2K / もふみつ工房</p>
-  </footer>
+  </div>
 
-  <script>
-    // GitHub Actionsで生成した ranking.json を読み込む
-    async function loadRanking() {
-      const grid = document.getElementById('ranking-grid');
-      try {
-        const response = await fetch('ranking.json');
-        if (!response.ok) throw new Error();
-        const data = await response.json();
-        if (data && data.length > 0) {
-          grid.innerHTML = '';
-          data.forEach((tool, i) => {
-            const card = document.createElement('div');
-            card.className = 'ranking-card';
-
-            // 🛡️ ここが「どっちでもいいよ」の魔法の1行！
-            const toolLink = tool.url || tool.path; 
-
-            card.innerHTML = `
-              <div class="rank-badge">${i+1}</div>
-              <h3>${tool.name}</h3>
-              <p style="font-size:0.85em;color:#666;">${tool.desc}</p>
-              <a href="${toolLink}" style="color:#d85f89;font-weight:bold;text-decoration:underline;">使ってみる →</a>
-            `;
-            grid.appendChild(card);
-          });
-        }
-      } catch (e) {
-        // ranking.jsonがない場合はデフォルトを表示したまま
-      }
-    }
-    loadRanking();
-  </script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
