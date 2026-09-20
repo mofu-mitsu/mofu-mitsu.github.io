@@ -146,7 +146,8 @@
 
   <!-- 🆕 観測所用の検索＆タグ（お問い合わせタグジャンプ付き！） -->
   <div class="lab-utility">
-    <input type="text" id="labSearch" class="lab-search" placeholder="🔍 ラボ内の研究を検索..." onkeyup="filterLab()">
+    <!-- 🔍 修正版：oninputで確実に文字を検知！ -->
+    <input type="text" id="labSearch" class="lab-search" placeholder="🔍 ラボ内の研究を検索..." oninput="filterLab()">
     <div class="lab-tags">
       <button class="lab-tag-btn" onclick="filterTag('all')"><i class="fas fa-th-large"></i> すべて</button>
       <button class="lab-tag-btn" onclick="filterTag('typology')"><i class="fas fa-brain"></i> 類型・心理学</button>
@@ -435,6 +436,16 @@
       </p>
       <a href="https://darling-aori-test.vercel.app/" target="_blank" class="lab-link">煽りに耐えてみる</a>
     </div>
+<!-- 🆕 ナイトタワー診断 (NEW!) -->
+    <div class="lab-card" data-category="diagnostic">
+      <i class="fas fa-chess-rook"></i>
+      <h3>ナイトタワー診断：Night Tower</h3>
+      <p>
+        真夜中の街にそびえ立つ8階建ての超高層タワー。各フロアの住人が仕掛ける「理不尽ミニゲーム」への対処や攻略の軌跡を観測。<br>
+        問題への正解ではなく、あなたの行動プロセスから最上階で「あなたの正体」と「あなたの塔」を導き出す行動観察型シミュレーター。
+      </p>
+      <a href="https://night-tower.vercel.app/" target="_blank" class="lab-link">タワーへ潜入する</a>
+    </div>
     <div class="lab-card" data-category="diagnostic">
       <i class="fas fa-signature"></i>
       <h3>うちかた標本 (Uchikata Specimen)</h3>
@@ -539,16 +550,24 @@
       container.appendChild(star);
     }
 
-    // 観測所用の検索＆タグフィルタシステム（JS）
+// 🆕 壊れない＆あいまい検索対応のラボ検索システム
     function filterLab() {
-      let input = document.getElementById('labSearch').value.toLowerCase();
+      // 入力文字を取得して小文字化＆前後の余白をカット
+      let input = document.getElementById('labSearch').value.toLowerCase().trim();
+      
+      // ひらがなをカタカナに変換する正規化（「そしお」でも「ソシオ」に当たるようにする！）
+      let kanaInput = input.replace(/[\u3041-\u3096]/g, function(match) {
+        return String.fromCharCode(match.charCodeAt(0) + 0x60);
+      });
+
       let cards = document.getElementsByClassName('lab-card');
       
       for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].querySelector('h3').innerText.toLowerCase();
-        let desc = cards[i].querySelector('p').innerText.toLowerCase();
+        // カード全体のテキストを丸ごと取得（エラーが絶対に起きない安全設計）
+        let cardText = cards[i].innerText.toLowerCase();
         
-        if (title.includes(input) || desc.includes(input)) {
+        // 通常の検索文字、またはカタカナ変換した文字が含まれているか判定
+        if (!input || cardText.includes(input) || cardText.includes(kanaInput)) {
           cards[i].style.display = "flex";
         } else {
           cards[i].style.display = "none";
