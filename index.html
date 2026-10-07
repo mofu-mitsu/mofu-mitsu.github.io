@@ -147,7 +147,18 @@
     }
     footer { text-align: center; padding: 4em 1em; background: #ffe4e1; color: #888; font-size: 0.9em; border-top: 3px dotted #f8a9c0; }
     footer a { color: #d85f89; font-weight: bold; text-decoration: underline; }
-  </style>
+  
+    /* --- パンくずリスト --- */
+    .breadcrumb { background: rgba(255,255,255,0.78); border-bottom: 1px solid #fbd3e9; }
+    .breadcrumb-inner { max-width: 1100px; margin: 0 auto; padding: 0.65em 1.2em; display: flex; align-items: center; gap: 0.65em; font-size: 0.82em; color: #a14f74; }
+    .breadcrumb a { color: #a14f74; font-weight: bold; }
+    .breadcrumb a:hover { color: #d85f89; text-decoration: underline; }
+    .breadcrumb-separator { color: #d98c89; font-weight: bold; }
+    .breadcrumb [aria-current="page"] { color: #888; }
+    @media (max-width: 600px) {
+      .breadcrumb-inner { padding: 0.55em 1em; font-size: 0.78em; }
+    }
+</style>
 </head>
 <body>
 
@@ -176,6 +187,15 @@
       <li><a href="https://torisproject.booth.pm/"><i class="fas fa-shopping-cart"></i> BOOTH</a></li>
       <li><a href="https://ofuse.me/5f1a278f" target="_blank"><i class="fas fa-heart"></i> 応援(Ofuse)</a></li>
     </ul>
+  </nav>
+
+  <!-- 🧭 パンくずリスト -->
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <div class="breadcrumb-inner">
+      <a href="https://mofu-mitsu.github.io/" aria-label="ホーム">ホーム</a>
+      <span class="breadcrumb-separator" aria-hidden="true">›</span>
+      <span aria-current="page">もふみつ工房</span>
+    </div>
   </nav>
 
   <header>
