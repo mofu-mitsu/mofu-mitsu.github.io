@@ -58,7 +58,8 @@
     /* アプリ用の特別タグとリスト */
     .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5em; }
     .tech-tag { background: #a14f74; color: #fff; padding: 0.2em 0.8em; border-radius: 15px; font-size: 0.75em; font-weight: bold; }
-    .app-tag { background: #3ddc84; color: #1b5e20; }
+    /* 修正：中身を白にして悪目立ちを解消！枠線と文字だけ上品なグリーンに */
+    .app-tag { background: #fff !important; color: #2e7d32 !important; border: 1.5px solid #a5d6a7 !important; }
     
     .work-grid { display: grid; grid-template-columns: 1fr; gap: 1.5em; }
     @media screen and (min-width: 768px) { .work-grid { grid-template-columns: 1fr 1fr; } }
@@ -157,6 +158,7 @@
         <div class="skill-badge">JavaScript (Vanilla / ES6)</div>
         <div class="skill-badge">React 18 / TypeScript / Vite</div>
         <div class="skill-badge">Node.js / Express.js</div>
+        <div class="skill-badge">Go (API / Runtime)</div> <!-- 🆕 Go追加！ -->
         <div class="skill-badge">Supabase (PostgreSQL / RLS)</div>
         <div class="skill-badge">Drizzle ORM</div>
         <!-- インフラ/AI/その他 -->
@@ -312,6 +314,60 @@
         <div class="link-group">
           <a href="https://plot-palette.vercel.app/" target="_blank" class="ext-link" style="background:#e080a0; color:#fff; border-color:#e080a0;"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
           <a href="https://github.com/mofu-mitsu/" target="_blank" class="ext-link"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+<!-- 🆕 代表作：Code Preview -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">Code Preview - Online Code Editor & Preview Tool</h3>
+          <div class="work-meta">
+            <span><i class="fas fa-tasks"></i> 担当: 企画・UI設計・フロントエンド実装</span>
+            <span><i class="fas fa-users"></i> 対象: Web開発者・創作クリエイター・プログラミング学習者</span>
+          </div>
+          <div class="tech-list">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Monaco Editor</span>
+            <span class="tech-tag">JSZip</span>
+            <span class="tech-tag">GitHub API</span>
+            <span class="tech-tag">Go</span>
+          </div>
+        </div>
+        
+        <div class="work-grid">
+          <div class="work-section" style="grid-column: 1 / -1;">
+            <span class="work-label"><i class="fas fa-bullseye"></i> 概要と課題解決</span>
+            <p class="work-text">
+              GitHubリポジトリやZIPファイル、ローカルフォルダから複数ファイルを読み込み、ブラウザ上でソースコードの編集・プレビューを行えるオンライン開発ツール。開発環境を用意せずにコードを確認したい場面や、複数ファイルで構成されたプロジェクトを手軽に閲覧・編集したいというニーズに対応しました。<br>
+              HTML・CSS・JavaScriptのプレビューに加え、単一ファイルのJSX・TSXの変換プレビューにも対応。ファイルの切り替えや編集、書き出しまでを一つの画面で完結できる環境を構築しました。
+            </p>
+          </div>
+          
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-laptop-code"></i> 技術的な工夫点</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>複数ファイルの一括管理:</strong> GitHubリポジトリ、ZIPアーカイブ、ローカルフォルダの読み込みに対応。ファイル構造を維持しながら対象ファイルを切り替えて編集可能。</li>
+                <li><strong>コード編集・プレビュー環境:</strong> Monaco Editorを採用し、ファイル形式に応じた構文色分けを実装。HTML/CSS/JSプレビューおよびJSX/TSX変換プレビューを実現。</li>
+                <li><strong>GitHub API連携 & エクスポート:</strong> 公開リポジトリのファイル取得と再読み込みによる差分反映、編集中のファイル単体DLおよびZIP形式での一括書き出しを実装。</li>
+                <li><strong>操作性・レスポンシブ:</strong> モバイル端末でのコード編集やコピペ、編集内容の反映を考慮し、画面サイズに応じた操作性を調整。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-tools"></i> 苦労した点と実装上の制約への対応</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>状態とエディタ同期の解決:</strong> 複数ファイルの読み込み・切り替え時、ファイル管理の状態とエディタ上の内容の不一致に対応。特にモバイル環境で古いエディタ状態が反映されないよう処理順序とデータ同期方法を修正。</li>
+                <li><strong>制限とデータ構造の最適化:</strong> GitHubからの大量読み込み時のファイル数制限や、ZIP書き出し時のファイル構造・画像データの扱いを実用ベースで改善。</li>
+                <li><strong>実行環境の制約設計:</strong> フロントエンドで実行できる処理と、サーバー/ビルド環境が必要な処理を区別して設計。PHP、Python、C/C++、Go、Rustなどの構文色分けに対応しつつ、制約を明確化。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="link-group">
+          <a href="https://code-preview-lovat.vercel.app/" target="_blank" class="ext-link"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
         </div>
       </div>
 
