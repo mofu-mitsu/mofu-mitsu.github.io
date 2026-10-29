@@ -170,6 +170,9 @@
         <div class="skill-badge">C# (基礎) / Unity (学習中)</div>
         <div class="skill-badge">CLIP STUDIO PAINT / Adobe CC</div>
         <div class="skill-badge">VRoid Studio (実績336体) / UTAU</div>
+        <div class="skill-badge">Three.js (3D Web描画)</div>
+        <div class="skill-badge">GLTF / VRM (3Dモデル統合)</div>
+        <div class="skill-badge">3D Game Design (空間・操作設計)</div>
       </div>
     </section>
 
@@ -370,7 +373,63 @@
           <a href="https://code-preview-lovat.vercel.app/" target="_blank" class="ext-link"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
         </div>
       </div>
+<!-- 🆕 代表作：MIDNIGHT PROTOCOL -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">MIDNIGHT PROTOCOL（深夜都市行動解析計画）</h3>
+          <p style="margin: 0 0 1em; font-weight: bold; color: #8c3c63;">DISC理論をモチーフとした3D都市探索・行動解析ゲーム</p>
+          <div class="work-meta">
+            <span><i class="fas fa-tasks"></i> 担当: 企画・設計・開発・UI実装・動作調整 (1人開発)</span>
+            <span><i class="fas fa-clock"></i> 期間: 約2週間 (2026.10)</span>
+            <span><i class="fas fa-desktop"></i> 対象: PC / スマートフォン Webブラウザ</span>
+          </div>
+          <div class="tech-list">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Three.js</span>
+            <span class="tech-tag">GLTF / VRM</span>
+            <span class="tech-tag">3D空間構築</span>
+            <span class="tech-tag">行動ログ分析</span>
+            <span class="tech-tag">レスポンシブUI</span>
+          </div>
+        </div>
+        
+        <div class="work-grid">
+          <div class="work-section" style="grid-column: 1 / -1;">
+            <span class="work-label"><i class="fas fa-bullseye"></i> 概要と課題解決</span>
+            <p class="work-text">
+              DISC理論（D・I・S・Cの4つの行動傾向）をテーマにした3D都市探索ゲーム。プレイヤーは深夜の都市を一人称視点で自由に探索し、NPCとの交流やオブジェクトの調査を通じて自身の行動傾向を分析します。<br>
+              単なる質問紙の性格診断ではなく、プレイヤーの移動・停止・走行・調査・NPCとの接触や回避などの行動ログをゲーム内でリアルタイムに記録し、「探索体験そのものを分析につなげる」仕組みを実装しました。
+            </p>
+          </div>
+          
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-laptop-code"></i> 技術的な工夫点</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>Three.jsによる3D空間構築:</strong> 夜の都市を自由に移動できる一人称視点の3D探索空間をWebブラウザ上に構築。</li>
+                <li><strong>行動ログと分析の連携:</strong> 移動速度、探索の深さ、NPCへの接触・回避行動などをバックグラウンドで記録し、DISC分析アルゴリズムに活用。</li>
+                <li><strong>NPCインタラクション:</strong> 会話やオブジェクト調査など、空間内での多彩なアクションをシームレスに処理。</li>
+                <li><strong>マルチデバイス対応:</strong> PCでのマウス・キーボード視点操作に加え、スマートフォン向けの仮想スティックを実装し操作環境を両立。</li>
+                <li><strong>UIとゲーム操作の共存:</strong> 会話や調査画面のモーダル表示中も、移動スティックなどの操作UIが適切に維持されるようステートを調整。</li>
+              </ul>
+            </div>
+          </div>
 
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-tools"></i> 苦労した点と解決策</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>3D空間とゲームシステムの連携:</strong> 移動、NPC対話、調査、行動ログ記録の複数機能を整理し、探索から分析まで破綻のない一連の体験として成立するように設計。</li>
+                <li><strong>スマートフォンでの操作性改善:</strong> タッチ操作と視点操作の干渉を防止。実機テストで発生したダブルタップによる意図しないズームやUI消失に対し、CSSとイベント処理を修正して操作性を担保。</li>
+                <li><strong>表示状態の管理:</strong> 画面切り替え時に操作UIが崩れる問題に対し、条件分岐とイベントハンドリングを調整し、探索を阻害しない堅牢な操作環境を実現。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="link-group">
+          <a href="https://midnight-protocol-iota.vercel.app/" target="_blank" class="ext-link"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
+        </div>
+      </div>
       <!-- 代表作 3：Cocotte メモ -->
       <div class="work-card">
         <div class="work-header">
