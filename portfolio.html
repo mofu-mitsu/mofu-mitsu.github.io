@@ -161,6 +161,11 @@
         <div class="skill-badge">Go (API / Runtime)</div> <!-- 🆕 Go追加！ -->
         <div class="skill-badge">Supabase (PostgreSQL / RLS)</div>
         <div class="skill-badge">Drizzle ORM</div>
+        <div class="skill-badge">Next.js</div>
+        <div class="skill-badge">PHP / Laravel</div>
+        <div class="skill-badge">Cloudflare Workers</div>
+        <div class="skill-badge">Neon (PostgreSQL)</div>
+        <div class="skill-badge">Cloudinary (画像配信)</div>
         <!-- インフラ/AI/その他 -->
         <div class="skill-badge">Docker / Cloud Run</div>
         <div class="skill-badge">Python (Bot / 自動化)</div>
@@ -248,7 +253,66 @@
           <a href="https://play.google.com/store/apps/details?id=com.m2k.pet_reminder" target="_blank" class="ext-link app-link"><i class="fab fa-google-play"></i> Google Play で見る</a>
         </div>
       </div>
+<!-- 🆕 代表作：Type Drift -->
+      <div class="work-card">
+        <div class="work-header">
+          <h3 class="work-title">Type Drift｜類型の秘密を、海へ流そう。</h3>
+          <p style="margin: 0 0 1em; font-weight: bold; color: #8c3c63;">匿名性と個人の思考を大切にする類型論コミュニティWebサービス</p>
+          <div class="work-meta">
+            <span><i class="fas fa-tasks"></i> 担当: 企画・UI/DB設計・フルスタック実装・AI連携・インフラ運用・デバッグ (個人開発)</span>
+            <span><i class="fas fa-clock"></i> 期間: 約2ヶ月〜 (2026.09〜現在)</span>
+            <span><i class="fas fa-users"></i> 対象: MBTI・ソシオニクス等の類型論に関心があるユーザー</span>
+          </div>
+          <div class="tech-list">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">React / TypeScript</span>
+            <span class="tech-tag">PHP / Laravel</span>
+            <span class="tech-tag">Cloudflare Workers</span>
+            <span class="tech-tag">Neon (PostgreSQL)</span>
+            <span class="tech-tag">Groq API</span>
+            <span class="tech-tag">Cloudinary</span>
+          </div>
+        </div>
+        
+        <div class="work-grid">
+          <div class="work-section" style="grid-column: 1 / -1;">
+            <span class="work-label"><i class="fas fa-bullseye"></i> 概要と課題解決</span>
+            <p class="work-text">
+              日常のSNSでは発信しにくい類型論（MBTI/ソシオニクス等）の深い考察や自己の違和感を、匿名で安心して発信・交流できるコミュニティWebサービス。<br>
+              文章をボトルに見立てて海へ流す「ボトル投稿」を中心に、返信ツリー、個別メッセージ、独自のAIキャラクター対話（ダーリンちゃん・LSI芋虫）、ミニゲーム「芋虫浜」などを統合。単なる投稿掲示板ではなく、複数の機能が横断して連携する強固なデータ基盤を構築しました。
+            </p>
+          </div>
+          
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-laptop-code"></i> 技術的な工夫点と実装機能</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>匿名性を前提とした識別設計:</strong> 同一の匿名表示名を持つ投稿を正しく識別するため、表示名と内部識別データを明確に分離。公開ボトル返信から個別メッセージへの移行動線を構築。</li>
+                <li><strong>データ整合性の徹底管理:</strong> ボトル返信ツリーと個別メッセージで送信者や内容が混線する不具合に対し、投稿ID・返信ID・会話の関連付け・送信者情報を整理し、双方で同一の発言を正確に参照できるようAPIロジックを修正。</li>
+                <li><strong>AIキャラクター個別会話基盤:</strong> Groq APIと連携し、キャラクターごとの人格・文脈を維持した対話機能を実装。送信元情報の引き継ぎや返答保存の処理を最適化。</li>
+                <li><strong>Cloudflare Workers × Neon によるデータ永続化:</strong> Vercelホスティングに加え、エッジAPI処理とNeon（PostgreSQL）を組み合わせ、堅牢なデータ永続化基盤を構築。</li>
+              </ul>
+            </div>
+          </div>
 
+          <div class="work-section">
+            <span class="work-label"><i class="fas fa-tools"></i> 苦労した点と解決への取り組み</span>
+            <div class="work-text">
+              <ul>
+                <li><strong>匿名ユーザー情報の混線防止:</strong> 表示名を基準とした判定を廃止し、データの流れを追跡して内部識別情報と会話スレッドの紐付けを再設計。</li>
+                <li><strong>AI返信と人間メッセージの区別:</strong> メッセージ基盤内でAIと人間の送信元・会話先情報が混線する問題に対し、生成からDB保存、画面表示までの一連の処理フェーズを切り分けて調査・修正。</li>
+                <li><strong>開発環境と公開環境の仕様不一致の解消:</strong> ローカルでは動作する処理が公開環境でエラーになる問題に直面。フロントとバックエンド間で送受信するデータ形式を照合し、APIのデプロイ状況と受け入れ形式を一致させることで解決。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="link-group">
+          <a href="https://type-drift.vercel.app/" target="_blank" class="ext-link"><i class="fas fa-external-link-alt"></i> アプリケーションを開く</a>
+        </div>
+      </div>
+
+
+      
     <section>
       <h2><i class="fas fa-star"></i> Featured Case Studies</h2>
 
