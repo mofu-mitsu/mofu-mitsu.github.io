@@ -549,7 +549,7 @@ async function renderCard(d, kind){
   var label = (kind === "ai") ? "🤖 AI審査員のひとこと" : "🌿 チェッカーのひとこと";
   ctx.font = 'bold 27px sans-serif';
   ctx.fillStyle = "#47603c";
-  var ly = Math.max(cy + 88, 470);
+  var ly = Math.min(Math.max(cy + 84, 452), 466);
   ctx.fillText(label, 70, ly);
   ctx.font = '31px sans-serif';
   ctx.fillStyle = "#3c4a34";
