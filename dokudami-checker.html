@@ -25,6 +25,9 @@
   *{box-sizing:border-box;}
   body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;}
   .wrap{max-width:760px;margin:0 auto;padding:24px 16px 56px;}
+  .breadcrumb{font-size:.85rem;color:#8a8a7a;padding:2px 2px 0;}
+  .breadcrumb a{color:var(--green-dark);text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
   header{text-align:center;padding:20px 0 6px;}
   .hero{position:relative;padding:28px 8px 12px;overflow:hidden;}
   .hero .deco{position:absolute;width:52px;height:68px;opacity:.5;pointer-events:none;}
@@ -94,6 +97,9 @@
 </svg>
 
 <div class="wrap">
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="index.html">ホーム</a> ＞ <a href="lab.html">ラボ</a> ＞ <span>ドクダミ度チェッカー</span>
+  </nav>
   <header>
     <div class="hero">
       <svg class="deco d1" viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
@@ -101,7 +107,7 @@
       <svg class="deco d3" viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
       <svg class="deco d4" viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
       <h1>🌿 ドクダミ度チェッカー</h1>
-      <p class="sub">文章を貼ると、「ドクダミ度」を成分表示で採点します。<br>ドクダミ＝一般論・予防線・正論・LSE的マイクロマネジメントで話をすり替える、あの生え方。</p>
+      <p class="sub">文章を貼ると、「ドクダミ度」を成分表示で採点します。<br>ドクダミ＝一般論・予防線・正論・細かすぎる管理で話をすり替える、あの生え方。</p>
       <div class="divider">
         <svg viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
         <svg viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
