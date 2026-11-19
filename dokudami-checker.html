@@ -45,6 +45,12 @@
   .field .empty{color:#8a8a7a;font-size:.9rem;padding:8px;}
   .field svg{width:44px;height:57px;}
   .comment{background:#f4f8ee;border-left:4px solid var(--green);padding:10px 12px;border-radius:8px;margin:14px 0 0;font-size:.95rem;}
+  .ai-zone{margin-top:18px;border-top:1px dashed var(--line);padding-top:14px;}
+  .ai-btn{background:#fff;color:var(--green-dark);font-size:.95rem;font-weight:700;padding:8px 16px;}
+  .ai-btn:hover{background:var(--leaf);}
+  .ai-btn:disabled{opacity:.5;cursor:wait;}
+  .ai-note{font-size:.78rem;color:#8a8a7a;margin:6px 0 0;}
+  .ai-status{font-size:.9rem;color:#6b6b5e;margin:8px 0 0;}
   .comp{margin-top:10px;}
   .comp h3{font-size:.95rem;margin:12px 0 6px;color:var(--green-dark);}
   .chips{display:flex;flex-wrap:wrap;gap:6px;}
@@ -114,6 +120,19 @@
     <p class="comment"><strong>🌿 チェッカーのひとこと</strong><br><span id="commentText"></span></p>
     <div class="comp" id="components"></div>
     <p class="note">※成分はパターン一致で1回だけ加算されます。「？」が3つ以上あると尋問成分が増えます。ノリ成分（わかる、それな、www等）があると減点されます。点数に応じてドクダミの花が咲きます。</p>
+    <div class="ai-zone">
+      <button class="ai-btn" id="aiBtn">🤖 AIにも判定してもらう</button>
+      <p class="ai-note">※入力した文章は、AI判定のために外部のAIへ送信されます。長い文章は先頭1200文字で判定します。</p>
+      <p class="ai-status" id="aiStatus"></p>
+      <div id="aiResult" style="display:none">
+        <div class="score-line">
+          <div class="score"><span id="aiScoreNum">0</span><small> / 100（AI判定）</small></div>
+          <div class="verdict" id="aiVerdict"></div>
+        </div>
+        <div class="chips" id="aiTraits" style="margin-top:8px"></div>
+        <p class="comment"><strong>🤖 AI審査員のひとこと</strong><br><span id="aiComment"></span></p>
+      </div>
+    </div>
   </div>
 
   <footer>もふみつ工房 🌿 ドクダミ度チェッカー</footer>
@@ -257,9 +276,78 @@ function measure(){
     comp.appendChild(h3r);
   }
   box.style.display = "block";
+  document.getElementById("aiResult").style.display = "none";
+  document.getElementById("aiStatus").textContent = "";
   box.scrollIntoView({behavior:"smooth", block:"nearest"});
 }
 document.getElementById("measure").addEventListener("click", measure);
+
+var AI_PROXY_GAS_URL = "https://script.google.com/macros/s/AKfycbx-Xdmkqkwofwr7l4jbzWaNYLzasEbIIicu4hHay2zXXaz2J3cDPQpzm_ptdlRfTd-i/exec";
+var JUDGE_SYSTEM = [
+  "あなたは文章の「ドクダミ度」を判定する審査員です。",
+  "ドクダミとは、会話の中で相手の話に乗らず、一般論・予防線・正論・説教で話を別の課題にすり替えるコミュニケーションの癖を指す造語です。",
+  "",
+  "検出すべき成分:",
+  "- 言い換え・別の課題への変換（相手の訴えを別問題に置き換える）",
+  "- 一般論・予防線（当たり障りない言い方で逃げる）",
+  "- ただし系のピボット（「ただし」「念のため」でオチや勢いを潰す）",
+  "- 説教・正論モード（相手を指導する立場に立つ）",
+  "- 頼まれてない改善案・進行管理（頼まれていないのに手順や計画を提示する）",
+  "- 尋問・細かい確認（日時や条件を細かく詰める、質問攻め）",
+  "- ポジティブ管理・称賛圧（褒め言葉と絵文字で包みながら、報告や継続を促して管理する。優しい言い方でも管理ムーブならドクダミ）",
+  "",
+  "逆に、相手のノリに乗る・共感する・一緒に笑う文章はドクダミ度が低いです。",
+  "単語の一致ではなく、文章全体の「姿勢」で判断してください。言い回しが変わっていても、姿勢が同じなら検出してください。",
+  "",
+  "出力は必ず次のJSONだけにしてください（説明文やコードフェンスは不要）:",
+  "{\"score\": 0から100の整数, \"verdict\": \"ほぼ無害 / うっすら生えてる / 生えてる / 濃いめ / 測定不能級 のいずれか\", \"traits\": [\"検出した成分名を最大4つ\"], \"comment\": \"審査員としての一言コメント。短く、少しユーモアを入れて\"}"
+].join("\n");
+
+async function aiJudge(){
+  var text = document.getElementById("input").value.trim();
+  var btn = document.getElementById("aiBtn");
+  var status = document.getElementById("aiStatus");
+  var box = document.getElementById("aiResult");
+  if(!text){ status.textContent = "先に文章を入力してね。"; return; }
+  btn.disabled = true;
+  box.style.display = "none";
+  status.textContent = "🤖 AI審査員が読んでいます…（数秒かかります）";
+  var controller = new AbortController();
+  var timer = setTimeout(function(){ controller.abort(); }, 30000);
+  try {
+    var params = new URLSearchParams({
+      system: JUDGE_SYSTEM,
+      user: "次の文章のドクダミ度を判定してください:\n\n" + text.slice(0, 1200)
+    }).toString();
+    var res = await fetch(AI_PROXY_GAS_URL + "?" + params, { signal: controller.signal });
+    clearTimeout(timer);
+    var raw = await res.text();
+    var data = JSON.parse(raw);
+    if(data.error) throw new Error("AI中継エラー");
+    var content = data.choices[0].message.content.replace(/```json|```/g, "").trim();
+    var judged = JSON.parse(content);
+    document.getElementById("aiScoreNum").textContent = judged.score;
+    document.getElementById("aiVerdict").textContent = judged.verdict || "";
+    document.getElementById("aiComment").textContent = judged.comment || "";
+    var traits = document.getElementById("aiTraits");
+    traits.innerHTML = "";
+    (judged.traits || []).forEach(function(t){
+      var c = document.createElement("span");
+      c.className = "chip";
+      c.textContent = t;
+      traits.appendChild(c);
+    });
+    box.style.display = "block";
+    status.textContent = "";
+  } catch(e) {
+    clearTimeout(timer);
+    status.textContent = (e.name === "AbortError")
+      ? "🤖 タイムアウトしました。もう一度押してみてね。"
+      : "🤖 AI判定に失敗しました。時間をおいてもう一度どうぞ。";
+  }
+  btn.disabled = false;
+}
+document.getElementById("aiBtn").addEventListener("click", aiJudge);
 </script>
 </body>
 </html>
