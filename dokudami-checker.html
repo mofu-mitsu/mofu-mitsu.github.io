@@ -150,7 +150,7 @@
     <p class="note">※成分はパターン一致で1回だけ加算されます。「？」が3つ以上あると尋問成分が増えます。ノリ成分（わかる、それな、www等）があると減点されます。点数に応じてドクダミの花が咲きます。</p>
     <div class="ai-zone">
       <button class="ai-btn" id="aiBtn">🤖 AIにも判定してもらう</button>
-      <p class="ai-note">※入力した文章は、AI判定のために外部のAIへ送信されます。長い文章は先頭1200文字で判定します。</p>
+      <p class="ai-note">※入力した文章は、AI判定のために外部のAIへ送信されます。長い文章は分割して判定します（最大3区間）。</p>
       <p class="ai-status" id="aiStatus"></p>
       <div id="aiResult" style="display:none">
         <div class="score-line">
@@ -176,7 +176,9 @@ var PATTERNS = [
   ["※","オチ潰しの注意書き",10],["注意","オチ潰しの注意書き",10],
   ["で合ってますか","尋問・細かい確認",12],["いつからで何時","尋問・細かい確認",12],["言ったはず","尋問・細かい確認",12],
   ["😊","ポジティブ管理・称賛圧",10],["継続して","ポジティブ管理・称賛圧",10],["がんばりました","ポジティブ管理・称賛圧",10],["がんばった","ポジティブ管理・称賛圧",10],["偉い","ポジティブ管理・称賛圧",10],["その調子","ポジティブ管理・称賛圧",10],["この調子","ポジティブ管理・称賛圧",10],["聞かせて","ポジティブ管理・称賛圧",10],["きかせて","ポジティブ管理・称賛圧",10],
-  ["確認ですが","マイクロマネジメント",12],["進捗","マイクロマネジメント",12],["いつまでに","マイクロマネジメント",12],["共有して","マイクロマネジメント",12],["報告して","マイクロマネジメント",12],["見せてください","マイクロマネジメント",12],["スクショ","マイクロマネジメント",12]
+  ["確認ですが","マイクロマネジメント",12],["進捗","マイクロマネジメント",12],["いつまでに","マイクロマネジメント",12],["共有して","マイクロマネジメント",12],["報告して","マイクロマネジメント",12],["見せてください","マイクロマネジメント",12],["スクショ","マイクロマネジメント",12],
+  ["ただ、あれは","線引き・訂正・言い訳",14],["断定しない","線引き・訂正・言い訳",12],["線引き","線引き・訂正・言い訳",12],["ってだけ","線引き・訂正・言い訳",12],["言い訳","線引き・訂正・言い訳",12],
+  ["おあいこ","均衡回復",12],["五分五分","均衡回復",12]
 ];
 var RIDE_ALONG = ["わかる","それな","確かに","www","いいね","ほんとそれ","載せたい"];
 
@@ -248,7 +250,9 @@ function makeComment(r){
     "オチ潰しの注意書き":"オチの前に注意書きで空気を冷ますタイプ。",
     "尋問・細かい確認":"質問の圧が強め。もはや取り調べ。",
     "ポジティブ管理・称賛圧":"褒めてるのに、しっかり管理されている感じがする。ニコニコ圧の使い手。",
-    "マイクロマネジメント":"進捗・期限・証跡まで全部確認。LSE的マイクロマネジメントの香りがします。"
+    "マイクロマネジメント":"進捗・期限・証跡まで全部確認。LSE的マイクロマネジメントの香りがします。",
+    "線引き・訂正・言い訳":"「ただ、あれは〜」の線引きと訂正が反射で出てる。認める前に事実関係を整えにくるタイプ。",
+    "均衡回復":"「おあいこ」で天秤を水平に戻しにきた。負けを認めない防衛反応。"
   };
   var counts = {}, order = [];
   r.hits.forEach(function(h){ if(!counts[h[0]]){ counts[h[0]] = 0; order.push(h[0]); } counts[h[0]]++; });
@@ -326,13 +330,37 @@ var JUDGE_SYSTEM = [
   "- 尋問・細かい確認（日時や条件を細かく詰める、質問攻め）",
   "- ポジティブ管理・称賛圧（褒め言葉と絵文字で包みながら、報告や継続を促して管理する。優しい言い方でも管理ムーブならドクダミ）",
   "- マイクロマネジメント（進捗・期限・証跡を細かく確認し、相手の裁量を残さないLSE的管理）",
+  "- 線引き・訂正・言い訳（「ただ、あれは〜」と前提を線引きして事実関係を訂正する、断定を避けて立場を守る、自分の言動を正当化する）",
+  "- 均衡回復（「おあいこ」「五分五分」と天秤を水平に戻して指摘を相殺しようとする）",
   "",
   "逆に、相手のノリに乗る・共感する・一緒に笑う文章はドクダミ度が低いです。",
   "単語の一致ではなく、文章全体の「姿勢」で判断してください。言い回しが変わっていても、姿勢が同じなら検出してください。",
+  "絵文字や「www」、自虐ネタで飾られていても、線引き・訂正・言い訳・説教などの姿勢があれば検出してください。表面のノリに騙されないこと。",
   "",
   "出力は必ず次のJSONだけにしてください（説明文やコードフェンスは不要）:",
   "{\"score\": 0から100の整数, \"verdict\": \"ほぼ無害 / うっすら生えてる / 生えてる / 濃いめ / 測定不能級 のいずれか\", \"traits\": [\"検出した成分名を最大4つ\"], \"comment\": \"審査員としての一言コメント。短く、少しユーモアを入れて\"}"
 ].join("\n");
+
+async function judgeChunk(chunk){
+  var params = new URLSearchParams({
+    system: JUDGE_SYSTEM,
+    user: "次の文章のドクダミ度を判定してください:\n\n" + chunk
+  }).toString();
+  var controller = new AbortController();
+  var timer = setTimeout(function(){ controller.abort(); }, 45000);
+  try {
+    var res = await fetch(AI_PROXY_GAS_URL + "?" + params, { signal: controller.signal });
+    clearTimeout(timer);
+    var raw = await res.text();
+    if(!raw) throw new Error("empty response");
+    var data = JSON.parse(raw);
+    if(data.error) throw new Error("AI中継エラー");
+    var content = data.choices[0].message.content.replace(/```json|```/g, "").trim();
+    return JSON.parse(content);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 async function aiJudge(){
   var text = document.getElementById("input").value.trim();
@@ -342,40 +370,56 @@ async function aiJudge(){
   if(!text){ status.textContent = "先に文章を入力してね。"; return; }
   btn.disabled = true;
   box.style.display = "none";
-  status.textContent = "🤖 AI審査員が読んでいます…（数秒かかります）";
-  var controller = new AbortController();
-  var timer = setTimeout(function(){ controller.abort(); }, 30000);
-  try {
-    var params = new URLSearchParams({
-      system: JUDGE_SYSTEM,
-      user: "次の文章のドクダミ度を判定してください:\n\n" + text.slice(0, 1200)
-    }).toString();
-    var res = await fetch(AI_PROXY_GAS_URL + "?" + params, { signal: controller.signal });
-    clearTimeout(timer);
-    var raw = await res.text();
-    var data = JSON.parse(raw);
-    if(data.error) throw new Error("AI中継エラー");
-    var content = data.choices[0].message.content.replace(/```json|```/g, "").trim();
-    var judged = JSON.parse(content);
-    document.getElementById("aiScoreNum").textContent = judged.score;
-    document.getElementById("aiVerdict").textContent = judged.verdict || "";
-    document.getElementById("aiComment").textContent = judged.comment || "";
-    var traits = document.getElementById("aiTraits");
-    traits.innerHTML = "";
-    (judged.traits || []).forEach(function(t){
-      var c = document.createElement("span");
-      c.className = "chip";
-      c.textContent = t;
-      traits.appendChild(c);
-    });
-    box.style.display = "block";
-    status.textContent = "";
-  } catch(e) {
-    clearTimeout(timer);
-    status.textContent = (e.name === "AbortError")
-      ? "🤖 タイムアウトしました。もう一度押してみてね。"
-      : "🤖 AI判定に失敗しました。時間をおいてもう一度どうぞ。";
+
+  // 中継GASはGET方式でURL長に上限があるため、500文字ごとに分割して判定する
+  var CHUNK = 500, MAXCHUNKS = 3;
+  var all = [];
+  for(var i = 0; i < text.length; i += CHUNK) all.push(text.slice(i, i + CHUNK));
+  var picks = all;
+  if(all.length > MAXCHUNKS){
+    picks = [all[0], all[Math.floor(all.length / 2)], all[all.length - 1]];
   }
+
+  var results = [];
+  for(var k = 0; k < picks.length; k++){
+    status.textContent = "🤖 AI審査員が読んでいます…（区間 " + (k + 1) + " / " + picks.length + "）";
+    try {
+      results.push(await judgeChunk(picks[k]));
+    } catch(e) {
+      try {
+        results.push(await judgeChunk(picks[k].slice(0, 300)));
+      } catch(e2) { /* この区間はスキップ */ }
+    }
+  }
+
+  if(results.length === 0){
+    status.textContent = "🤖 AI判定に失敗しました。時間をおいてもう一度どうぞ。";
+    btn.disabled = false;
+    return;
+  }
+
+  var best = results[0];
+  results.forEach(function(r){ if((r.score || 0) > (best.score || 0)) best = r; });
+  var traitSet = [];
+  results.slice().sort(function(a, b){ return (b.score || 0) - (a.score || 0); }).forEach(function(r){
+    (r.traits || []).forEach(function(t){ if(traitSet.indexOf(t) === -1 && traitSet.length < 4) traitSet.push(t); });
+  });
+
+  document.getElementById("aiScoreNum").textContent = best.score;
+  document.getElementById("aiVerdict").textContent = best.verdict || "";
+  document.getElementById("aiComment").textContent = best.comment || "";
+  var traits = document.getElementById("aiTraits");
+  traits.innerHTML = "";
+  traitSet.forEach(function(t){
+    var c = document.createElement("span");
+    c.className = "chip";
+    c.textContent = t;
+    traits.appendChild(c);
+  });
+  box.style.display = "block";
+  status.textContent = (picks.length > 1)
+    ? "🤖 長文のため " + picks.length + " 区間に分割して判定しました（表示は最大スコアの区間" + (all.length > MAXCHUNKS ? "、先頭・中間・末尾を抽出" : "") + "）"
+    : "";
   btn.disabled = false;
 }
 document.getElementById("aiBtn").addEventListener("click", aiJudge);
