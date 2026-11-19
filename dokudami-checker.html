@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ドクダミ度チェッカー🌿 | もふみつ工房</title>
 <meta name="description" content="文章の「ドクダミ度」を成分表示で採点するジョーク診断ツール。一般論・予防線・説教モード・論点すり替え、ポジティブな皮をかぶった管理ムーブまで検出します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --green:#3e7d3a; --green-dark:#2c5c29; --leaf:#e8f3e4; --ink:#2b2b26; --paper:#fbfaf5; --line:#d8d4c4;
@@ -15,12 +18,13 @@
   header{text-align:center;padding:20px 0 6px;}
   .hero{position:relative;padding:28px 8px 12px;overflow:hidden;}
   .hero .deco{position:absolute;width:52px;height:68px;opacity:.5;pointer-events:none;}
-  .hero .d1{left:2%;top:2px;transform:rotate(-10deg);}
-  .hero .d2{right:3%;top:0;transform:rotate(9deg);width:62px;height:81px;opacity:.65;}
+  .hero .d1{left:2%;top:-10px;transform:rotate(-10deg);opacity:.45;}
+  .hero .d2{right:3%;top:-12px;transform:rotate(9deg);width:62px;height:81px;opacity:.55;}
   .hero .d3{left:12%;bottom:-14px;transform:rotate(14deg);width:38px;height:49px;opacity:.35;}
   .hero .d4{right:13%;bottom:-10px;transform:rotate(-13deg);width:42px;height:55px;opacity:.4;}
   .hero h1,.hero .sub{position:relative;}
-  h1{font-size:1.9rem;margin:0 0 6px;letter-spacing:.03em;background:linear-gradient(90deg,#2c5c29,#5da24f,#2c5c29);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  h1{font-family:"Kaisei Decol","Hiragino Mincho ProN",serif;font-size:1.9rem;margin:0 0 6px;letter-spacing:.03em;background:linear-gradient(90deg,#2c5c29,#5da24f,#2c5c29);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(251,250,245,.95)) drop-shadow(0 0 10px rgba(251,250,245,.95)) drop-shadow(0 0 20px rgba(251,250,245,.85));}
+  .score{font-family:"Kaisei Decol","Hiragino Mincho ProN",serif;}
   .divider{display:flex;justify-content:center;gap:10px;margin-top:12px;}
   .divider svg{width:20px;height:26px;opacity:.55;}
   .sub{color:#6b6b5e;font-size:.92rem;margin:0;}
@@ -87,7 +91,7 @@
       <svg class="deco d3" viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
       <svg class="deco d4" viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
       <h1>🌿 ドクダミ度チェッカー</h1>
-      <p class="sub">文章を貼ると、「ドクダミ度」を成分表示で採点します。<br>ドクダミ＝一般論・予防線・正論で話をすり替える、あの生え方。</p>
+      <p class="sub">文章を貼ると、「ドクダミ度」を成分表示で採点します。<br>ドクダミ＝一般論・予防線・正論・細かすぎる管理で話をすり替える、あの生え方。</p>
       <div class="divider">
         <svg viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
         <svg viewBox="0 0 100 130"><use href="#dokudami-flower"/></svg>
@@ -147,7 +151,8 @@ var PATTERNS = [
   ["してみては","頼まれてない改善案・進行管理",12],["お勧め","頼まれてない改善案・進行管理",12],["手順","頼まれてない改善案・進行管理",12],["計画","頼まれてない改善案・進行管理",12],["しましょう","頼まれてない改善案・進行管理",12],["業務","頼まれてない改善案・進行管理",12],["報連相","頼まれてない改善案・進行管理",12],
   ["※","オチ潰しの注意書き",10],["注意","オチ潰しの注意書き",10],
   ["で合ってますか","尋問・細かい確認",12],["いつからで何時","尋問・細かい確認",12],["言ったはず","尋問・細かい確認",12],
-  ["😊","ポジティブ管理・称賛圧",10],["継続して","ポジティブ管理・称賛圧",10],["がんばりました","ポジティブ管理・称賛圧",10],["がんばった","ポジティブ管理・称賛圧",10],["偉い","ポジティブ管理・称賛圧",10],["その調子","ポジティブ管理・称賛圧",10],["この調子","ポジティブ管理・称賛圧",10],["聞かせて","ポジティブ管理・称賛圧",10],["きかせて","ポジティブ管理・称賛圧",10]
+  ["😊","ポジティブ管理・称賛圧",10],["継続して","ポジティブ管理・称賛圧",10],["がんばりました","ポジティブ管理・称賛圧",10],["がんばった","ポジティブ管理・称賛圧",10],["偉い","ポジティブ管理・称賛圧",10],["その調子","ポジティブ管理・称賛圧",10],["この調子","ポジティブ管理・称賛圧",10],["聞かせて","ポジティブ管理・称賛圧",10],["きかせて","ポジティブ管理・称賛圧",10],
+  ["確認ですが","マイクロマネジメント",12],["進捗","マイクロマネジメント",12],["いつまでに","マイクロマネジメント",12],["共有して","マイクロマネジメント",12],["報告して","マイクロマネジメント",12],["見せてください","マイクロマネジメント",12],["スクショ","マイクロマネジメント",12]
 ];
 var RIDE_ALONG = ["わかる","それな","確かに","www","いいね","ほんとそれ","載せたい"];
 
@@ -218,7 +223,8 @@ function makeComment(r){
     "頼まれてない改善案・進行管理":"頼まれてもいないのに進行管理が始まっています。段取りの圧。",
     "オチ潰しの注意書き":"オチの前に注意書きで空気を冷ますタイプ。",
     "尋問・細かい確認":"質問の圧が強め。もはや取り調べ。",
-    "ポジティブ管理・称賛圧":"褒めてるのに、しっかり管理されている感じがする。ニコニコ圧の使い手。"
+    "ポジティブ管理・称賛圧":"褒めてるのに、しっかり管理されている感じがする。ニコニコ圧の使い手。",
+    "マイクロマネジメント":"進捗・期限・証跡まで全部確認。LSE的マイクロマネジメントの香りがします。"
   };
   var counts = {}, order = [];
   r.hits.forEach(function(h){ if(!counts[h[0]]){ counts[h[0]] = 0; order.push(h[0]); } counts[h[0]]++; });
@@ -295,6 +301,7 @@ var JUDGE_SYSTEM = [
   "- 頼まれてない改善案・進行管理（頼まれていないのに手順や計画を提示する）",
   "- 尋問・細かい確認（日時や条件を細かく詰める、質問攻め）",
   "- ポジティブ管理・称賛圧（褒め言葉と絵文字で包みながら、報告や継続を促して管理する。優しい言い方でも管理ムーブならドクダミ）",
+  "- マイクロマネジメント（進捗・期限・証跡を細かく確認し、相手の裁量を残さないLSE的管理）",
   "",
   "逆に、相手のノリに乗る・共感する・一緒に笑う文章はドクダミ度が低いです。",
   "単語の一致ではなく、文章全体の「姿勢」で判断してください。言い回しが変わっていても、姿勢が同じなら検出してください。",
