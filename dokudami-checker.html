@@ -347,7 +347,7 @@ async function judgeChunk(chunk){
     user: "次の文章のドクダミ度を判定してください:\n\n" + chunk
   }).toString();
   var controller = new AbortController();
-  var timer = setTimeout(function(){ controller.abort(); }, 45000);
+  var timer = setTimeout(function(){ controller.abort(); }, 30000);
   try {
     var res = await fetch(AI_PROXY_GAS_URL + "?" + params, { signal: controller.signal });
     clearTimeout(timer);
@@ -380,17 +380,14 @@ async function aiJudge(){
     picks = [all[0], all[Math.floor(all.length / 2)], all[all.length - 1]];
   }
 
-  var results = [];
-  for(var k = 0; k < picks.length; k++){
-    status.textContent = "🤖 AI審査員が読んでいます…（区間 " + (k + 1) + " / " + picks.length + "）";
-    try {
-      results.push(await judgeChunk(picks[k]));
-    } catch(e) {
-      try {
-        results.push(await judgeChunk(picks[k].slice(0, 300)));
-      } catch(e2) { /* この区間はスキップ */ }
-    }
-  }
+  status.textContent = "🤖 AI審査員が読んでいます…（" + picks.length + "区間を同時判定中、最大30秒ほど）";
+  var tasks = picks.map(function(chunk){
+    return judgeChunk(chunk).catch(function(){
+      return judgeChunk(chunk.slice(0, 300)).catch(function(){ return null; });
+    });
+  });
+  var settled = await Promise.all(tasks);
+  var results = settled.filter(function(r){ return r !== null; });
 
   if(results.length === 0){
     status.textContent = "🤖 AI判定に失敗しました。時間をおいてもう一度どうぞ。";
